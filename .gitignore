@@ -14,3 +14,4 @@ test-results/
 worker/tmp/
 *.tsbuildinfo
 .worker-build/
+.data/

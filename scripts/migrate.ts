@@ -1,8 +1,10 @@
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { Client } from "pg";
+import { loadLocalEnv } from "./load-env";
 
 async function main() {
+  loadLocalEnv();
   const connectionString = process.env.DATABASE_ADMIN_URL || process.env.DATABASE_URL;
   if (!connectionString) throw new Error("DATABASE_ADMIN_URL or DATABASE_URL is required.");
 

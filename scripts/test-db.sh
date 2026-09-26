@@ -36,6 +36,13 @@ if [[ -z "${TEST_PG_SUPERUSER_URL:-}" ]]; then
   database="nyayaflow_test"
 else
   superuser_url="${TEST_PG_SUPERUSER_URL}"
+  # The suite (re)sets passwords on the nyayaflow_* roles, which are cluster-wide. Never touch a server
+  # that already has them — that would break a real DATABASE_URL.
+  existing="$(psql "${superuser_url}" -Atc "select count(*) from pg_roles where rolname in ('nyayaflow_owner','nyayaflow_app','nyayaflow_worker')")"
+  if [[ "${existing}" != "0" ]]; then
+    echo "Refusing to run: this server already has nyayaflow_* roles. Unset TEST_PG_SUPERUSER_URL to use an ephemeral cluster." >&2
+    exit 1
+  fi
   host="$(psql "${superuser_url}" -Atc "select coalesce(inet_server_addr()::text,'127.0.0.1') || ':' || current_setting('port')")"
   host="${host%/32}"
   database="nyayaflow_test_${suffix}"

@@ -59,3 +59,10 @@ for (const path of ["/today", "/matters", "/matters/00000000-0000-4000-9000-0000
     expect(scrollWidth).toBeLessThanOrEqual(page.viewportSize()!.width + 1);
   });
 }
+
+test("sign-in cannot submit credentials natively before hydration", async ({ request }) => {
+  // A native GET submit would put the email and password in the URL, server logs, and history.
+  const html = await (await request.get("/sign-in")).text();
+  expect(html).toMatch(/<form[^>]*method="post"/);
+  expect(html).toMatch(/<button[^>]*disabled=""[^>]*type="submit"/);
+});

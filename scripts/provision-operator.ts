@@ -1,7 +1,9 @@
 import argon2 from "argon2";
 import { Client } from "pg";
+import { loadLocalEnv } from "./load-env";
 
 async function main() {
+  loadLocalEnv();
   const connectionString = process.env.DATABASE_ADMIN_URL || process.env.DATABASE_URL;
   const email = process.env.OPERATOR_EMAIL?.trim().toLowerCase();
   const password = process.env.OPERATOR_PASSWORD;

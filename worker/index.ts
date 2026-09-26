@@ -5,6 +5,9 @@ import path from "node:path";
 import { Pool, type PoolClient } from "pg";
 import { recordAudit } from "../src/lib/audit";
 import { resolveStoragePath } from "../src/lib/storage";
+import { loadLocalEnv } from "../scripts/load-env";
+
+loadLocalEnv();
 
 type JobType = "malware_scan" | "page_count" | "ocr" | "search_index" | "retention_delete" | "audit_verify";
 type Job = {
