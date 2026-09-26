@@ -16,7 +16,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "worker": "tsx worker/index.ts"
+    "worker": "tsx worker/index.ts",
+    "test:integration": "bash scripts/test-db.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
