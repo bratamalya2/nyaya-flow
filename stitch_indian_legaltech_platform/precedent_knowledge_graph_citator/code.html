@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed-dim":"#b3c7ee","surface-subtle":"#F1F5F9","surface-container-low":"#eff4ff","status-manual-bg":"#F8FAFC","secondary-container":"#a0efff","surface-container":"#e5eeff","inverse-on-surface":"#eaf1ff","surface-canvas":"#F8FAFC","surface-card":"#FFFFFF","secondary-fixed":"#a0efff","surface-variant":"#d3e4fe","tertiary":"#170700","on-primary-container":"#768aad","midnight-dark-surface":"#0B1528","secondary":"#006876","brand-accent-amber":"#D8892A","on-surface-variant":"#44474e","inverse-primary":"#b3c7ee","status-manual-border":"#E2E8F0","on-primary-fixed-variant":"#334767","on-tertiary-container":"#cf7100","status-manual-text":"#334155","primary-container":"#0b2240","border-strong":"#CBD5E1","on-primary":"#ffffff","border-subtle":"#E2E8F0","on-secondary-fixed-variant":"#004e59","error-container":"#ffdad6","text-secondary":"#475569","on-tertiary":"#ffffff","status-stale-border":"#FDE68A","tertiary-container":"#381a00","status-verified-text":"#065F46","surface-bright":"#f8f9ff","primary-fixed":"#d5e3ff","status-stale-bg":"#FFFBEB","status-stale-text":"#92400E","status-conflict-border":"#FECACA","secondary-fixed-dim":"#84d2e2","primary":"#000b1f","status-verified-bg":"#ECFDF5","inverse-surface":"#213145","on-error":"#ffffff","on-secondary":"#ffffff","background":"#f8f9ff","midnight-dark-base":"#020617","on-surface":"#0b1c30","surface-container-high":"#dce9ff","text-muted":"#94A3B8","outline":"#74777e","surface-container-highest":"#d3e4fe","tertiary-fixed":"#ffdcc3","on-secondary-container":"#0d6e7d","surface":"#f8f9ff","midnight-dark-border":"#1E293B","outline-variant":"#c4c6ce","on-tertiary-fixed":"#2f1500","on-primary-fixed":"#031b39","status-verified-border":"#A7F3D0","on-tertiary-fixed-variant":"#6e3900","surface-dim":"#cbdbf5","surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#ffb77d","status-conflict-text":"#991B1B","on-error-container":"#93000a","surface-tint":"#4b5f80","status-conflict-bg":"#FEF2F2","error":"#ba1a1a","on-background":"#0b1c30","on-secondary-fixed":"#001f25","text-primary":"#0F172A"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"space-sm":"0.5rem","space-md":"0.75rem",margin:"1.25rem","space-xs":"0.25rem","space-xl":"2rem",gutter:"1rem","space-lg":"1.25rem"},fontFamily:{"display-md":["Domine"],"title-sm":["Inter"],"headline-ui":["Inter"],"headline-statutory":["Domine"],"display-lg":["Domine"],"label-code":["Inter"],"body-default":["Inter"],"label-strong":["Inter"],"body-legal":["Domine"],"title-md":["Inter"],"body-dense":["Inter"],caption:["Inter"]},fontSize:{"display-md":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}],"title-sm":["13px",{lineHeight:"18px",fontWeight:"600"}],"headline-ui":["18px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-statutory":["20px",{lineHeight:"28px",fontWeight:"600"}],"display-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-code":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"body-default":["13px",{lineHeight:"20px",fontWeight:"400"}],"label-strong":["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"600"}],"body-legal":["15px",{lineHeight:"26px",fontWeight:"400"}],"title-md":["15px",{lineHeight:"20px",fontWeight:"600"}],"body-dense":["12px",{lineHeight:"16px",fontWeight:"400"}],caption:["11px",{lineHeight:"14px",fontWeight:"400"}]}}}}</script></head><body class="bg-background font-body-default text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-card z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-14 px-space-lg flex items-center gap-space-sm bg-surface-card"><img alt="Logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wd8pl1ZnY8J6tFKX_OFpcXUkgfHkleAjWX2nWEAR1CUucI7Q53tZLDcrs4SCsc7aiJZ_mAW-3SipAnblDENGyFCPZjB1_MPXnuU3KnCtlAkVpkxarJwbQIfM7uN1QogcaRJ7mjWR6_rfU83jbR_jNF1JrRzdNqWRanRxP4vBHVJid021TWisyeFwzhJVeGXICX3SBv2GQjqBzmwwyvpek5BkBETQypBTrijFWVdHQi--gxZteqZR0zYrGf09HPdUp97fcuzXydoQ"/><div class="flex flex-col leading-none"><span class="font-headline-statutory text-headline-ui text-primary tracking-tight font-bold">NyayaFlow</span><span class="font-caption text-caption text-text-muted tracking-wider uppercase font-semibold">Chamber Suite</span></div></div><div class="p-space-md"><button class="w-full h-10 bg-primary-container text-on-primary hover:bg-midnight-dark-surface rounded-lg flex items-center justify-center gap-space-xs font-label-strong text-label-strong transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>New Matter Filing</span></button></div><div class="px-space-md pb-space-sm"><div class="bg-surface-subtle rounded-lg p-space-sm flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-code text-label-code text-status-conflict-text uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">notification_important</span>Pinned Hearing</span><span class="bg-status-conflict-bg text-status-conflict-text font-caption text-caption px-1.5 py-0.5 rounded font-bold">Court 3 #12</span></div><p class="font-title-sm text-title-sm text-text-primary truncate">State v. R. Singhania</p><p class="font-caption text-caption text-text-muted">Today · Est. 11:30 AM · CrPC/BNSS</p></div></div><nav class="flex flex-col gap-0.5 px-space-sm overflow-y-auto max-h-[calc(100vh-340px)]" data-active-classes="bg-surface-container text-primary font-title-sm"><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="matters-360" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span>Matters 360</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="daily-cause-list" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">view_timeline</span><span>Daily Cause List</span></div><span class="font-label-code text-label-code bg-surface-container-high text-primary px-1.5 py-0.5 rounded">14</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="bns-bnss-matrix" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span>BNS / BNSS Matrix</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="smart-vault-ocr" href="#"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span>Smart Vault &amp; OCR</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="e-filing-auditor" href="#"><span class="material-symbols-outlined text-[20px]">verified</span><span>E-Filing Auditor</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="finance-bci-billing" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Finance &amp; BCI Billing</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="client-portal" href="#"><span class="material-symbols-outlined text-[20px]">supervised_user_circle</span><span>Client Portal</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="firm-audit-dpdp" href="#"><span class="material-symbols-outlined text-[20px]">security</span><span>Firm Audit &amp; DPDP</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="contracts-clm" href="#"><span class="material-symbols-outlined text-[20px]">draw</span><span>Contracts &amp; CLM</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-2 rounded-lg transition-colors bg-surface-container text-primary font-title-sm" data-path="precedent-knowledge-graph" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span>Precedent Graph</span></a></nav></div><div class="p-space-md bg-surface-subtle/50 flex flex-col gap-2"><div class="flex items-center justify-between"><span class="font-label-code text-label-code text-status-verified-text flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">gavel</span>DPDP Act 2023 Compliant</span><span class="font-caption text-caption text-text-muted">Vault #04</span></div><div class="flex items-center justify-between text-text-muted"><span class="font-caption text-caption">Chamber Node Latency</span><span class="font-label-code text-label-code text-text-secondary">24ms · SSL v3</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-14 bg-surface-card/90 backdrop-blur-md z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs bg-surface-subtle px-space-md py-1.5 rounded-lg text-on-surface"><span class="material-symbols-outlined text-[18px] text-secondary">account_balance</span><div class="flex flex-col text-left"><span class="font-label-strong text-label-strong leading-none text-text-primary">Shardul &amp; Associates</span><span class="font-caption text-caption text-text-muted leading-none mt-0.5">New Delhi HQ · Supreme Court</span></div><span class="material-symbols-outlined text-[16px] text-text-muted ml-1">expand_more</span></div><div class="hidden md:flex items-center gap-2 bg-surface px-space-md py-1.5 rounded-lg text-text-secondary w-80 shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><span class="material-symbols-outlined text-[18px] text-text-muted">search</span><span class="font-body-dense text-body-dense text-text-muted flex-1">Search CNR, Cause List, Sections...</span><kbd class="bg-surface-card px-1.5 py-0.5 rounded text-caption font-label-code text-text-muted shadow-sm">⌘K</kbd></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5 bg-status-verified-bg text-status-verified-text px-2.5 py-1 rounded-full font-label-code text-label-code"><span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span><span>eCourts Live • Synced</span></div><button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:bg-surface-subtle transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-brand-accent-amber"></span></button><button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:bg-surface-subtle transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="h-5 w-px bg-surface-subtle"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right leading-none"><span class="font-title-sm text-title-sm text-text-primary">Adv. Vikramaditya Sen</span><span class="font-caption text-caption text-secondary font-semibold">Senior Partner · SC/DHC</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Command & Citator Filter Bar -->
+<section class="bg-surface-card shadow-sm px-space-xl py-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex flex-col gap-1 max-w-3xl">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-code text-label-code text-secondary uppercase tracking-widest flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Neo4j Jurisprudential Citator • Graph Schema v4.2
+          </span>
+<span class="bg-surface-container text-primary font-caption text-caption px-2 py-0.5 rounded font-semibold">
+            FR-020 — FR-024 Compliant
+          </span>
+</div>
+<h1 class="font-headline-statutory text-display-md text-primary tracking-tight">
+          Precedent Knowledge Graph &amp; Judicial Citator
+        </h1>
+<p class="font-body-default text-text-secondary text-body-default">
+          Traverse graph relationships, detect upstream/downstream overruling alerts in real time, filter bench-strength binding authority under Article 141, and inspect paragraph-level ratio decidendi.
+        </p>
+</div>
+<!-- Action Dossier Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="h-9 px-space-md bg-surface-subtle hover:bg-surface-container text-text-primary rounded-lg font-label-strong text-label-strong flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px] text-secondary">file_download</span>
+<span>Export Dossier (Senior Counsel)</span>
+</button>
+<button class="h-9 px-space-md bg-primary-container hover:bg-midnight-dark-surface text-on-primary rounded-lg font-label-strong text-label-strong flex items-center gap-1.5 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">note_add</span>
+<span>Embed Submissions in Brief</span>
+</button>
+</div>
+</div>
+<!-- Multi-Axis Controls & Filter Strips -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md pt-space-xs items-center">
+<!-- Search Anchor Bar -->
+<div class="xl:col-span-5 relative">
+<div class="flex items-center bg-surface-subtle rounded-lg px-space-md py-2 gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">hub</span>
+<input class="bg-transparent border-none outline-none font-title-sm text-title-sm text-text-primary w-full cursor-default select-all" readonly="" type="text" value="Central Bureau of Investigation v. R. Singhania &amp; Ors. [(2024) 6 SCC 412]"/>
+<span class="font-label-code text-label-code bg-surface-card text-text-secondary px-2 py-0.5 rounded shadow-sm shrink-0">
+            Anchor Node
+          </span>
+</div>
+</div>
+<!-- Bench Strength Filter -->
+<div class="xl:col-span-2">
+<div class="relative bg-surface-subtle rounded-lg px-space-sm py-1.5 flex items-center justify-between">
+<div class="flex flex-col leading-none">
+<span class="font-caption text-caption text-text-muted">Bench Strength</span>
+<span class="font-title-sm text-title-sm text-text-primary mt-0.5">3-Judge Bench</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted">tune</span>
+</div>
+</div>
+<!-- Forum Scope Filter -->
+<div class="xl:col-span-2">
+<div class="relative bg-surface-subtle rounded-lg px-space-sm py-1.5 flex items-center justify-between">
+<div class="flex flex-col leading-none">
+<span class="font-caption text-caption text-text-muted">Forum Authority</span>
+<span class="font-title-sm text-title-sm text-text-primary mt-0.5">Supreme Court (1950–26)</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted">account_balance</span>
+</div>
+</div>
+<!-- Citation Treatment Filters -->
+<div class="xl:col-span-3 flex items-center gap-1.5 overflow-x-auto pb-1 xl:pb-0">
+<button class="px-2.5 py-1 rounded-full font-label-code text-label-code bg-status-verified-bg text-status-verified-text flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span>
+<span>Followed (42)</span>
+</button>
+<button class="px-2.5 py-1 rounded-full font-label-code text-label-code bg-status-stale-bg text-status-stale-text flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-status-stale-text"></span>
+<span>Distinguished (18)</span>
+</button>
+<button class="px-2.5 py-1 rounded-full font-label-code text-label-code bg-status-conflict-bg text-status-conflict-text flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-status-conflict-text"></span>
+<span>Overruled (3)</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main Split Workspace: 60% Visual Precedent Constellation + 40% Authority & Ratio Telemetry -->
+<div class="px-space-xl py-space-lg grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT 60%: Interactive Neo4j Visual Graph Canvas -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Graph Viewport Card -->
+<div class="bg-surface-card rounded-xl shadow-md overflow-hidden relative flex flex-col">
+<!-- Canvas Top Toolbar -->
+<div class="px-space-lg py-space-sm bg-surface-subtle/80 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-strong text-label-strong text-text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">timeline</span>
+              Precedent Network Constellation
+            </span>
+<span class="bg-surface-card text-text-muted font-label-code text-label-code px-2 py-0.5 rounded shadow-sm">
+              Depth: 2 Degrees • 12 Active Nodes
+            </span>
+</div>
+<!-- Controls: Zoom / Physics -->
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded bg-surface-card hover:bg-surface-container flex items-center justify-center text-text-secondary shadow-sm transition-colors" id="btn-zoom-in" title="Zoom In">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-card hover:bg-surface-container flex items-center justify-center text-text-secondary shadow-sm transition-colors" id="btn-zoom-out" title="Zoom Out">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-card hover:bg-surface-container flex items-center justify-center text-text-secondary shadow-sm transition-colors" id="btn-zoom-reset" title="Recenter Graph">
+<span class="material-symbols-outlined text-[16px]">center_focus_strong</span>
+</button>
+<div class="h-4 w-px bg-border-subtle mx-1"></div>
+<button class="px-2 h-7 rounded bg-surface-card hover:bg-surface-container font-label-code text-label-code text-text-secondary flex items-center gap-1 shadow-sm transition-colors" id="btn-physics">
+<span class="material-symbols-outlined text-[14px] text-status-verified-text">motion_mode</span>
+<span>Force Physics: On</span>
+</button>
+</div>
+</div>
+<!-- Interactive SVG Canvas Area -->
+<div class="relative w-full h-[580px] bg-gradient-to-b from-surface-subtle/40 via-surface-card to-surface-subtle/20 overflow-hidden cursor-grab active:cursor-grabbing select-none" id="graph-container">
+<!-- Subtle decorative grid -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#0b2240 1px, transparent 1px); background-size: 24px 24px;"></div>
+<svg class="w-full h-full" id="graph-svg" preserveaspectratio="xMidYMid meet" viewbox="0 0 760 580">
+<defs>
+<marker id="arrow-green" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="28" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1 L 9 5 L 0 9 z" fill="#065F46"></path>
+</marker>
+<marker id="arrow-amber" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="28" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1 L 9 5 L 0 9 z" fill="#D8892A"></path>
+</marker>
+<marker id="arrow-teal" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="28" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1 L 9 5 L 0 9 z" fill="#006876"></path>
+</marker>
+<marker id="arrow-red" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="28" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1 L 9 5 L 0 9 z" fill="#ba1a1a"></path>
+</marker>
+<marker id="arrow-purple" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="28" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1 L 9 5 L 0 9 z" fill="#6e3900"></path>
+</marker>
+<!-- Node glow effects -->
+<filter height="140%" id="anchor-glow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="2" flood-color="#0b2240" flood-opacity="0.25" stddeviation="6"></fedropshadow>
+</filter>
+<filter height="140%" id="warning-glow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="2" flood-color="#ba1a1a" flood-opacity="0.22" stddeviation="6"></fedropshadow>
+</filter>
+</defs>
+<!-- Edge Lines (Directed treatment relationships) -->
+<g id="graph-edges" stroke-width="2">
+<!-- Edge to Bhajan Lal (Followed) -->
+<path class="opacity-80 hover:opacity-100 transition-opacity" d="M 380 290 Q 260 200 180 140" fill="none" marker-end="url(#arrow-green)" stroke="#065F46" stroke-dasharray="4 2"></path>
+<text class="select-none tracking-wide bg-surface-card" fill="#065F46" font-family="Inter" font-size="10" font-weight="700" x="245" y="195">FOLLOWED [Sec 482 / 528 BNSS]</text>
+<!-- Edge to Satender Antil (Affirmed & Harmonized) -->
+<path class="opacity-80 hover:opacity-100 transition-opacity" d="M 380 290 Q 480 180 580 130" fill="none" marker-end="url(#arrow-teal)" stroke="#006876"></path>
+<text class="select-none tracking-wide" fill="#006876" font-family="Inter" font-size="10" font-weight="700" x="495" y="185">AFFIRMED &amp; HARMONIZED</text>
+<!-- Edge to Sanjay Chandra (Distinguished) -->
+<path class="opacity-80 hover:opacity-100 transition-opacity" d="M 380 290 Q 230 360 140 400" fill="none" marker-end="url(#arrow-amber)" stroke="#D8892A" stroke-dasharray="3 3"></path>
+<text class="select-none tracking-wide" fill="#92400E" font-family="Inter" font-size="10" font-weight="700" x="200" y="385">DISTINGUISHED [Economic Fraud]</text>
+<!-- Edge to Ram Murti (Expressly Overruled - Alert) -->
+<path class="animate-pulse" d="M 380 290 Q 360 430 360 490" fill="none" marker-end="url(#arrow-red)" stroke="#ba1a1a" stroke-width="2.5"></path>
+<text class="select-none tracking-wide font-label-code" fill="#991B1B" font-family="Inter" font-size="10" font-weight="700" x="375" y="445">EXPRESSLY OVERRULED (PARA 24)</text>
+<!-- Edge to Suresh Kumar (Referred to Constitution Bench) -->
+<path class="opacity-80 hover:opacity-100 transition-opacity" d="M 380 290 Q 550 380 620 420" fill="none" marker-end="url(#arrow-purple)" stroke="#6e3900" stroke-dasharray="5 3"></path>
+<text class="select-none tracking-wide" fill="#6e3900" font-family="Inter" font-size="10" font-weight="700" x="500" y="375">REFERRED TO 5-JUDGE BENCH</text>
+</g>
+<!-- Graph Nodes -->
+<g id="graph-nodes">
+<!-- 1. Node: Bhajan Lal (1992) -->
+<g class="cursor-pointer group" id="node-bhajan" transform="translate(180, 140)">
+<circle fill="#ECFDF5" r="24"></circle>
+<circle fill="#065F46" r="12"></circle>
+<circle fill="#ffffff" r="4"></circle>
+<text fill="#0B172A" font-family="Domine" font-size="12" font-weight="700" text-anchor="middle" x="0" y="-32">State of Haryana v. Bhajan Lal</text>
+<text fill="#475569" font-family="Inter" font-size="10" text-anchor="middle" x="0" y="-19">(1992) Supp (1) SCC 335 • 2-Judge</text>
+</g>
+<!-- 2. Node: Satender Antil (2022) -->
+<g class="cursor-pointer group" id="node-antil" transform="translate(580, 130)">
+<circle fill="#eff4ff" r="25"></circle>
+<circle fill="#006876" r="13"></circle>
+<circle fill="#ffffff" r="4"></circle>
+<text fill="#0B172A" font-family="Domine" font-size="12" font-weight="700" text-anchor="middle" x="0" y="-32">Satender Kumar Antil v. CBI</text>
+<text fill="#475569" font-family="Inter" font-size="10" text-anchor="middle" x="0" y="-19">(2022) 10 SCC 51 • Standard Bail Code</text>
+</g>
+<!-- 3. Node: Sanjay Chandra (2012) -->
+<g class="cursor-pointer group" id="node-chandra" transform="translate(140, 400)">
+<circle fill="#FFFBEB" r="23"></circle>
+<circle fill="#D8892A" r="11"></circle>
+<circle fill="#ffffff" r="3.5"></circle>
+<text fill="#0B172A" font-family="Domine" font-size="12" font-weight="700" text-anchor="middle" x="0" y="32">Sanjay Chandra v. CBI</text>
+<text fill="#475569" font-family="Inter" font-size="10" text-anchor="middle" x="0" y="45">(2012) 1 SCC 40 • 2G Scam</text>
+</g>
+<!-- 4. Node: State v. Ram Murti (1976) [OVERRULED DANGER NODE] -->
+<g class="cursor-pointer group" id="node-rammurti" transform="translate(360, 490)">
+<circle fill="#FEF2F2" filter="url(#warning-glow)" r="28"></circle>
+<circle fill="#ba1a1a" r="14"></circle>
+<line stroke="#ffffff" stroke-width="2" x1="-5" x2="5" y1="-5" y2="5"></line>
+<line stroke="#ffffff" stroke-width="2" x1="5" x2="-5" y1="-5" y2="5"></line>
+<text fill="#991B1B" font-family="Domine" font-size="12" font-weight="700" text-anchor="middle" x="0" y="34">State v. Ram Murti (DEFECTIVE)</text>
+<text fill="#ba1a1a" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle" x="0" y="47">1976 Cri LJ 123 • Bad Law (Para 24)</text>
+</g>
+<!-- 5. Node: Suresh Kumar v. State of Punjab (2025) -->
+<g class="cursor-pointer group" id="node-suresh" transform="translate(620, 420)">
+<circle fill="#ffdcc3" r="22"></circle>
+<circle fill="#6e3900" r="11"></circle>
+<circle fill="#ffffff" r="3.5"></circle>
+<text fill="#0B172A" font-family="Domine" font-size="12" font-weight="700" text-anchor="middle" x="0" y="32">Suresh Kumar v. Punjab</text>
+<text fill="#475569" font-family="Inter" font-size="10" text-anchor="middle" x="0" y="45">2025 INSC 102 • Reference to 5-Judge</text>
+</g>
+<!-- Central Focus Anchor Node: CBI v. Singhania -->
+<g class="cursor-pointer" filter="url(#anchor-glow)" id="node-anchor" transform="translate(380, 290)">
+<circle fill="#0b2240" fill-opacity="0.08" r="46"></circle>
+<circle fill="#0b2240" r="36"></circle>
+<circle fill="#020617" r="32"></circle>
+<!-- Emblem / Gavel icon inner -->
+<circle fill="#0b2240" r="28" stroke="#D8892A" stroke-width="2.5"></circle>
+<text fill="#ffffff" font-family="Domine" font-size="13" font-weight="700" text-anchor="middle" x="0" y="5">CBI</text>
+<!-- Badge and Title label -->
+<rect fill="#0b2240" height="22" rx="4" width="230" x="-115" y="-56"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="700" letter-spacing="0.5" text-anchor="middle" x="0" y="-41">
+                  ★ ANCHOR PRECEDENT (2024)
+                </text>
+<text fill="#000b1f" font-family="Domine" font-size="13" font-weight="700" text-anchor="middle" x="0" y="54">
+                  CBI v. R. Singhania &amp; Ors.
+                </text>
+<text fill="#006876" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="0" y="68">
+                  (2024) 6 SCC 412 • 3-Judge Bench SC
+                </text>
+</g>
+</g>
+</svg>
+<!-- Floating Interactive Node Tooltip Prompt -->
+<div class="absolute bottom-3 left-4 bg-surface-card/95 backdrop-blur-md rounded-lg shadow-sm px-space-md py-2 flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-ping"></span>
+<span class="font-caption text-caption text-text-secondary">
+              Click any precedent node to re-anchor citator graph or drag to inspect branches.
+            </span>
+</div>
+<!-- Mini Map Radar overlay -->
+<div class="absolute top-3 right-4 w-28 h-20 bg-surface-card/90 backdrop-blur-md rounded-lg shadow-sm p-1.5 hidden sm:flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-caption text-text-muted">NEO4J CLUSTER</span>
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span>
+</div>
+<div class="w-full h-10 bg-surface-subtle rounded relative flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-primary absolute"></div>
+<div class="w-1 h-1 rounded-full bg-status-verified-text absolute -top-1 -left-2"></div>
+<div class="w-1 h-1 rounded-full bg-status-conflict-text absolute bottom-0.5 left-1"></div>
+<div class="w-1 h-1 rounded-full bg-brand-accent-amber absolute top-1 right-2"></div>
+</div>
+<span class="font-label-code text-[9px] text-text-muted text-right">eSCR Live Mesh</span>
+</div>
+</div>
+<!-- Graph Legend Bar -->
+<div class="px-space-lg py-space-sm bg-surface-card flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-1.5 font-label-code text-label-code text-text-secondary">
+<span class="w-2.5 h-2.5 rounded-full bg-status-verified-text"></span>
+<span>Followed (Law in Force)</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-code text-label-code text-text-secondary">
+<span class="w-2.5 h-2.5 rounded-full bg-brand-accent-amber"></span>
+<span>Distinguished</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-code text-label-code text-status-conflict-text font-bold">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span>Overruled / Doubted (Defective)</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-code text-label-code text-on-tertiary-fixed-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span>Referred to Larger Bench</span>
+</div>
+</div>
+<span class="font-caption text-caption text-text-muted">Updated: Today at 08:30 IST</span>
+</div>
+</div>
+<!-- Quick Metrics Strip Below Graph -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Metric 1: Degree Centrality -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider">Degree Centrality</span>
+<span class="font-headline-statutory text-headline-statutory text-primary font-bold mt-0.5">84 Citations</span>
+<span class="font-caption text-caption text-text-secondary">Top 2% in CrPC/BNSS Jurisprudence</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">alt_route</span>
+</div>
+</div>
+<!-- Metric 2: Authority Score -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider">Authority Score</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-statutory text-headline-statutory text-secondary font-bold">9.4</span>
+<span class="font-caption text-caption text-text-muted">/10</span>
+</div>
+<span class="font-caption text-caption text-status-verified-text font-semibold">Art. 141 Full Binding Force</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-status-verified-bg flex items-center justify-center text-status-verified-text">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+</div>
+<!-- Metric 3: Freshness Telemetry -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider">Telemetry Freshness</span>
+<span class="font-headline-statutory text-headline-statutory text-primary font-bold mt-0.5">100% Verified</span>
+<span class="font-caption text-caption text-text-secondary">Synchronized with eSCR &amp; SCC</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">sync_saved_locally</span>
+</div>
+</div>
+</div>
+<!-- Upstream Deprecation Warning Card (Litigation Tactical Advantage) -->
+<div class="bg-status-conflict-bg rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-status-conflict-text text-on-error flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-code text-label-code bg-error text-on-error px-2 py-0.5 rounded font-bold uppercase">
+                  Upstream Deprecation Warning
+                </span>
+<span class="font-caption text-caption text-status-conflict-text font-semibold">Zero-Hallucination Verified</span>
+</div>
+<h3 class="font-title-md text-title-md text-status-conflict-text font-bold mt-1">
+                Opposing Counsel Rejoinder Reliance Defect Identified
+              </h3>
+<p class="font-body-dense text-body-dense text-status-conflict-text/90 mt-0.5 leading-relaxed">
+                Opposing counsel relies on <strong class="underline">State v. Ram Murti (1976 Cri LJ 123)</strong> regarding continuous 15-day custody limitations. CBI v. Singhania <strong class="font-bold">expressly overruled</strong> this precedent in Paragraph 24, rendering their primary ground constitutionally defective.
+              </p>
+</div>
+</div>
+<button class="shrink-0 px-space-md py-2 bg-status-conflict-text hover:bg-error text-on-error rounded-lg font-label-strong text-label-strong flex items-center gap-1.5 shadow-sm transition-colors" id="btn-copy-rebuttal" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Copy Rebuttal Passage for Court</span>
+</button>
+</div>
+</div>
+</div>
+<!-- RIGHT 40%: Evidence-Linked Authority & Ratio Inspector Panel -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Primary Authority Status Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<!-- Header & Status Pill -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-status-verified-text text-[22px]">verified_user</span>
+<span class="font-title-sm text-title-sm text-text-primary uppercase tracking-wide">Citator Verification Status</span>
+</div>
+<span class="font-label-code text-label-code bg-status-verified-bg text-status-verified-text px-2.5 py-1 rounded-full font-bold shadow-sm">
+            GOOD LAW • 3-JUDGE SC
+          </span>
+</div>
+<!-- Overruling Scrutiny Engine Box -->
+<div class="bg-surface-subtle rounded-lg p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-strong text-label-strong text-text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-status-verified-text">check_circle</span>
+              Subsequent Treatment Audit
+            </span>
+<span class="font-label-code text-label-code text-status-verified-text font-bold">0 Active Negative Flags</span>
+</div>
+<p class="font-body-dense text-body-dense text-text-secondary leading-snug">
+            Zero overruling orders, notices of review, or derogatory bench notes recorded across 14 High Courts since pronouncement.
+          </p>
+</div>
+<!-- Binding Authority Ladder (Art. 141 of the Constitution) -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider font-semibold">
+            Precedent Hierarchy &amp; Stare Decisis (Art. 141)
+          </span>
+<div class="flex flex-col gap-1.5">
+<!-- 5-Judge -->
+<div class="flex items-center justify-between px-space-md py-1.5 rounded bg-surface-subtle/50 text-text-muted text-body-dense font-body-dense">
+<span>Constitution Bench (5+ Judges)</span>
+<span class="font-label-code text-caption">Superior Binding Authority</span>
+</div>
+<!-- 3-Judge (Active Anchor) -->
+<div class="flex items-center justify-between px-space-md py-2 rounded bg-primary text-on-primary text-body-dense font-body-dense shadow-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-brand-accent-amber">arrow_right</span>
+<span class="font-bold">3-Judge Bench (This Precedent)</span>
+</div>
+<span class="font-label-code text-caption text-brand-accent-amber font-bold">BINDS ALL LOWER BENCHES</span>
+</div>
+<!-- 2-Judge -->
+<div class="flex items-center justify-between px-space-md py-1.5 rounded bg-surface-subtle text-text-secondary text-body-dense font-body-dense">
+<span>Division Bench (2 Judges)</span>
+<span class="font-label-code text-caption text-status-verified-text font-semibold">Strictly Bound</span>
+</div>
+<!-- High Courts -->
+<div class="flex items-center justify-between px-space-md py-1.5 rounded bg-surface-subtle text-text-secondary text-body-dense font-body-dense">
+<span>All 25 High Courts &amp; Sessions Courts</span>
+<span class="font-label-code text-caption text-status-verified-text font-semibold">Absolute Law of the Land</span>
+</div>
+</div>
+</div>
+<!-- Bench Composition Pill list -->
+<div class="flex flex-col gap-space-xs pt-1">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider font-semibold">Bench Composition</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="bg-surface-subtle text-text-primary px-2.5 py-1 rounded font-body-dense text-body-dense">
+              Hon'ble Justice P.S. Narasimha
+            </span>
+<span class="bg-surface-subtle text-text-primary px-2.5 py-1 rounded font-body-dense text-body-dense">
+              Hon'ble Justice A.S. Bopanna
+            </span>
+<span class="bg-surface-subtle text-text-primary px-2.5 py-1 rounded font-body-dense text-body-dense">
+              Hon'ble Justice S.V. Bhatti
+            </span>
+</div>
+</div>
+</div>
+<!-- Retrievable Ratio Decidendi Extraction Engine -->
+<div class="bg-surface-card rounded-xl shadow-md p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">format_quote</span>
+<h2 class="font-title-sm text-title-sm text-text-primary uppercase tracking-wide">
+              Ratio Decidendi Locator &amp; Snippet
+            </h2>
+</div>
+<span class="font-label-code text-label-code bg-surface-container text-primary px-2 py-0.5 rounded font-bold">
+            SCC Para 34
+          </span>
+</div>
+<!-- Subject Matter Key Tag -->
+<div class="flex items-center gap-2">
+<span class="font-label-code text-label-code bg-surface-subtle text-text-secondary px-2 py-0.5 rounded uppercase">
+            Statutory Scope: Staggered Police Custody Under BNSS 2023
+          </span>
+</div>
+<!-- Ratio Decidendi Passage Block -->
+<div class="bg-surface-canvas rounded-lg p-space-md relative flex flex-col gap-space-sm shadow-inner">
+<div class="flex items-center justify-between text-text-muted">
+<span class="font-label-code text-label-code text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+              (2024) 6 SCC 412 @ Page 438, Para 34
+            </span>
+<span class="font-caption text-caption text-text-muted">Author: Narasimha, J.</span>
+</div>
+<blockquote class="font-body-legal text-body-legal text-text-primary italic leading-relaxed pl-space-md relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary rounded-full"></div>
+            “We hold that the police custody of 15 days is not required to be continuous and may be availed in parts across the initial 40 or 60 days of the detention period under Section 187(3) of the Bharatiya Nagarik Suraksha Sanhita, 2023. The restrictive mandate enunciated in earlier decisions under Section 167 CrPC stands superseded by the explicit legislative variation incorporated by Parliament.”
+          </blockquote>
+<div class="flex items-center justify-between pt-1">
+<span class="font-caption text-caption text-text-muted">eCourts Authority Key: <code class="font-label-code text-label-code text-primary">SC-2024-CRIM-1049-P34</code></span>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded">High Evidentiary Weight</span>
+</div>
+</div>
+<!-- Quick Interactive Operations -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full h-9 bg-primary hover:bg-midnight-dark-surface text-on-primary rounded-lg font-label-strong text-label-strong flex items-center justify-center gap-2 shadow-sm transition-colors" id="btn-copy-citation" type="button">
+<span class="material-symbols-outlined text-[17px]">content_copy</span>
+<span>Copy Formatted Citation (Bluebook / SCC Standard)</span>
+</button>
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-9 px-space-sm bg-surface-subtle hover:bg-surface-container text-text-primary rounded-lg font-label-strong text-label-strong flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px] text-secondary">push_pin</span>
+<span>Pin to Courtroom Hall Pack (Court 18)</span>
+</button>
+<button class="h-9 px-space-sm bg-surface-subtle hover:bg-surface-container text-text-secondary rounded-lg font-label-strong text-label-strong flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px] text-text-muted">flag</span>
+<span>Report Discrepancy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Related Active Dockets & Chamber Filings in Singhania -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-text-muted uppercase font-bold">Active Chamber Matters Citing This Ratio</span>
+<span class="font-caption text-caption text-secondary font-semibold">3 Briefs Linked</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="p-2 rounded bg-surface-subtle hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer">
+<div class="flex flex-col leading-tight">
+<span class="font-title-sm text-title-sm text-text-primary">State v. R. Singhania (Main Bail Appln)</span>
+<span class="font-caption text-caption text-text-muted">SC SLP (Crl) No. 4912/2024 • Listed Today 11:30 AM</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted">chevron_right</span>
+</div>
+<div class="p-2 rounded bg-surface-subtle hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer">
+<div class="flex flex-col leading-tight">
+<span class="font-title-sm text-title-sm text-text-primary">Dr. K. Mehta v. Directorate of Enforcement</span>
+<span class="font-caption text-caption text-text-muted">Delhi HC W.P. (Crl) 1104/2025 • Rebuttal to Remand Memo</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Toast for Micro-Interactions -->
+<div class="fixed bottom-6 right-6 z-50 bg-primary text-on-primary px-space-lg py-space-sm rounded-lg shadow-xl flex items-center gap-space-sm translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="citator-toast">
+<span class="material-symbols-outlined text-secondary text-[20px]" id="toast-icon">check_circle</span>
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-primary" id="toast-title">Copied to Clipboard</span>
+<span class="font-caption text-caption text-on-primary-container" id="toast-desc">Passage ready to paste into legal submission.</span>
+</div>
+</div>
+<script>
+    (function initCitatorEngine() {
+      // Toast notification helper
+      const toast = document.getElementById('citator-toast');
+      const toastTitle = document.getElementById('toast-title');
+      const toastDesc = document.getElementById('toast-desc');
+      let toastTimer = null;
+
+      function showToast(title, desc) {
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTitle.textContent = title;
+        toastDesc.textContent = desc;
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        toastTimer = setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3200);
+      }
+
+      // Copy Formatted Citation
+      const btnCopyCitation = document.getElementById('btn-copy-citation');
+      if (btnCopyCitation) {
+        btnCopyCitation.addEventListener('click', () => {
+          const text = "CBI v. R. Singhania & Ors., (2024) 6 SCC 412, Para 34 (3-Judge Bench, per Narasimha, J.)";
+          navigator.clipboard?.writeText(text).catch(() => {});
+          showToast("Citation Copied", "Formatted in Bluebook/SCC standard for brief.");
+        });
+      }
+
+      // Copy Rebuttal Passage
+      const btnCopyRebuttal = document.getElementById('btn-copy-rebuttal');
+      if (btnCopyRebuttal) {
+        btnCopyRebuttal.addEventListener('click', () => {
+          const text = "The reliance placed by Opposing Counsel on State v. Ram Murti (1976 Cri LJ 123) is fundamentally misplaced and constitutionally defective. The Hon'ble Supreme Court in CBI v. R. Singhania [(2024) 6 SCC 412, Para 24] has expressly overruled Ram Murti, holding that under Section 187(3) of the BNSS 2023, the 15-day custody is not restricted to the initial continuous period.";
+          navigator.clipboard?.writeText(text).catch(() => {});
+          showToast("Courtroom Rebuttal Copied", "Ready to paste into rejoinder or oral submission notes.");
+        });
+      }
+
+      // Interactive Node Selection within Graph SVG
+      const nodes = [
+        { id: 'node-anchor', title: 'CBI v. Singhania (2024)', info: 'Focus Anchor Node (3-Judge Bench SC)' },
+        { id: 'node-bhajan', title: 'Bhajan Lal (1992)', info: 'Followed for threshold quashing test' },
+        { id: 'node-antil', title: 'Satender Antil (2022)', info: 'Harmonized for bail compliance guidelines' },
+        { id: 'node-chandra', title: 'Sanjay Chandra (2012)', info: 'Distinguished on magnitude of economic scam' },
+        { id: 'node-rammurti', title: 'State v. Ram Murti (1976)', info: 'ALERT: Expressly Overruled in Para 24' },
+        { id: 'node-suresh', title: 'Suresh Kumar (2025)', info: 'Referred to 5-Judge Constitution Bench' }
+      ];
+
+      nodes.forEach(n => {
+        const el = document.getElementById(n.id);
+        if (el) {
+          el.addEventListener('click', () => {
+            showToast(n.title, n.info);
+          });
+        }
+      });
+
+      // Zoom & Physics Buttons Micro-Interactions
+      const svg = document.getElementById('graph-svg');
+      let currentScale = 1;
+      const btnZoomIn = document.getElementById('btn-zoom-in');
+      const btnZoomOut = document.getElementById('btn-zoom-out');
+      const btnZoomReset = document.getElementById('btn-zoom-reset');
+      const btnPhysics = document.getElementById('btn-physics');
+
+      if (btnZoomIn && svg) {
+        btnZoomIn.addEventListener('click', () => {
+          currentScale = Math.min(currentScale + 0.15, 1.8);
+          svg.style.transform = `scale(${currentScale})`;
+          svg.style.transition = 'transform 0.2s ease-out';
+        });
+      }
+
+      if (btnZoomOut && svg) {
+        btnZoomOut.addEventListener('click', () => {
+          currentScale = Math.max(currentScale - 0.15, 0.65);
+          svg.style.transform = `scale(${currentScale})`;
+          svg.style.transition = 'transform 0.2s ease-out';
+        });
+      }
+
+      if (btnZoomReset && svg) {
+        btnZoomReset.addEventListener('click', () => {
+          currentScale = 1;
+          svg.style.transform = 'scale(1)';
+          svg.style.transition = 'transform 0.2s ease-out';
+          showToast("Graph Viewport Reset", "Constellation centered to Anchor Node.");
+        });
+      }
+
+      let physicsActive = true;
+      if (btnPhysics) {
+        btnPhysics.addEventListener('click', () => {
+          physicsActive = !physicsActive;
+          btnPhysics.innerHTML = physicsActive 
+            ? '<span class="material-symbols-outlined text-[14px] text-status-verified-text">motion_mode</span><span>Force Physics: On</span>'
+            : '<span class="material-symbols-outlined text-[14px] text-text-muted">pause</span><span>Force Physics: Paused</span>';
+          showToast(
+            physicsActive ? "Neo4j Dynamic Simulation Resumed" : "Layout Position Locked",
+            physicsActive ? "Graph edge springs active." : "Node coordinates frozen for manual review."
+          );
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

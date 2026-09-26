@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"text-secondary":"#475569","tertiary-fixed-dim":"#ffb77d","surface-variant":"#d3e4fe","surface-canvas":"#F8FAFC","status-verified-text":"#065F46","error-container":"#ffdad6","status-stale-text":"#92400E","background":"#f8f9ff","secondary":"#006876","on-surface-variant":"#44474e","status-conflict-border":"#FECACA","text-muted":"#94A3B8","inverse-primary":"#b3c7ee","on-tertiary-fixed":"#2f1500","on-error":"#ffffff","surface-subtle":"#F1F5F9","status-stale-border":"#FDE68A","secondary-fixed-dim":"#84d2e2","on-primary-fixed":"#031b39","status-manual-border":"#E2E8F0","error":"#ba1a1a","secondary-fixed":"#a0efff","on-secondary-fixed-variant":"#004e59","on-background":"#0b1c30","status-verified-border":"#A7F3D0","border-strong":"#CBD5E1","surface-container-low":"#eff4ff","on-secondary-fixed":"#001f25","surface-bright":"#f8f9ff","on-error-container":"#93000a","primary-fixed-dim":"#b3c7ee","midnight-dark-base":"#020617","status-verified-bg":"#ECFDF5","on-tertiary-fixed-variant":"#6e3900","primary-container":"#0b2240","surface-container":"#e5eeff","status-conflict-text":"#991B1B","on-surface":"#0b1c30","status-manual-text":"#334155","primary":"#000b1f","status-manual-bg":"#F8FAFC","tertiary-container":"#381a00","tertiary-fixed":"#ffdcc3","inverse-surface":"#213145","surface-card":"#FFFFFF","status-stale-bg":"#FFFBEB","surface-container-highest":"#d3e4fe","on-primary-container":"#768aad","tertiary":"#170700","outline-variant":"#c4c6ce","status-conflict-bg":"#FEF2F2","on-secondary-container":"#0d6e7d","primary-fixed":"#d5e3ff","on-primary":"#ffffff","midnight-dark-surface":"#0B1528","surface-container-lowest":"#ffffff","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","border-subtle":"#E2E8F0","surface":"#f8f9ff","outline":"#74777e","secondary-container":"#a0efff","on-secondary":"#ffffff","on-primary-fixed-variant":"#334767","text-primary":"#0F172A","midnight-dark-border":"#1E293B","on-tertiary-container":"#cf7100","brand-accent-amber":"#D8892A","inverse-on-surface":"#eaf1ff","surface-tint":"#4b5f80","on-tertiary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-sm":"0.5rem","gutter":"1rem","space-xl":"2rem","space-xs":"0.25rem","space-md":"0.75rem","space-lg":"1.25rem","margin":"1.25rem"},"fontFamily":{"display-lg":["Domine"],"title-md":["Inter"],"label-strong":["Inter"],"headline-statutory":["Domine"],"display-md":["Domine"],"headline-ui":["Inter"],"body-default":["Inter"],"title-sm":["Inter"],"label-code":["Inter"],"body-legal":["Domine"],"body-dense":["Inter"],"caption":["Inter"]},"fontSize":{"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"title-md":["15px",{"lineHeight":"20px","fontWeight":"600"}],"label-strong":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-statutory":["20px",{"lineHeight":"28px","fontWeight":"600"}],"display-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-ui":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-default":["13px",{"lineHeight":"20px","fontWeight":"400"}],"title-sm":["13px",{"lineHeight":"18px","fontWeight":"600"}],"label-code":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-legal":["15px",{"lineHeight":"26px","fontWeight":"400"}],"body-dense":["12px",{"lineHeight":"16px","fontWeight":"400"}],"caption":["11px",{"lineHeight":"14px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface-canvas font-body-default text-text-primary antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-card border-b border-border-subtle"><div class="h-16 w-full px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md min-w-[280px]"><img alt="Logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wd8pl1ZnY8J6tFKX_OFpcXUkgfHkleAjWX2nWEAR1CUucI7Q53tZLDcrs4SCsc7aiJZ_mAW-3SipAnblDENGyFCPZjB1_MPXnuU3KnCtlAkVpkxarJwbQIfM7uN1QogcaRJ7mjWR6_rfU83jbR_jNF1JrRzdNqWRanRxP4vBHVJid021TWisyeFwzhJVeGXICX3SBv2GQjqBzmwwyvpek5BkBETQypBTrijFWVdHQi--gxZteqZR0zYrGf09HPdUp97fcuzXydoQ"/><div class="flex items-center gap-space-xs"><span class="font-headline-ui text-headline-ui text-primary font-bold tracking-tight">NyayaFlow</span><span class="font-label-code text-label-code uppercase px-1.5 py-0.5 rounded bg-surface-container text-secondary font-semibold">IN Core</span></div><div class="h-5 w-[1px] bg-border-strong mx-space-xs"></div><div class="flex items-center gap-space-xs cursor-pointer px-2 py-1.5 rounded-lg hover:bg-surface-subtle transition-colors group"><div class="flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary leading-none group-hover:text-primary">Shardul &amp; Associates</span><span class="font-caption text-caption text-text-muted leading-tight">New Delhi (HQ)</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">expand_more</span></div></div><div class="flex-1 max-w-xl mx-auto flex items-center gap-gutter"><div class="flex-1 relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-text-muted text-[18px]">search</span><input class="w-full pl-9 pr-14 py-2 bg-surface-canvas border border-border-subtle rounded-xl font-body-default text-body-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Search Matters, CNRs, Case Citations, Statutes (IPC/BNS)..." type="text"/><kbd class="absolute right-3 px-1.5 py-0.5 rounded border border-border-strong bg-surface-card font-label-code text-label-code text-text-muted">⌘K</kbd></div><div class="hidden xl:flex items-center gap-space-xs px-2.5 py-1.5 rounded-full bg-status-verified-bg border border-status-verified-border"><span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span><span class="font-label-strong text-label-strong text-status-verified-text">eCourts Live</span><span class="font-caption text-caption text-text-secondary">• Del/Mumb 12m</span></div></div><div class="flex items-center gap-space-md justify-end min-w-[280px]"><button class="relative p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Conflict Alerts" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-code text-[10px] font-bold">2</span></button><button class="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Help &amp; Statutory References" type="button"><span class="material-symbols-outlined text-[22px]">help_outline</span></button><div class="h-5 w-[1px] bg-border-strong"></div><div class="flex items-center gap-space-sm pl-space-xs cursor-pointer group"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary group-hover:text-primary leading-tight">Adv. Vikram Sen</span><span class="font-caption text-caption text-secondary font-medium leading-none">Senior Partner</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">arrow_drop_down</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-card border-r border-border-subtle z-40 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-md px-space-md"><button class="w-full flex items-center justify-center gap-space-xs py-2 px-space-md rounded-lg bg-primary-container text-on-primary hover:bg-midnight-dark-surface transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span class="font-label-strong text-label-strong tracking-wide uppercase">New Matter Filing</span></button><div class="p-2.5 rounded-lg bg-surface-subtle border border-border-subtle flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-code text-label-code uppercase text-text-muted">Pinned Case</span><span class="font-label-code text-label-code text-brand-accent-amber font-semibold">Urgent</span></div><span class="font-title-sm text-title-sm text-text-primary line-clamp-1">State v. R. Singhania</span><div class="flex items-center justify-between text-text-secondary"><span class="font-caption text-caption font-mono">DHC/2024/0891</span><span class="font-caption text-caption font-medium text-secondary">Court 4, Item 11</span></div></div><div class="h-[1px] bg-border-subtle my-0.5"></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="matters-360" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-body-default text-body-default">Matters 360</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="daily-cause-list" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span class="font-body-default text-body-default">Daily Cause List</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="bns-bnss-transition" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="font-body-default text-body-default">BNS / BNSS Matrix</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="smart-vault-ocr" href="#"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span class="font-body-default text-body-default">Smart Vault &amp; OCR</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-2 rounded-lg transition-all bg-primary-container text-on-primary font-semibold shadow-sm" data-path="e-filing-defect-auditor" href="#"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-body-default text-body-default">E-Filing Auditor</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="finance-bci-billing" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-body-default text-body-default">Finance &amp; BCI Billing</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="client-updates-portal" href="#"><span class="material-symbols-outlined text-[20px]">supervisor_account</span><span class="font-body-default text-body-default">Client Portal</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="firm-audit-dpdp" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-default text-body-default">Firm Audit &amp; DPDP</span></a></nav></div><div class="px-space-md flex flex-col gap-space-sm border-t border-border-subtle pt-space-md"><div class="flex items-center justify-between text-text-muted px-2"><span class="font-label-code text-label-code uppercase tracking-wider">DPDP ACT COMPLIANT</span><span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span></div><div class="flex items-center gap-space-sm px-2 py-1.5 text-text-secondary rounded-lg hover:bg-surface-subtle cursor-pointer transition-colors"><span class="material-symbols-outlined text-[18px]">dns</span><div class="flex flex-col"><span class="font-caption text-caption text-text-primary font-medium">Chamber Node #04</span><span class="font-label-code text-[10px] text-text-muted">Latency 14ms (MeitY Vault)</span></div></div></div></aside><div class="pl-64"><main class="relative pt-16 bg-surface-canvas min-h-screen"><div class="w-full px-margin py-space-md"><div class="flex flex-col w-full">
+<div class="relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary-container via-midnight-dark-surface to-primary p-space-lg text-on-primary shadow-md">
+<div class="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
+<div class="absolute right-48 -bottom-12 h-44 w-44 rounded-full bg-brand-accent-amber/15 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-brand-accent-amber/20 text-tertiary-fixed-dim font-label-code text-label-code uppercase tracking-wider">Pre-Filing Gatekeeper</span>
+<span class="flex items-center gap-1 font-caption text-caption text-surface-container-high">
+<span class="material-symbols-outlined text-[16px] text-status-verified-border">verified</span>
+            eCourts eFiling 3.0 Compatible
+          </span>
+<span class="text-surface-tint font-caption text-caption">•</span>
+<span class="font-label-code text-label-code text-primary-fixed-dim">SHA-256 Digest: d89a7f...41e2</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-surface-bright tracking-tight">E-Filing Defect Auditor &amp; Rule Compliance</h1>
+<p class="font-body-default text-body-default text-surface-container-high leading-relaxed">
+          Statutory verification against Delhi High Court Commercial Division protocols, Practice Directions 2025, and Court Fee Act schedules.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap xl:justify-end">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-card/10 hover:bg-surface-card/20 text-surface-bright transition-all shadow-sm font-label-strong text-label-strong" id="btnExportChecklist" type="button">
+<span class="material-symbols-outlined text-[18px]">checklist_rtl</span>
+          Export Defect Checklist
+        </button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 transition-all shadow-sm font-label-strong text-label-strong" id="btnLiveReaudit" type="button">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+          Re-Run Rule Audit
+        </button>
+</div>
+</div>
+<div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-space-md mt-space-lg pt-space-md border-t-0 bg-white/5 rounded-lg p-space-md backdrop-blur-sm">
+<div class="flex flex-col">
+<span class="font-label-code text-label-code uppercase text-surface-dim">Audited Ruleset</span>
+<span class="font-title-sm text-title-sm text-surface-bright mt-0.5 truncate">DHC Circular No. 24/Rules/2025</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-code text-label-code uppercase text-surface-dim">Target Division</span>
+<span class="font-title-sm text-title-sm text-surface-bright mt-0.5">Commercial Division (Civil)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-code text-label-code uppercase text-surface-dim">Bundle Size</span>
+<span class="font-title-sm text-title-sm text-surface-bright mt-0.5">184 Pages (PDF/A-1b, 24.2 MB)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-code text-label-code uppercase text-surface-dim">Defect Risk Index</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="h-2 w-16 rounded-full bg-status-conflict-bg overflow-hidden flex">
+<span class="h-full bg-status-conflict-text w-3/4"></span>
+</span>
+<span class="font-label-strong text-label-strong text-error-container">Critical (2 Blockers)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mt-space-md items-start">
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">account_balance</span>
+<h2 class="font-headline-ui text-headline-ui text-text-primary">Target Registry &amp; Intake Configuration</h2>
+</div>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded-full">Jurisdiction Locked</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1 p-space-md rounded-lg bg-surface-subtle">
+<span class="font-label-code text-label-code uppercase text-text-muted">Target Judicial Forum</span>
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-text-primary font-bold">High Court of Delhi — Original Civil</span>
+<span class="material-symbols-outlined text-text-muted text-[18px]">verified</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Commercial Division • Shershah Suri Marg, New Delhi</span>
+</div>
+<div class="flex flex-col gap-1 p-space-md rounded-lg bg-surface-subtle">
+<span class="font-label-code text-label-code uppercase text-text-muted">Active Master Rulebook</span>
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-text-primary font-bold">DHC Rules &amp; Practice Dir. 2025</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">tune</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Amended May 2025 • Circular No. 24/Rules/DHC (Rev 4)</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-text-primary truncate">Petition_Commercial_Suit_CS_COMM_1042_2026_Final_Draft.pdf</span>
+<div class="flex items-center gap-space-sm font-caption text-caption text-text-secondary">
+<span>184 Pages</span>
+<span>•</span>
+<span>Searchable OCR Text (Layer 1)</span>
+<span>•</span>
+<span>PDF/A-1b Spec Verified</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-subtle text-text-primary font-label-strong text-label-strong shadow-sm transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+              Preview Pages
+            </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-subtle text-text-secondary hover:text-text-primary font-label-strong text-label-strong shadow-sm transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+              Replace File
+            </button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md">
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col">
+<div class="flex items-center justify-between text-text-muted">
+<span class="font-label-code text-label-code uppercase">Total Audits</span>
+<span class="material-symbols-outlined text-[18px]">rule_folder</span>
+</div>
+<span class="font-display-md text-display-md text-text-primary mt-1">24</span>
+<span class="font-caption text-caption text-text-muted mt-1">Statutory &amp; Formatting Rules</span>
+</div>
+<div class="bg-status-verified-bg rounded-xl p-space-md shadow-sm flex flex-col">
+<div class="flex items-center justify-between text-status-verified-text">
+<span class="font-label-code text-label-code uppercase font-bold">Passed</span>
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<span class="font-display-md text-display-md text-status-verified-text mt-1">21</span>
+<span class="font-caption text-caption text-status-verified-text/80 mt-1">Ready for Registry Clerk</span>
+</div>
+<div class="bg-status-conflict-bg rounded-xl p-space-md shadow-sm flex flex-col">
+<div class="flex items-center justify-between text-status-conflict-text">
+<span class="font-label-code text-label-code uppercase font-bold">Critical Defects</span>
+<span class="material-symbols-outlined text-[18px]">error</span>
+</div>
+<span class="font-display-md text-display-md text-status-conflict-text mt-1">02</span>
+<span class="font-caption text-caption text-status-conflict-text/80 mt-1">Automatic Registry Scrutiny Rejection</span>
+</div>
+<div class="bg-status-stale-bg rounded-xl p-space-md shadow-sm flex flex-col">
+<div class="flex items-center justify-between text-status-stale-text">
+<span class="font-label-code text-label-code uppercase font-bold">Warnings</span>
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+<span class="font-display-md text-display-md text-status-stale-text mt-1">01</span>
+<span class="font-caption text-caption text-status-stale-text/80 mt-1">Pagination &amp; Bookmark Polish</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<h3 class="font-headline-ui text-headline-ui text-text-primary">Defect Breakdown &amp; Registry Directives</h3>
+<span class="px-2 py-0.5 rounded-full bg-status-conflict-bg text-status-conflict-text font-label-code text-label-code font-bold">2 Fatal Discrepancies</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-text-muted">
+<span>Filter:</span>
+<span class="font-label-strong text-label-strong text-primary cursor-pointer hover:underline">All Findings</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="p-1.5 rounded-lg bg-status-conflict-bg text-status-conflict-text flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">assignment_late</span>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-title-md text-title-md text-text-primary">Missing Caveat Clearance Statement</span>
+<span class="px-2 py-0.5 rounded-full bg-status-conflict-bg text-status-conflict-text font-label-code text-label-code font-bold">Critical Blocker</span>
+<span class="font-caption text-caption font-mono text-text-muted">DHC Rule 4(A) • Sec 148A CPC</span>
+</div>
+<p class="font-body-default text-body-default text-text-secondary mt-1">
+                  Delhi High Court Rules mandate an explicit averment in <span class="font-semibold text-text-primary">Para 34</span> declaring whether any caveat under Section 148A of the Code of Civil Procedure has been served upon the Petitioner or their advocate-on-record. Registry scrubber flagged omission in substantive averments.
+                </p>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-subtle flex flex-col md:flex-row md:items-center justify-between gap-space-sm mt-1">
+<div class="flex items-center gap-space-xs text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-brand-accent-amber">info</span>
+<span>Draft text ready: "The Plaintiff has verified the online Caveat Register of this Hon'ble High Court..."</span>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary hover:bg-midnight-dark-surface font-label-strong text-label-strong transition-all flex items-center gap-1.5 shrink-0 shadow-sm" id="btnAutoInsertCaveat" type="button">
+<span class="material-symbols-outlined text-[16px]">playlist_add</span>
+              Auto-Insert Caveat Clause (Para 34)
+            </button>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="p-1.5 rounded-lg bg-status-conflict-bg text-status-conflict-text flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">currency_rupee</span>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-title-md text-title-md text-text-primary">Court Fee &amp; Valuation Discrepancy</span>
+<span class="px-2 py-0.5 rounded-full bg-status-conflict-bg text-status-conflict-text font-label-code text-label-code font-bold">Critical Blocker</span>
+<span class="font-caption text-caption font-mono text-text-muted">Court Fees Act 1870 (Delhi Sched. I)</span>
+</div>
+<p class="font-body-default text-body-default text-text-secondary mt-1">
+                  Suit Valuation is registered at <span class="font-semibold text-text-primary">₹2,45,00,000</span>. Current ad-valorem court fee receipt attached reflects <span class="font-semibold text-error">₹2,10,000</span>. Schedule requires <span class="font-semibold text-text-primary">₹2,45,000</span> resulting in an underpayment deficit of <span class="font-semibold text-status-conflict-text">₹35,000</span>.
+                </p>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-subtle flex flex-col md:flex-row md:items-center justify-between gap-space-sm mt-1">
+<div class="flex items-center gap-2 font-body-dense text-body-dense">
+<span class="font-label-code text-label-code text-status-conflict-text bg-status-conflict-bg px-2 py-0.5 rounded">Deficit: ₹35,000.00</span>
+<span class="text-text-muted">•</span>
+<span class="text-text-secondary font-caption text-caption">Stock Holding Corp e-Court Fee Challan mismatch</span>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 font-label-strong text-label-strong transition-all flex items-center gap-1.5 shrink-0 shadow-sm" id="btnRecomputeFee" type="button">
+<span class="material-symbols-outlined text-[16px]">calculate</span>
+              Recompute Court Fee &amp; Attach e-Challan
+            </button>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="p-1.5 rounded-lg bg-status-stale-bg text-status-stale-text flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-title-md text-title-md text-text-primary">Continuous Pagination &amp; Bookmark Hierarchy</span>
+<span class="px-2 py-0.5 rounded-full bg-status-stale-bg text-status-stale-text font-label-code text-label-code font-bold">Registry Warning</span>
+<span class="font-caption text-caption font-mono text-text-muted">Rule 12 (E-Filing Guidelines)</span>
+</div>
+<p class="font-body-default text-body-default text-text-secondary mt-1">
+                  Annexure P-4 bookmark points to page 86, but embedded document heading begins on page 87. Also, running header pagination differs from PDF index on pages 112 to 124.
+                </p>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-subtle flex flex-col md:flex-row md:items-center justify-between gap-space-sm mt-1">
+<span class="font-caption text-caption text-text-muted">Automatic TOC rebuild available via Optical Font Anchor</span>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-subtle text-text-primary font-label-strong text-label-strong transition-all flex items-center gap-1.5 shrink-0 shadow-sm" id="btnAutoAlignBookmarks" type="button">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+              Auto-align Bookmarks &amp; Index
+            </button>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-status-verified-text text-[20px]">verified</span>
+<h4 class="font-title-md text-title-md text-text-primary">Verified Statutory Specifications (21 Checks Passed)</h4>
+</div>
+<span class="font-caption text-caption text-text-muted">100% Passed Bench Spec</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-subtle">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-status-verified-text text-[18px]">check_circle</span>
+<span class="font-body-default text-body-default text-text-primary">Left Margin Standard (3.5cm / 1.38 in)</span>
+</div>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded">Exact Fit</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-subtle">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-status-verified-text text-[18px]">check_circle</span>
+<span class="font-body-default text-body-default text-text-primary">Typography Standard (14pt Times/Arial, 1.5 Spacing)</span>
+</div>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded">Uniform</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-subtle">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-status-verified-text text-[18px]">check_circle</span>
+<span class="font-body-default text-body-default text-text-primary">Advocate Welfare Fund Stamp (₹25 Affixed)</span>
+</div>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded">Verified AWF</span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-subtle">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-status-verified-text text-[18px]">check_circle</span>
+<span class="font-body-default text-body-default text-text-primary">Urgent Application Format (Form No. 3A)</span>
+</div>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded">Attached</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">fingerprint</span>
+<h3 class="font-headline-ui text-headline-ui text-text-primary">DSC &amp; Submission Bridge</h3>
+</div>
+<span class="font-label-code text-label-code text-brand-accent-amber uppercase font-semibold">Class 3 FIPS</span>
+</div>
+<div class="p-space-md rounded-lg bg-status-verified-bg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-status-verified-text animate-pulse"></span>
+<span class="font-title-sm text-title-sm text-status-verified-text font-bold">Hardware Token Connected</span>
+</div>
+<span class="font-label-code text-label-code text-status-verified-text uppercase font-bold">USB Active</span>
+</div>
+<span class="font-title-md text-title-md text-text-primary font-bold">Adv. Vikramaditya Sen</span>
+<div class="flex flex-col gap-0.5 text-text-secondary font-caption text-caption mt-1">
+<span>Bar Council Enrollment: <strong class="text-text-primary">D/1429/2008</strong></span>
+<span>Certifying Authority: <strong class="text-text-primary">eMudhra / Pantasign CA</strong></span>
+<span>Validity: <strong class="text-status-verified-text">Valid until 14 Nov 2027</strong></span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-surface-subtle flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code uppercase text-text-muted">Client Authorized Signatory</span>
+<span class="font-label-code text-label-code text-secondary font-bold">UIDAI eSign Ready</span>
+</div>
+<span class="font-title-sm text-title-sm text-text-primary">Rajiv Singhania (Director, Singhania Tech Ltd)</span>
+<p class="font-caption text-caption text-text-secondary">Affidavit &amp; Statement of Truth eSign signed via Aadhaar OTP on 04 Mar 2026 14:22 IST.</p>
+<div class="flex items-center gap-1.5 mt-1 font-caption text-caption text-status-verified-text">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+<span>Aadhaar Transaction ID: IN-CCA-8842-X</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full py-3 px-space-md rounded-lg bg-primary text-on-primary hover:bg-midnight-dark-surface font-label-strong text-label-strong transition-all flex items-center justify-center gap-space-xs shadow-md" id="btnSignAndLock" type="button">
+<span class="material-symbols-outlined text-[20px]">encrypted</span>
+            Apply Digital Signature &amp; Lock Hash
+          </button>
+<button class="w-full py-2.5 px-space-md rounded-lg bg-secondary text-on-secondary hover:bg-secondary/90 font-label-strong text-label-strong transition-all flex items-center justify-center gap-space-xs shadow-sm" id="btnExportReadyPdf" type="button">
+<span class="material-symbols-outlined text-[18px]">download_done</span>
+            Export Court-Ready PDF Bundle
+          </button>
+</div>
+<div class="text-center font-caption text-caption text-text-muted">
+          Signed with PKCS#7 / PAdES (IT Act 2000 &amp; High Court of Delhi Practice Directions compliant)
+        </div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<h4 class="font-title-md text-title-md text-text-primary">E-Filing Portal Registry Direct Push</h4>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-text-secondary font-caption text-caption">
+<span>Server Route:</span>
+<span class="font-mono text-text-primary">delhihighcourt.nic.in/efiling</span>
+</div>
+<div class="flex items-center justify-between text-text-secondary font-caption text-caption">
+<span>Session Status:</span>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded">Advocate SSO Valid</span>
+</div>
+<div class="flex items-center justify-between text-text-secondary font-caption text-caption">
+<span>Filing Mode:</span>
+<span class="font-semibold text-text-primary">Urgent Motion (Commercial)</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center gap-space-sm text-text-secondary">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<span class="font-caption text-caption">Direct e-filing will activate after both critical blockers are marked resolved.</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<span class="font-label-code text-label-code uppercase text-text-muted">Assigned Scrutiny Registry</span>
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-subtle flex items-center justify-center text-primary font-bold">
+            DHC
+          </div>
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-text-primary">Commercial Filing Branch (Court 4)</span>
+<span class="font-caption text-caption text-text-secondary">Clerk Window: A. K. Mehra (Bench Tech)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm px-space-md py-3 rounded-lg bg-midnight-dark-base text-surface-bright shadow-xl" id="toastNotification">
+<span class="material-symbols-outlined text-status-verified-border text-[20px]" id="toastIcon">check_circle</span>
+<span class="font-body-default text-body-default" id="toastMessage">Action completed successfully</span>
+</div>
+</div>
+<script>
+  function showToast(message, isSuccess = true) {
+    const toast = document.getElementById('toastNotification');
+    const toastMessage = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
+    if (!toast) return;
+
+    toastMessage.textContent = message;
+    if (isSuccess) {
+      toastIcon.textContent = 'check_circle';
+      toastIcon.className = 'material-symbols-outlined text-status-verified-border text-[20px]';
+    } else {
+      toastIcon.textContent = 'warning';
+      toastIcon.className = 'material-symbols-outlined text-brand-accent-amber text-[20px]';
+    }
+
+    toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+    setTimeout(() => {
+      toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+    }, 3600);
+  }
+
+  document.getElementById('btnAutoInsertCaveat')?.addEventListener('click', function() {
+    this.disabled = true;
+    this.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span> Inserting...';
+    setTimeout(() => {
+      this.innerHTML = '<span class="material-symbols-outlined text-[16px]">done</span> Clause Inserted in Para 34';
+      this.classList.remove('bg-primary-container', 'text-on-primary');
+      this.classList.add('bg-status-verified-bg', 'text-status-verified-text');
+      showToast('Caveat clearance clause inserted successfully into Para 34.');
+    }, 700);
+  });
+
+  document.getElementById('btnRecomputeFee')?.addEventListener('click', function() {
+    this.disabled = true;
+    this.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">sync</span> Recomputing...';
+    setTimeout(() => {
+      this.innerHTML = '<span class="material-symbols-outlined text-[16px]">done</span> e-Challan Linked (+₹35,000)';
+      this.classList.remove('bg-secondary', 'text-on-secondary');
+      this.classList.add('bg-status-verified-bg', 'text-status-verified-text');
+      showToast('Court fee shortfall reconciled. StockHolding e-Challan linked.');
+    }, 850);
+  });
+
+  document.getElementById('btnAutoAlignBookmarks')?.addEventListener('click', function() {
+    this.disabled = true;
+    this.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">sync</span> Re-indexing...';
+    setTimeout(() => {
+      this.innerHTML = '<span class="material-symbols-outlined text-[16px]">done</span> TOC & Bookmarks Synchronized';
+      this.classList.add('text-status-verified-text');
+      showToast('Annexure P-4 bookmark aligned to page 87.');
+    }, 600);
+  });
+
+  document.getElementById('btnSignAndLock')?.addEventListener('click', function() {
+    showToast('Class 3 DSC signature applied to PDF/A. SHA-256 locked.');
+  });
+
+  document.getElementById('btnExportReadyPdf')?.addEventListener('click', function() {
+    showToast('Exporting compliant bundle: CS_COMM_1042_Court_Ready.pdf');
+  });
+
+  document.getElementById('btnExportChecklist')?.addEventListener('click', function() {
+    showToast('Defect audit report exported in PDF format.');
+  });
+
+  document.getElementById('btnLiveReaudit')?.addEventListener('click', function() {
+    showToast('Full statutory audit re-run initiated against DHC rules.');
+  });
+</script></div></main></div></body></html>

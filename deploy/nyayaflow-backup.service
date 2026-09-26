@@ -1,0 +1,15 @@
+[Unit]
+Description=NyayaFlow encrypted PostgreSQL and document backup
+
+[Service]
+Type=oneshot
+User=nyayaflow-backup
+Group=nyayaflow
+EnvironmentFile=/etc/nyayaflow/backup.env
+ExecStart=/opt/nyayaflow/current/scripts/backup.sh
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/var/lib/nyayaflow/documents
+ReadWritePaths=/var/backups/nyayaflow

@@ -1,0 +1,28 @@
+[Unit]
+Description=NyayaFlow Next.js web application
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nyayaflow
+Group=nyayaflow
+WorkingDirectory=/opt/nyayaflow/current
+EnvironmentFile=/etc/nyayaflow/nyayaflow.env
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=127.0.0.1
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/nyayaflow /var/log/nyayaflow
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

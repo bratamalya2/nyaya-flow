@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "text-secondary": "#475569",
+          "tertiary-fixed-dim": "#ffb77d",
+          "surface-variant": "#d3e4fe",
+          "surface-canvas": "#F8FAFC",
+          "status-verified-text": "#065F46",
+          "error-container": "#ffdad6",
+          "status-stale-text": "#92400E",
+          "background": "#f8f9ff",
+          "secondary": "#006876",
+          "on-surface-variant": "#44474e",
+          "status-conflict-border": "#FECACA",
+          "text-muted": "#94A3B8",
+          "inverse-primary": "#b3c7ee",
+          "on-tertiary-fixed": "#2f1500",
+          "on-error": "#ffffff",
+          "surface-subtle": "#F1F5F9",
+          "status-stale-border": "#FDE68A",
+          "secondary-fixed-dim": "#84d2e2",
+          "on-primary-fixed": "#031b39",
+          "status-manual-border": "#E2E8F0",
+          "error": "#ba1a1a",
+          "secondary-fixed": "#a0efff",
+          "on-secondary-fixed-variant": "#004e59",
+          "on-background": "#0b1c30",
+          "status-verified-border": "#A7F3D0",
+          "border-strong": "#CBD5E1",
+          "surface-container-low": "#eff4ff",
+          "on-secondary-fixed": "#001f25",
+          "surface-bright": "#f8f9ff",
+          "on-error-container": "#93000a",
+          "primary-fixed-dim": "#b3c7ee",
+          "midnight-dark-base": "#020617",
+          "status-verified-bg": "#ECFDF5",
+          "on-tertiary-fixed-variant": "#6e3900",
+          "primary-container": "#0b2240",
+          "surface-container": "#e5eeff",
+          "status-conflict-text": "#991B1B",
+          "on-surface": "#0b1c30",
+          "status-manual-text": "#334155",
+          "primary": "#000b1f",
+          "status-manual-bg": "#F8FAFC",
+          "tertiary-container": "#381a00",
+          "tertiary-fixed": "#ffdcc3",
+          "inverse-surface": "#213145",
+          "surface-card": "#FFFFFF",
+          "status-stale-bg": "#FFFBEB",
+          "surface-container-highest": "#d3e4fe",
+          "on-primary-container": "#768aad",
+          "tertiary": "#170700",
+          "outline-variant": "#c4c6ce",
+          "status-conflict-bg": "#FEF2F2",
+          "on-secondary-container": "#0d6e7d",
+          "primary-fixed": "#d5e3ff",
+          "on-primary": "#ffffff",
+          "midnight-dark-surface": "#0B1528",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-high": "#dce9ff",
+          "surface-dim": "#cbdbf5",
+          "border-subtle": "#E2E8F0",
+          "surface": "#f8f9ff",
+          "outline": "#74777e",
+          "secondary-container": "#a0efff",
+          "on-secondary": "#ffffff",
+          "on-primary-fixed-variant": "#334767",
+          "text-primary": "#0F172A",
+          "midnight-dark-border": "#1E293B",
+          "on-tertiary-container": "#cf7100",
+          "brand-accent-amber": "#D8892A",
+          "inverse-on-surface": "#eaf1ff",
+          "surface-tint": "#4b5f80",
+          "on-tertiary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "gutter": "1rem",
+          "space-xl": "2rem",
+          "space-xs": "0.25rem",
+          "space-md": "0.75rem",
+          "space-lg": "1.25rem",
+          "margin": "1.25rem"
+        },
+        "fontFamily": {
+          "display-lg": ["Domine"],
+          "title-md": ["Inter"],
+          "label-strong": ["Inter"],
+          "headline-statutory": ["Domine"],
+          "display-md": ["Domine"],
+          "headline-ui": ["Inter"],
+          "body-default": ["Inter"],
+          "title-sm": ["Inter"],
+          "label-code": ["Inter"],
+          "body-legal": ["Domine"],
+          "body-dense": ["Inter"],
+          "caption": ["Inter"]
+        },
+        "fontSize": {
+          "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "title-md": ["15px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "label-strong": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "headline-statutory": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "display-md": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+          "headline-ui": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "body-default": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "title-sm": ["13px", {"lineHeight": "18px", "fontWeight": "600"}],
+          "label-code": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+          "body-legal": ["15px", {"lineHeight": "26px", "fontWeight": "400"}],
+          "body-dense": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "caption": ["11px", {"lineHeight": "14px", "fontWeight": "400"}]
+        }
+      }
+    }
+  };</script><style>@layer base{html,body{width:100vw;min-height:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;background-color:#f8f9ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-default text-body-default flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-sm min-w-0 flex-1"><img alt="Favicon.png" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1XmKwFUUTrLtel7om0XuRrdMQgCVhf8YwPDghZVtVRQp3DsTY9R7gOB8WMBZOgOm49HPf1TSar-QXvk9s8KcIPj6Meh97RA8C4XD31LQwUl3tpKz_vVD9fDsYfYCIla20ZeM__vfRPcl47_49T2LrqYKuDTNHDVymijaHorTc6rlCOeLP3R7CfGgEJODmlFjFMfnWXRbhZxLqnUHPAe4WML-WdUfTFo3QDiJwSAny1NKa9rZaLFCYoXJCq6xk0pt9WZ041kotTvrA"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-ui text-headline-ui text-primary truncate tracking-tight">NyayaFlow</span><span class="shrink-0 px-1.5 py-0.5 rounded-lg bg-surface-container font-label-code text-label-code text-secondary tracking-wider uppercase">Delhi HC</span></div><div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-status-verified-text animate-pulse"></span><span class="font-caption text-caption text-text-secondary truncate">Shardul &amp; Assoc</span><span class="font-caption text-caption text-text-muted">•</span><span class="font-caption text-caption text-status-verified-text font-medium">Synced</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Search CNR, Acts or Dockets" class="w-11 h-11 flex items-center justify-center rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container active:scale-95 transition-all" type="button"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Court Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container active:scale-95 transition-all" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-brand-accent-amber"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 ml-0.5"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col flex-1 relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<!-- IN-COURT LIVE BANNER (Ambient Presence for Urgent Bench Appearance) -->
+<div class="px-gutter pt-space-xs pb-space-sm bg-primary text-on-primary">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex w-2.5 h-2.5 rounded-full bg-brand-accent-amber animate-ping"></span>
+<span class="font-label-code text-label-code uppercase tracking-wider text-primary-fixed">Active Forum</span>
+<span class="font-caption text-caption text-primary-fixed-dim">•</span>
+<span class="font-title-sm text-title-sm text-surface-card tracking-tight">DELHI HC • COURT 12</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container text-surface-variant hover:bg-secondary transition-colors" id="dictateBtn" title="Voice Dictation to RAG">
+<span class="material-symbols-outlined text-[16px] text-brand-accent-amber">mic</span>
+<span class="font-label-code text-label-code text-surface-card">Voice Query</span>
+</button>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container-high/20 font-label-code text-label-code text-primary-fixed">ITEM #19</span>
+</div>
+</div>
+</div>
+<!-- CONVERTER & RESEARCH WORKSPACE -->
+<div class="px-gutter space-y-space-md pt-space-md">
+<!-- SEARCH & INSTANT STATUTE LOOKUP -->
+<div class="flex flex-col gap-space-xs">
+<div class="relative w-full shadow-sm rounded-xl">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-text-muted">
+<span class="material-symbols-outlined text-[20px]">search_insights</span>
+</div>
+<input class="w-full pl-10 pr-20 py-3 rounded-xl bg-surface-card font-body-default text-body-default text-text-primary placeholder:text-text-muted focus:outline-none shadow-sm" id="statuteInput" placeholder="Search IPC, CrPC, IEA or BNS, BNSS, BSA section..." type="text" value="IPC 420"/>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface-subtle transition-colors" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<button class="px-2.5 py-1.5 bg-secondary text-on-secondary rounded-lg font-label-code text-label-code shadow-sm active:scale-95 transition-all" id="submitQueryBtn">
+            Find
+          </button>
+</div>
+</div>
+<!-- CODE PILL SWITCHERS -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-1 no-scrollbar">
+<button class="switcher-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container text-on-primary shadow-sm whitespace-nowrap active:scale-95 transition-transform" data-pair="ipc-bns">
+<span class="material-symbols-outlined text-[14px] text-brand-accent-amber">sync_alt</span>
+<span class="font-label-code text-label-code">IPC ↔ BNS</span>
+</button>
+<button class="switcher-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-card text-text-secondary shadow-sm whitespace-nowrap hover:bg-surface-container-low transition-colors" data-pair="crpc-bnss">
+<span class="material-symbols-outlined text-[14px]">swap_horiz</span>
+<span class="font-label-code text-label-code">CrPC ↔ BNSS</span>
+</button>
+<button class="switcher-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-card text-text-secondary shadow-sm whitespace-nowrap hover:bg-surface-container-low transition-colors" data-pair="iea-bsa">
+<span class="material-symbols-outlined text-[14px]">swap_horiz</span>
+<span class="font-label-code text-label-code">IEA ↔ BSA</span>
+</button>
+</div>
+</div>
+<!-- DUAL-CODE ACCELERATOR CARD -->
+<div class="w-full bg-surface-card rounded-xl shadow-sm overflow-hidden">
+<!-- Card Header -->
+<div class="px-space-md py-2.5 bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">account_balance</span>
+<span class="font-label-strong text-label-strong text-primary tracking-wide uppercase">Substantive Code Mapping</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-status-verified-bg font-label-code text-label-code text-status-verified-text">Official Concordance</span>
+</div>
+<div class="p-space-md space-y-space-md">
+<!-- Dual Pane Section Transfer Layout -->
+<div class="grid grid-cols-2 gap-space-sm relative">
+<!-- Erstwhile Column -->
+<div class="p-space-sm rounded-lg bg-surface-subtle flex flex-col justify-between">
+<div>
+<span class="font-label-code text-label-code text-text-muted uppercase">Erstwhile Law</span>
+<div class="mt-0.5 flex items-baseline gap-1">
+<h3 class="font-headline-statutory text-headline-statutory text-text-primary">IPC § 420</h3>
+</div>
+<p class="mt-1 font-body-dense text-body-dense text-text-secondary line-clamp-2">Cheating and dishonestly inducing delivery of property</p>
+</div>
+<div class="mt-2 pt-2 flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded bg-surface-card font-caption text-caption text-text-muted">Pre-July 2024</span>
+<span class="font-label-code text-label-code text-text-secondary">Max 7 Yrs</span>
+</div>
+</div>
+<!-- Modern Sanhita Column -->
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-3 -top-3 w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span>
+</div>
+<div>
+<span class="font-label-code text-label-code text-secondary font-bold uppercase">Modern Sanhita</span>
+<div class="mt-0.5 flex items-baseline gap-1">
+<h3 class="font-headline-statutory text-headline-statutory text-primary font-bold">BNS § 318(4)</h3>
+</div>
+<p class="mt-1 font-body-dense text-body-dense text-primary line-clamp-2">Consolidated Cheating &amp; Inducement clause</p>
+</div>
+<div class="mt-2 pt-2 flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded bg-surface-card font-caption text-caption text-secondary font-semibold">Active Code</span>
+<span class="font-label-code text-label-code text-primary font-bold">Max 7 Yrs</span>
+</div>
+</div>
+</div>
+<!-- Procedural Characteristics Bar -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-canvas shadow-inner">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-caption text-caption text-text-primary font-semibold">Cognizable</span>
+</div>
+<div class="h-3 w-px bg-border-subtle"></div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-caption text-caption text-text-primary font-semibold">Non-Bailable</span>
+</div>
+<div class="h-3 w-px bg-border-subtle"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-secondary">gavel</span>
+<span class="font-caption text-caption text-text-primary">Magistrate 1st Class</span>
+</div>
+</div>
+<!-- Statutory Change Delta Inspector -->
+<div class="p-space-sm rounded-lg bg-surface-subtle space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-strong text-label-strong text-text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-brand-accent-amber">lightbulb</span>
+              Substantive Delta &amp; Legislative Intent
+            </span>
+<span class="font-label-code text-label-code text-secondary font-bold">Consolidated</span>
+</div>
+<p class="font-body-default text-body-default text-text-secondary">
+            Sub-clause (4) absorbs old <strong class="text-text-primary">Sec 415 through 420</strong> under an unified statutory spectrum. Sentence ceiling remains unchanged (7 years + fine), but distinct definition of economic deception now links to digital records.
+          </p>
+</div>
+<!-- TEMPORAL JURISDICTION / RETROACTIVITY ENGINE -->
+<div class="p-space-sm rounded-lg bg-status-stale-bg shadow-sm">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-status-stale-text text-[18px] shrink-0 mt-0.5">verified_user</span>
+<div class="space-y-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label-strong text-label-strong text-status-stale-text">Date of Incident Verification</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-card font-label-code text-label-code text-status-stale-text">Art. 20(1)</span>
+</div>
+<p class="font-body-dense text-body-dense text-status-stale-text">
+                Offence committed <strong class="text-text-primary">Prior to 01.07.2024</strong>: Substantive IPC remains applicable. BNS cannot be applied retrospectively. Procedural steps follow BNSS per HC directives.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PRECEDENT & BENCH AUTHORITY (RAG ENGINE) -->
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology</span>
+<h2 class="font-title-md text-title-md text-primary">In-Court Precedent Ratio</h2>
+</div>
+<span class="font-caption text-caption text-text-muted">Live RAG • SCC Online Sync</span>
+</div>
+<!-- Quick Context Chips -->
+<div class="flex items-center gap-1.5 overflow-x-auto py-1 no-scrollbar">
+<span class="px-2.5 py-1 rounded-md bg-secondary text-on-secondary font-label-code text-label-code shadow-sm whitespace-nowrap">
+          Sec 187 BNSS Remand
+        </span>
+<span class="px-2.5 py-1 rounded-md bg-surface-card text-text-secondary font-label-code text-label-code shadow-sm whitespace-nowrap">
+          Default Bail (60/90 Days)
+        </span>
+<span class="px-2.5 py-1 rounded-md bg-surface-card text-text-secondary font-label-code text-label-code shadow-sm whitespace-nowrap">
+          Staggered Custody Limit
+        </span>
+</div>
+<!-- PINNED BENCH AUTHORITY CARD (Optimized for Oral Argument) -->
+<div class="w-full bg-surface-card rounded-xl shadow-md overflow-hidden">
+<!-- Court Header -->
+<div class="px-space-md py-space-sm bg-primary text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-brand-accent-amber text-[18px]">balance</span>
+<div class="truncate">
+<span class="font-label-code text-label-code uppercase tracking-wider text-primary-fixed">Supreme Court of India</span>
+<p class="font-title-sm text-title-sm truncate text-surface-card">CBI vs. R. Singhania &amp; Ors.</p>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-status-verified-bg font-label-code text-label-code text-status-verified-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">verified</span> Good Law
+          </span>
+</div>
+<!-- Citation Metadata Strip -->
+<div class="px-space-md py-1.5 bg-surface-container flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code text-primary">2024 INSC 782</span>
+<span>•</span>
+<span>Bench: Hon'ble 3-Judge Bench</span>
+</div>
+<span class="font-label-code text-label-code text-secondary font-bold">Para 34-37</span>
+</div>
+<!-- Bench Ratio Body (Direct Read Aloud Format) -->
+<div class="p-space-md space-y-space-sm">
+<div class="relative pl-3 bg-surface-subtle p-2.5 rounded-r-lg">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary rounded-l"></div>
+<p class="font-body-legal text-body-legal text-text-primary italic leading-relaxed">
+              “Police custody remand under Section 187(3) of the BNSS, 2023 is not restricted solely to the initial 15 days from arrest. It may be availed in staggered intervals during the first 40 or 60 days of the total detention period, subject to judicial discretion.”
+            </p>
+</div>
+<!-- Counsel Takeaway Chip -->
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-high/40">
+<span class="material-symbols-outlined text-secondary text-[16px]">record_voice_over</span>
+<p class="font-body-dense text-body-dense text-primary">
+<strong class="font-title-sm">Court Pitch:</strong> Emphasize that staggered custody does not dilute Section 187(5) default bail guarantees once 60 days expire without chargesheet.
+            </p>
+</div>
+<!-- Actionable Card Toolstrip -->
+<div class="flex items-center justify-between pt-1">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-subtle hover:bg-surface-container text-text-primary font-label-code text-label-code transition-colors shadow-sm active:scale-95" id="copyCitationBtn">
+<span class="material-symbols-outlined text-[16px] text-secondary">content_copy</span>
+<span>Copy Direct Passage</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors" title="Bookmark Precedent">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center text-text-secondary hover:text-primary transition-colors" title="Share via WhatsApp or Email">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- COMPARATIVE SANHITA MATRIX MINI-VIEW -->
+<div class="w-full bg-surface-card rounded-xl shadow-sm p-space-md space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-strong text-label-strong text-primary uppercase">Quick Reference Table</span>
+<a class="font-label-code text-label-code text-secondary" href="#">Full Comparative Matrix →</a>
+</div>
+<div class="space-y-1.5">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-canvas hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2 min-w-0">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest font-label-code text-label-code text-primary">CrPC 167</span>
+<span class="text-text-muted text-[12px]">➔</span>
+<span class="font-title-sm text-title-sm text-text-primary truncate">BNSS § 187 (Remand Procedure)</span>
+</div>
+<span class="shrink-0 font-caption text-caption text-brand-accent-amber font-semibold">Altered</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-canvas hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2 min-w-0">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest font-label-code text-label-code text-primary">CrPC 438</span>
+<span class="text-text-muted text-[12px]">➔</span>
+<span class="font-title-sm text-title-sm text-text-primary truncate">BNSS § 482 (Anticipatory Bail)</span>
+</div>
+<span class="shrink-0 font-caption text-caption text-status-verified-text font-semibold">Retained</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-canvas hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2 min-w-0">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest font-label-code text-label-code text-primary">CrPC 154</span>
+<span class="text-text-muted text-[12px]">➔</span>
+<span class="font-title-sm text-title-sm text-text-primary truncate">BNSS § 173 (Zero FIR &amp; e-FIR)</span>
+</div>
+<span class="shrink-0 font-caption text-caption text-brand-accent-amber font-semibold">Expanded</span>
+</div>
+</div>
+</div>
+<!-- IN-COURT SPEED ACTIONS -->
+<div class="pt-space-xs pb-space-sm">
+<span class="font-label-code text-label-code uppercase text-text-muted tracking-wider block mb-2">Advocate In-Court Triggers</span>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-card shadow-sm hover:bg-surface-container-low active:scale-95 transition-all text-center" id="readAloudTrigger">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</div>
+<span class="font-title-sm text-[12px] text-text-primary leading-tight">Read Aloud</span>
+<span class="font-caption text-[10px] text-text-muted">Audio Feed</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-primary shadow-sm hover:bg-primary-container active:scale-95 transition-all text-center" id="pinBriefTrigger">
+<div class="w-8 h-8 rounded-full bg-surface-card/10 flex items-center justify-center text-brand-accent-amber mb-1">
+<span class="material-symbols-outlined text-[18px]">push_pin</span>
+</div>
+<span class="font-title-sm text-[12px] text-on-primary leading-tight">Pin to Brief</span>
+<span class="font-caption text-[10px] text-primary-fixed-dim">Item #19 Brief</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-card shadow-sm hover:bg-surface-container-low active:scale-95 transition-all text-center" id="passoverTrigger">
+<div class="w-8 h-8 rounded-full bg-brand-accent-amber/15 flex items-center justify-center text-brand-accent-amber mb-1">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</div>
+<span class="font-title-sm text-[12px] text-text-primary leading-tight">Passover Note</span>
+<span class="font-caption text-[10px] text-text-muted">Draft Instant Slip</span>
+</button>
+</div>
+</div>
+<!-- TOAST NOTIFICATION (Hidden by default, triggered on action) -->
+<div class="fixed bottom-20 left-4 right-4 bg-primary text-on-primary px-4 py-3 rounded-xl shadow-xl flex items-center justify-between transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 z-50" id="courtToast">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-brand-accent-amber text-[20px]" id="toastIcon">check_circle</span>
+<span class="font-title-sm text-title-sm text-surface-card" id="toastMsg">Citation copied to clipboard!</span>
+</div>
+<button class="text-primary-fixed hover:text-surface-card" onclick="hideToast()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Instant Interaction Micro-Engine
+  const toast = document.getElementById('courtToast');
+  const toastMsg = document.getElementById('toastMsg');
+  const toastIcon = document.getElementById('toastIcon');
+
+  function showToast(message, icon = 'check_circle') {
+    if (!toast) return;
+    toastMsg.textContent = message;
+    toastIcon.textContent = icon;
+    toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      hideToast();
+    }, 2800);
+  }
+
+  function hideToast() {
+    if (!toast) return;
+    toast.classList.remove('translate-y-0', 'opacity-100');
+    toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+  }
+
+  // Copy Direct Citation Passage
+  const copyBtn = document.getElementById('copyCitationBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const textToCopy = 'CBI vs. R. Singhania (2024 INSC 782, Para 34): "Police custody remand under Section 187(3) BNSS can be availed in staggered intervals during first 40/60 days..."';
+      navigator.clipboard?.writeText(textToCopy).catch(() => {});
+      showToast('Ratio passage copied for bench presentation!', 'content_copy');
+    });
+  }
+
+  // Voice memo simulation
+  const dictateBtn = document.getElementById('dictateBtn');
+  if (dictateBtn) {
+    dictateBtn.addEventListener('click', () => {
+      showToast('Listening... Speak section or ratio required', 'graphic_eq');
+    });
+  }
+
+  // Action Buttons
+  document.getElementById('readAloudTrigger')?.addEventListener('click', () => {
+    showToast('Synthesizing bench ratio speech for junior counsel...', 'record_voice_over');
+  });
+
+  document.getElementById('pinBriefTrigger')?.addEventListener('click', () => {
+    showToast('Pinned to Today\'s Docket Brief: Court 12 #19', 'push_pin');
+  });
+
+  document.getElementById('passoverTrigger')?.addEventListener('click', () => {
+    showToast('Passover note created for Court Master', 'receipt_long');
+  });
+
+  // Code Switcher Pills
+  const pills = document.querySelectorAll('.switcher-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => {
+        p.classList.remove('bg-primary-container', 'text-on-primary');
+        p.classList.add('bg-surface-card', 'text-text-secondary');
+      });
+      pill.classList.add('bg-primary-container', 'text-on-primary');
+      pill.classList.remove('bg-surface-card', 'text-text-secondary');
+      const pair = pill.getAttribute('data-pair');
+      showToast(`Switched active concordance to ${pair?.toUpperCase()}`, 'swap_horiz');
+    });
+  });
+
+  // Clear Search
+  document.getElementById('clearSearchBtn')?.addEventListener('click', () => {
+    const input = document.getElementById('statuteInput');
+    if (input) {
+      input.value = '';
+      input.focus();
+    }
+  });
+
+  document.getElementById('submitQueryBtn')?.addEventListener('click', () => {
+    const input = document.getElementById('statuteInput');
+    if (input && input.value) {
+      showToast(`Locating Section concordance for "${input.value}"...`, 'search');
+    }
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,11,31,0.06)]" data-active-classes="text-primary font-bold"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="cause-list" href="#"><span class="material-symbols-outlined text-[22px]">calendar_today</span><span class="font-label-code text-label-code tracking-normal">Cause List</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="matters" href="#"><span class="material-symbols-outlined text-[22px]">gavel</span><span class="font-label-code text-label-code tracking-normal">Matters</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="statutory-research" href="#"><span class="material-symbols-outlined text-[22px]">menu_book</span><span class="font-label-code text-label-code tracking-normal">Research</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="matter-vault" href="#"><span class="material-symbols-outlined text-[22px]">folder_copy</span><span class="font-label-code text-label-code tracking-normal">Vault</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-12 text-on-surface-variant hover:text-primary transition-colors" data-path="more-menu" href="#"><span class="material-symbols-outlined text-[22px]">more_horiz</span><span class="font-label-code text-label-code tracking-normal">More</span></a></div></nav></body></html>

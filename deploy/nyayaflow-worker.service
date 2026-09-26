@@ -1,0 +1,26 @@
+[Unit]
+Description=NyayaFlow document scan and OCR worker
+After=network-online.target postgresql.service clamav-daemon.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nyayaflow-worker
+Group=nyayaflow
+WorkingDirectory=/opt/nyayaflow/current
+EnvironmentFile=/etc/nyayaflow/nyayaflow.env
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node worker/index.js
+Restart=on-failure
+RestartSec=8
+TimeoutStopSec=120
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/nyayaflow /var/log/nyayaflow
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

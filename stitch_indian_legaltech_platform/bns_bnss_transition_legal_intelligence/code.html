@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"text-secondary":"#475569","tertiary-fixed-dim":"#ffb77d","surface-variant":"#d3e4fe","surface-canvas":"#F8FAFC","status-verified-text":"#065F46","error-container":"#ffdad6","status-stale-text":"#92400E","background":"#f8f9ff","secondary":"#006876","on-surface-variant":"#44474e","status-conflict-border":"#FECACA","text-muted":"#94A3B8","inverse-primary":"#b3c7ee","on-tertiary-fixed":"#2f1500","on-error":"#ffffff","surface-subtle":"#F1F5F9","status-stale-border":"#FDE68A","secondary-fixed-dim":"#84d2e2","on-primary-fixed":"#031b39","status-manual-border":"#E2E8F0","error":"#ba1a1a","secondary-fixed":"#a0efff","on-secondary-fixed-variant":"#004e59","on-background":"#0b1c30","status-verified-border":"#A7F3D0","border-strong":"#CBD5E1","surface-container-low":"#eff4ff","on-secondary-fixed":"#001f25","surface-bright":"#f8f9ff","on-error-container":"#93000a","primary-fixed-dim":"#b3c7ee","midnight-dark-base":"#020617","status-verified-bg":"#ECFDF5","on-tertiary-fixed-variant":"#6e3900","primary-container":"#0b2240","surface-container":"#e5eeff","status-conflict-text":"#991B1B","on-surface":"#0b1c30","status-manual-text":"#334155","primary":"#000b1f","status-manual-bg":"#F8FAFC","tertiary-container":"#381a00","tertiary-fixed":"#ffdcc3","inverse-surface":"#213145","surface-card":"#FFFFFF","status-stale-bg":"#FFFBEB","surface-container-highest":"#d3e4fe","on-primary-container":"#768aad","tertiary":"#170700","outline-variant":"#c4c6ce","status-conflict-bg":"#FEF2F2","on-secondary-container":"#0d6e7d","primary-fixed":"#d5e3ff","on-primary":"#ffffff","midnight-dark-surface":"#0B1528","surface-container-lowest":"#ffffff","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","border-subtle":"#E2E8F0","surface":"#f8f9ff","outline":"#74777e","secondary-container":"#a0efff","on-secondary":"#ffffff","on-primary-fixed-variant":"#334767","text-primary":"#0F172A","midnight-dark-border":"#1E293B","on-tertiary-container":"#cf7100","brand-accent-amber":"#D8892A","inverse-on-surface":"#eaf1ff","surface-tint":"#4b5f80","on-tertiary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-sm":"0.5rem","gutter":"1rem","space-xl":"2rem","space-xs":"0.25rem","space-md":"0.75rem","space-lg":"1.25rem","margin":"1.25rem"},"fontFamily":{"display-lg":["Domine"],"title-md":["Inter"],"label-strong":["Inter"],"headline-statutory":["Domine"],"display-md":["Domine"],"headline-ui":["Inter"],"body-default":["Inter"],"title-sm":["Inter"],"label-code":["Inter"],"body-legal":["Domine"],"body-dense":["Inter"],"caption":["Inter"]},"fontSize":{"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"title-md":["15px",{"lineHeight":"20px","fontWeight":"600"}],"label-strong":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-statutory":["20px",{"lineHeight":"28px","fontWeight":"600"}],"display-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-ui":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-default":["13px",{"lineHeight":"20px","fontWeight":"400"}],"title-sm":["13px",{"lineHeight":"18px","fontWeight":"600"}],"label-code":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-legal":["15px",{"lineHeight":"26px","fontWeight":"400"}],"body-dense":["12px",{"lineHeight":"16px","fontWeight":"400"}],"caption":["11px",{"lineHeight":"14px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface-canvas font-body-default text-text-primary antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-card border-b border-border-subtle"><div class="h-16 w-full px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md min-w-[280px]"><img alt="Logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wd8pl1ZnY8J6tFKX_OFpcXUkgfHkleAjWX2nWEAR1CUucI7Q53tZLDcrs4SCsc7aiJZ_mAW-3SipAnblDENGyFCPZjB1_MPXnuU3KnCtlAkVpkxarJwbQIfM7uN1QogcaRJ7mjWR6_rfU83jbR_jNF1JrRzdNqWRanRxP4vBHVJid021TWisyeFwzhJVeGXICX3SBv2GQjqBzmwwyvpek5BkBETQypBTrijFWVdHQi--gxZteqZR0zYrGf09HPdUp97fcuzXydoQ"/><div class="flex items-center gap-space-xs"><span class="font-headline-ui text-headline-ui text-primary font-bold tracking-tight">NyayaFlow</span><span class="font-label-code text-label-code uppercase px-1.5 py-0.5 rounded bg-surface-container text-secondary font-semibold">IN Core</span></div><div class="h-5 w-[1px] bg-border-strong mx-space-xs"></div><div class="flex items-center gap-space-xs cursor-pointer px-2 py-1.5 rounded-lg hover:bg-surface-subtle transition-colors group"><div class="flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary leading-none group-hover:text-primary">Shardul &amp; Associates</span><span class="font-caption text-caption text-text-muted leading-tight">New Delhi (HQ)</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">expand_more</span></div></div><div class="flex-1 max-w-xl mx-auto flex items-center gap-gutter"><div class="flex-1 relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-text-muted text-[18px]">search</span><input class="w-full pl-9 pr-14 py-2 bg-surface-canvas border border-border-subtle rounded-xl font-body-default text-body-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Search Matters, CNRs, Case Citations, Statutes (IPC/BNS)..." type="text"/><kbd class="absolute right-3 px-1.5 py-0.5 rounded border border-border-strong bg-surface-card font-label-code text-label-code text-text-muted">⌘K</kbd></div><div class="hidden xl:flex items-center gap-space-xs px-2.5 py-1.5 rounded-full bg-status-verified-bg border border-status-verified-border"><span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span><span class="font-label-strong text-label-strong text-status-verified-text">eCourts Live</span><span class="font-caption text-caption text-text-secondary">• Del/Mumb 12m</span></div></div><div class="flex items-center gap-space-md justify-end min-w-[280px]"><button class="relative p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Conflict Alerts" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-code text-[10px] font-bold">2</span></button><button class="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Help &amp; Statutory References" type="button"><span class="material-symbols-outlined text-[22px]">help_outline</span></button><div class="h-5 w-[1px] bg-border-strong"></div><div class="flex items-center gap-space-sm pl-space-xs cursor-pointer group"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary group-hover:text-primary leading-tight">Adv. Vikram Sen</span><span class="font-caption text-caption text-secondary font-medium leading-none">Senior Partner</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">arrow_drop_down</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-card border-r border-border-subtle z-40 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-md px-space-md"><button class="w-full flex items-center justify-center gap-space-xs py-2 px-space-md rounded-lg bg-primary-container text-on-primary hover:bg-midnight-dark-surface transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span class="font-label-strong text-label-strong tracking-wide uppercase">New Matter Filing</span></button><div class="p-2.5 rounded-lg bg-surface-subtle border border-border-subtle flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-code text-label-code uppercase text-text-muted">Pinned Case</span><span class="font-label-code text-label-code text-brand-accent-amber font-semibold">Urgent</span></div><span class="font-title-sm text-title-sm text-text-primary line-clamp-1">State v. R. Singhania</span><div class="flex items-center justify-between text-text-secondary"><span class="font-caption text-caption font-mono">DHC/2024/0891</span><span class="font-caption text-caption font-medium text-secondary">Court 4, Item 11</span></div></div><div class="h-[1px] bg-border-subtle my-0.5"></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="matters-360" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-body-default text-body-default">Matters 360</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="daily-cause-list" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span class="font-body-default text-body-default">Daily Cause List</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-2 rounded-lg transition-all bg-primary-container text-on-primary font-semibold shadow-sm" data-path="bns-bnss-transition" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="font-body-default text-body-default">BNS / BNSS Matrix</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="smart-vault-ocr" href="#"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span class="font-body-default text-body-default">Smart Vault &amp; OCR</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="e-filing-defect-auditor" href="#"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-body-default text-body-default">E-Filing Auditor</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="finance-bci-billing" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-body-default text-body-default">Finance &amp; BCI Billing</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="client-updates-portal" href="#"><span class="material-symbols-outlined text-[20px]">supervisor_account</span><span class="font-body-default text-body-default">Client Portal</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="firm-audit-dpdp" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-default text-body-default">Firm Audit &amp; DPDP</span></a></nav></div><div class="px-space-md flex flex-col gap-space-sm border-t border-border-subtle pt-space-md"><div class="flex items-center justify-between text-text-muted px-2"><span class="font-label-code text-label-code uppercase tracking-wider">DPDP ACT COMPLIANT</span><span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span></div><div class="flex items-center gap-space-sm px-2 py-1.5 text-text-secondary rounded-lg hover:bg-surface-subtle cursor-pointer transition-colors"><span class="material-symbols-outlined text-[18px]">dns</span><div class="flex flex-col"><span class="font-caption text-caption text-text-primary font-medium">Chamber Node #04</span><span class="font-label-code text-[10px] text-text-muted">Latency 14ms (MeitY Vault)</span></div></div></div></aside><div class="pl-64"><main class="relative pt-16 bg-surface-canvas min-h-screen"><div class="w-full px-margin py-space-md"><div class="flex flex-col w-full">
+<!-- Top Statutory Transition Hub Bar -->
+<div class="relative bg-gradient-to-r from-primary-container via-midnight-dark-surface to-primary p-space-lg rounded-xl shadow-md overflow-hidden text-on-primary mb-space-lg">
+<div class="absolute -right-12 -bottom-16 w-80 h-80 rounded-full bg-secondary/20 blur-3xl pointer-events-none"></div>
+<div class="absolute right-36 top-0 w-48 h-48 rounded-full bg-brand-accent-amber/15 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-1 max-w-2xl">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded bg-brand-accent-amber/20 text-tertiary-fixed font-label-code text-label-code tracking-wider uppercase">Statutory Transition Engine</span>
+<span class="font-caption text-caption text-surface-container-high opacity-80">• Effective 01 July 2024</span>
+<span class="inline-flex items-center gap-1 font-label-code text-label-code text-status-verified-text bg-status-verified-bg/90 px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span> Gazette Verified
+          </span>
+</div>
+<h1 class="font-display-md text-display-md text-on-primary font-semibold tracking-tight">
+          Criminal Law Transition Matrix &amp; Precedent Engine
+        </h1>
+<p class="font-body-default text-body-default text-surface-variant max-w-xl">
+          Side-by-side textual diffs, constitutional retrospection rules (Art. 20(1)), and real-time paragraph-level citation intelligence under the New Sanhitas.
+        </p>
+</div>
+<!-- Quick Switcher Tabs -->
+<div class="flex items-center p-1 bg-midnight-dark-base/70 backdrop-blur rounded-xl gap-1">
+<button class="transition-all duration-200 px-3.5 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 bg-secondary text-on-secondary shadow-sm" id="tab-bns" onclick="switchLegislation('bns')">
+<span class="material-symbols-outlined text-[18px]">balance</span>
+<span>IPC 1860 ↔ BNS 2023</span>
+</button>
+<button class="transition-all duration-200 px-3.5 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 text-surface-variant hover:text-on-primary hover:bg-midnight-dark-surface/60" id="tab-bnss" onclick="switchLegislation('bnss')">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+<span>CrPC 1973 ↔ BNSS 2023</span>
+</button>
+<button class="transition-all duration-200 px-3.5 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 text-surface-variant hover:text-on-primary hover:bg-midnight-dark-surface/60" id="tab-bsa" onclick="switchLegislation('bsa')">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+<span>IEA 1872 ↔ BSA 2023</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SECTION 1: Dual-Code Comparative Workspace -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Left Pane: Legacy Code (IPC Section 420) -->
+<div class="xl:col-span-4 bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-lg bg-surface-subtle flex items-center justify-center text-text-secondary font-title-sm">
+<span class="material-symbols-outlined text-[18px]">history_edu</span>
+</span>
+<div>
+<span class="font-label-code text-label-code uppercase text-text-muted">Legacy Substantive Law</span>
+<h2 class="font-title-md text-title-md text-text-primary">Section 420, IPC 1860</h2>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-code text-label-code bg-surface-container text-text-secondary font-semibold">REPEALED</span>
+</div>
+<div class="mb-space-md pb-space-sm">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wide">Marginal Heading</span>
+<p class="font-headline-statutory text-headline-statutory text-primary mt-0.5">
+            Cheating and dishonestly inducing delivery of property
+          </p>
+</div>
+<!-- Statutory Body Text -->
+<div class="bg-surface-canvas rounded-lg p-space-md text-text-secondary font-body-legal text-body-legal leading-relaxed mb-space-md">
+<p>
+            Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to <span class="bg-status-stale-bg text-status-stale-text px-1 rounded font-semibold">seven years</span>, and shall also be liable to fine.
+          </p>
+</div>
+<!-- Procedural Character Grid -->
+<div class="grid grid-cols-2 gap-space-sm mb-space-md">
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">Cognizability</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-status-conflict-text"></span> Cognizable
+            </div>
+</div>
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">Bailability</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-status-conflict-text"></span> Non-Bailable
+            </div>
+</div>
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">Compoundability</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-brand-accent-amber"></span> With Court Permission
+            </div>
+</div>
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">Trial Court</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5">Magistrate 1st Class</div>
+</div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-text-muted font-caption text-caption">
+<span>Act No. 45 of 1860</span>
+<span class="font-mono">In force: 1 Jan 1862 – 30 Jun 2024</span>
+</div>
+</div>
+<!-- Center Transition Controller & Retrospective Tool -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Retrospective Applicability Calculator -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">calculate</span>
+<span class="font-title-sm text-title-sm text-text-primary">Retrospective Applicability Calculator</span>
+</div>
+<span class="font-label-code text-label-code px-2 py-0.5 rounded bg-surface-container text-secondary font-semibold">Art. 20(1) Audit</span>
+</div>
+<p class="font-caption text-caption text-text-secondary mb-space-md">
+          Determine substantive penal liability vs. procedural roadmap based on critical criminal milestone timestamps.
+        </p>
+<!-- Chronology Inputs -->
+<div class="flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-canvas hover:bg-surface-subtle transition-colors">
+<div class="flex flex-col">
+<span class="font-label-strong text-label-strong text-text-primary">1. Date of Commission of Offence</span>
+<span class="font-caption text-caption text-text-muted">Anchor for Substantive Penal Sanction</span>
+</div>
+<input class="bg-surface-card px-2.5 py-1 rounded text-text-primary font-label-code text-label-code focus:outline-none focus:ring-1 focus:ring-secondary" id="input-offence" onchange="recalculateApplicability()" type="date" value="2024-05-14"/>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-canvas hover:bg-surface-subtle transition-colors">
+<div class="flex flex-col">
+<span class="font-label-strong text-label-strong text-text-primary">2. Date of FIR Registration</span>
+<span class="font-caption text-caption text-text-muted">First Information under Sec 154 / 173</span>
+</div>
+<input class="bg-surface-card px-2.5 py-1 rounded text-text-primary font-label-code text-label-code focus:outline-none focus:ring-1 focus:ring-secondary" id="input-fir" onchange="recalculateApplicability()" type="date" value="2024-07-20"/>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-canvas hover:bg-surface-subtle transition-colors">
+<div class="flex flex-col">
+<span class="font-label-strong text-label-strong text-text-primary">3. Police Report / Charge-Sheet Date</span>
+<span class="font-caption text-caption text-text-muted">Filing under Sec 173(2) / 193 BNSS</span>
+</div>
+<input class="bg-surface-card px-2.5 py-1 rounded text-text-primary font-label-code text-label-code focus:outline-none focus:ring-1 focus:ring-secondary" id="input-chargesheet" onchange="recalculateApplicability()" type="date" value="2024-09-15"/>
+</div>
+</div>
+<!-- Calculated Statutory Finding Badge & Legal Note -->
+<div class="bg-status-verified-bg p-space-md rounded-xl flex flex-col gap-space-xs transition-all" id="retro-output">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-verified-text text-[18px]">verified</span>
+<span class="font-title-sm text-title-sm text-status-verified-text">Statutory Determination</span>
+</div>
+<div class="font-body-dense text-body-dense text-text-primary leading-relaxed">
+<div class="font-semibold text-primary">Substantive Penal Code: <span class="text-status-conflict-text font-bold">IPC 1860 applies</span></div>
+<div class="text-text-secondary mt-0.5">Offence occurred on 14-05-2024 (prior to 01/07/2024 cutoff). Article 20(1) guarantees protection against retroactive penal exposure.</div>
+<div class="mt-2 font-semibold text-primary">Procedural Code: <span class="text-secondary font-bold">BNSS 2023 applies</span></div>
+<div class="text-text-secondary mt-0.5">FIR &amp; Charge-Sheet filed post-enforcement date. Procedural law applies retrospectively to pending investigations/trials per Section 531 BNSS.</div>
+</div>
+</div>
+<button class="mt-space-md w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-surface-subtle hover:bg-surface-variant text-text-primary font-label-strong text-label-strong transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Embed Determination in Bail Petition</span>
+</button>
+</div>
+<!-- Quick Action / Harmonization Widget -->
+<div class="bg-midnight-dark-surface text-on-primary p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<span class="w-9 h-9 rounded-lg bg-secondary/30 flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined text-[20px]">transform</span>
+</span>
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-primary">Petition Harmonizer</span>
+<span class="font-caption text-caption text-surface-variant">Update IPC citations in draft to BNS 318(4)</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-secondary text-on-secondary font-label-strong text-label-strong hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors flex items-center gap-1.5">
+<span>Apply Diff</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Pane: New Law (BNS Section 318(4)) -->
+<div class="xl:col-span-4 bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary font-title-sm">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+</span>
+<div>
+<span class="font-label-code text-label-code uppercase text-secondary font-semibold">Active Sanhita Code</span>
+<h2 class="font-title-md text-title-md text-text-primary">Section 318(4), BNS 2023</h2>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-code text-label-code bg-status-verified-bg text-status-verified-text font-bold">CURRENT</span>
+</div>
+<div class="mb-space-md pb-space-sm">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wide">Marginal Heading</span>
+<p class="font-headline-statutory text-headline-statutory text-primary mt-0.5">
+            Cheating and dishonestly inducing delivery of property
+          </p>
+</div>
+<!-- Statutory Body Text with Semantic Diffs -->
+<div class="bg-surface-canvas rounded-lg p-space-md text-text-secondary font-body-legal text-body-legal leading-relaxed mb-space-md">
+<p>
+            Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to <span class="bg-status-verified-bg text-status-verified-text px-1 rounded font-semibold underline decoration-status-verified-text/40">seven years</span>, and shall also be liable to fine.
+          </p>
+<div class="mt-space-sm p-2 rounded bg-surface-subtle font-caption text-caption text-text-secondary">
+<span class="font-semibold text-text-primary">Sub-clause note:</span> IPC Sec 415-420 consolidated under Section 318. Sub-clause (4) directly replaces erstwhile Section 420 without altering core penal quantum.
+          </div>
+</div>
+<!-- Procedural Alignment & Harmonized Status -->
+<div class="grid grid-cols-2 gap-space-sm mb-space-md">
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">BNSS 2023 Schedule I</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-status-conflict-text"></span> Cognizable
+            </div>
+</div>
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">Bailability Status</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-status-conflict-text"></span> Non-Bailable
+            </div>
+</div>
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">Compounding Matrix</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-brand-accent-amber"></span> Sec 359 BNSS
+            </div>
+</div>
+<div class="bg-surface-subtle p-2.5 rounded-lg">
+<span class="font-caption text-caption text-text-muted">Court of Record</span>
+<div class="font-title-sm text-title-sm text-text-primary mt-0.5">Judicial Magistrate 1st Class</div>
+</div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-text-muted font-caption text-caption">
+<span>Act No. 46 of 2023</span>
+<span class="font-mono text-status-verified-text font-semibold">Commenced: 1 July 2024</span>
+</div>
+</div>
+</div>
+<!-- SECTION 2: Paragraph-Level Precedent Intelligence & Statutory RAG -->
+<div class="flex flex-col gap-space-md mb-space-xl">
+<!-- Header & Natural Query Console -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-ui text-headline-ui text-text-primary">Precedent Intelligence &amp; Paragraph RAG</h2>
+<span class="px-2 py-0.5 rounded-full font-label-code text-label-code bg-surface-subtle text-secondary font-bold">STRICT CITATION PROVENANCE</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Synthesized judicial doctrine tied directly to Gazette notifications, SCC bench ratios, and verified paragraph pins.</p>
+</div>
+</div>
+<!-- Filter Tokens -->
+<div class="flex items-center gap-2">
+<span class="font-label-code text-label-code text-text-muted uppercase">Scope:</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-subtle text-text-primary font-caption text-caption font-medium">Supreme Court &amp; High Courts</span>
+<span class="px-2.5 py-1 rounded-lg bg-status-verified-bg text-status-verified-text font-caption text-caption font-medium">Good Law Only</span>
+</div>
+</div>
+<!-- Natural Language Query Bar -->
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-secondary text-[22px]">psychology</span>
+<input class="w-full pl-12 pr-32 py-3 bg-surface-canvas rounded-xl font-body-default text-body-default text-text-primary focus:outline-none focus:ring-2 focus:ring-secondary shadow-inner" id="rag-query-input" type="text" value="Standard for grant of default bail under Section 187 BNSS vs Section 167(2) CrPC in economic offences"/>
+<div class="absolute right-2 flex items-center gap-2">
+<button class="px-4 py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors font-label-strong text-label-strong flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">search_spark</span>
+<span>Synthesize</span>
+</button>
+</div>
+</div>
+</div>
+<!-- AI Synthesis Result with Strict Legal Provenance -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<!-- Authority Badges Row -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-md border-b-0">
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-status-verified-bg text-status-verified-text font-label-strong text-label-strong">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Verified SCC / SCR Citation</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-strong text-label-strong">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span>Bench: 3-Judge Bench</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-status-verified-bg text-status-verified-text font-label-strong text-label-strong">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Overrule Flag: Good Law (Not Doubted)</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-subtle text-text-secondary font-label-strong text-label-strong">
+<span class="material-symbols-outlined text-[16px]">update</span>
+<span>Source Freshness: eGazette 2024 Verified</span>
+</span>
+</div>
+<div class="flex items-center gap-2 text-text-muted font-label-code text-label-code">
+<span>LATENCY: 410ms</span>
+<span>•</span>
+<span>CONFIDENCE: 99.4%</span>
+</div>
+</div>
+<!-- Synthesis Body Layout (2 Columns: Editorial Thesis + Paragraph Grounding) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Column: Synthesized Proposition & Ratio Decidendi -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code uppercase tracking-wider text-text-muted">Harmonized Ratio Decidendi</span>
+<span class="font-caption text-caption text-secondary font-medium">Matter Reference: CBI v. Vikas Mishra (Appln.)</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-canvas text-text-primary font-body-default text-body-default leading-relaxed space-y-3">
+<p>
+              The Supreme Court of India in <span class="font-bold text-primary font-display-md text-[14px]">Central Bureau of Investigation vs. R. Singhania &amp; Ors. [(2024) 6 SCC 412, Paras 18–22]</span> explicitly interpreted the structural departure of <span class="font-semibold text-secondary">Section 187(3) of Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023</span> from the legacy regime of Section 167(2) of the Code of Criminal Procedure, 1973.
+            </p>
+<p>
+              Under the newly enacted statutory framework, the maximum 15-day police custody remand is <strong class="text-primary font-semibold">no longer restricted strictly to the first 15 days</strong> following initial detention. Instead, police remand can now be sought in fragmented intervals or tandem across the entire 40-day (for offences triable by lower courts) or 60-day (for heinous/economic offences) pre-charge-sheet window.
+            </p>
+<div class="p-3 rounded-lg bg-surface-card border-l-4 border-l-secondary text-text-secondary font-body-legal text-body-legal text-[13px] italic">
+              "Para 21: The legislative intent behind replacing Section 167(2) CrPC with Section 187(3) BNSS is explicitly designed to dismantle deliberate hospitalizations and evasive manoeuvres during the formative fifteen days of custodial investigation, particularly in multi-layered economic offences."
+            </div>
+<p class="font-caption text-caption text-text-secondary">
+              However, the Court cautioned that <span class="text-status-stale-text font-semibold">default statutory bail under Section 187(5) BNSS remains an indefeasible constitutional right</span> flowing from Article 21, and the expiry of 60/90 days without a formal Police Report under Sec 193 BNSS mandates instantaneous release upon furnishing solvent sureties.
+            </p>
+</div>
+<!-- Interactive Citation Pill Trail & Doctrine Lineage -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider font-semibold">Doctrine Lineage &amp; Precedent Treatment Trail</span>
+<div class="flex flex-wrap items-center gap-2">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-subtle hover:bg-surface-variant transition-colors text-text-primary font-title-sm text-title-sm" href="#">
+<span class="w-2 h-2 rounded-full bg-status-verified-text"></span>
+<span>Followed: State of Haryana v. Bhajan Lal (1992 Supp (1) SCC 335)</span>
+<span class="material-symbols-outlined text-[14px] text-text-muted">open_in_new</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-subtle hover:bg-surface-variant transition-colors text-text-primary font-title-sm text-title-sm" href="#">
+<span class="w-2 h-2 rounded-full bg-brand-accent-amber"></span>
+<span>Distinguished: Sanjay Chandra v. CBI (2012) 1 SCC 40</span>
+<span class="material-symbols-outlined text-[14px] text-text-muted">open_in_new</span>
+</a>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-subtle hover:bg-surface-variant transition-colors text-text-primary font-title-sm text-title-sm" href="#">
+<span class="w-2 h-2 rounded-full bg-status-verified-text"></span>
+<span>Affirmed: Satender Kumar Antil v. CBI (2022) 10 SCC 51</span>
+<span class="material-symbols-outlined text-[14px] text-text-muted">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right Column: Paragraph Grounding & Visual Corpus Map -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-canvas p-space-md rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-text-primary">Source Paragraph Citator</span>
+<span class="font-label-code text-label-code text-secondary font-bold">e-SCR / SCC Official</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Pin 1 -->
+<div class="p-2.5 rounded-lg bg-surface-card hover:shadow transition-shadow cursor-pointer">
+<div class="flex items-center justify-between text-text-muted font-label-code text-label-code mb-1">
+<span class="font-bold text-text-primary">PARA 18 • RATIO PIN</span>
+<span class="text-status-verified-text">Direct Match (98%)</span>
+</div>
+<p class="font-caption text-caption text-text-secondary line-clamp-2">
+                  "The language of Section 187 BNSS clearly provides leeway to the Investigating Officer to request custody during the initial 40 or 60 days..."
+                </p>
+</div>
+<!-- Pin 2 -->
+<div class="p-2.5 rounded-lg bg-surface-card hover:shadow transition-shadow cursor-pointer">
+<div class="flex items-center justify-between text-text-muted font-label-code text-label-code mb-1">
+<span class="font-bold text-text-primary">PARA 20 • CONSTITUTIONAL HARMONY</span>
+<span class="text-status-verified-text">Direct Match (94%)</span>
+</div>
+<p class="font-caption text-caption text-text-secondary line-clamp-2">
+                  "Harmonizing personal liberty under Art 21 with societal protection against complex economic fraud requires a calibrated reading of sub-section (3)..."
+                </p>
+</div>
+<!-- Pin 3 -->
+<div class="p-2.5 rounded-lg bg-surface-card hover:shadow transition-shadow cursor-pointer">
+<div class="flex items-center justify-between text-text-muted font-label-code text-label-code mb-1">
+<span class="font-bold text-text-primary">PARA 22 • PROCEDURAL OPERATIVE</span>
+<span class="text-secondary">Statutory Mandate</span>
+</div>
+<p class="font-caption text-caption text-text-secondary line-clamp-2">
+                  "Magistrates must record speaking orders when permitting police remand beyond the formative 15-day threshold..."
+                </p>
+</div>
+</div>
+<!-- Mini Sparkline Graph: Statutory Judicial Mentions 2024 -->
+<div class="mt-space-xs pt-space-xs flex flex-col gap-1">
+<span class="font-caption text-caption text-text-muted font-medium">Judicial Treatment Velocity (BNS / BNSS Citations)</span>
+<div class="flex items-end gap-1.5 h-12 pt-2 px-1">
+<div class="w-full bg-surface-container rounded-t h-[20%]" title="Jul 2024: 12 cases"></div>
+<div class="w-full bg-surface-container rounded-t h-[45%]" title="Aug 2024: 38 cases"></div>
+<div class="w-full bg-surface-container-high rounded-t h-[65%]" title="Sep 2024: 64 cases"></div>
+<div class="w-full bg-secondary-fixed rounded-t h-[85%]" title="Oct 2024: 104 cases"></div>
+<div class="w-full bg-secondary rounded-t h-[100%]" title="Nov 2024: 142 cases"></div>
+</div>
+<div class="flex justify-between font-label-code text-[10px] text-text-muted">
+<span>Jul '24</span>
+<span>Nov '24 (+1080%)</span>
+</div>
+</div>
+</div>
+<!-- Privilege & Vault Safety Note -->
+<div class="p-space-sm rounded-lg bg-surface-subtle flex items-center gap-2 text-text-muted font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-status-verified-text">lock</span>
+<span>RAG context isolated under Advocate-Client Privilege protocols.</span>
+</div>
+</div>
+</div>
+<!-- Action Footer for Precedent Hub -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-md border-t border-border-subtle">
+<div class="flex items-center gap-space-sm text-text-muted font-caption text-caption">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Approved for submission before Delhi High Court &amp; Subordinate Courts.</span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-surface-subtle hover:bg-surface-variant text-text-primary font-label-strong text-label-strong flex items-center justify-center gap-2 transition-all" onclick="copyCitationSummary()" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span>Copy With Pins</span>
+</button>
+<button class="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-surface-subtle hover:bg-error-container hover:text-on-error-container text-text-secondary font-label-strong text-label-strong flex items-center justify-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+<span>Flag Ambiguity</span>
+</button>
+<button class="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-primary-container hover:bg-midnight-dark-surface text-on-primary font-label-strong text-label-strong flex items-center justify-center gap-2 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+<span>Save to Matter Brief</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-time Transition Advisory Banner -->
+<div class="p-space-md rounded-xl bg-status-stale-bg flex items-center justify-between text-status-stale-text shadow-sm">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[24px]">info</span>
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm font-semibold">Standard Operating Procedure Reminder: Sec 531 BNSS (Repeal and Savings)</span>
+<span class="font-caption text-caption text-status-stale-text opacity-90">All appeals, applications, trials, or inquiries pending before 01.07.2024 shall continue under CrPC 1973 as if BNSS had not come into force.</span>
+</div>
+</div>
+<a class="font-label-strong text-label-strong underline px-3 py-1 hover:opacity-80" href="#">View Full Circular</a>
+</div>
+</div>
+<script>
+  function recalculateApplicability() {
+    const offenceDate = new Date(document.getElementById('input-offence').value);
+    const cutoffDate = new Date('2024-07-01');
+    const out = document.getElementById('retro-output');
+
+    if (offenceDate < cutoffDate) {
+      out.className = "bg-status-verified-bg p-space-md rounded-xl flex flex-col gap-space-xs transition-all";
+      out.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-status-verified-text text-[18px]">verified</span>
+          <span class="font-title-sm text-title-sm text-status-verified-text">Statutory Determination</span>
+        </div>
+        <div class="font-body-dense text-body-dense text-text-primary leading-relaxed">
+          <div class="font-semibold text-primary">Substantive Penal Code: <span class="text-status-conflict-text font-bold">IPC 1860 applies</span></div>
+          <div class="text-text-secondary mt-0.5">Offence committed prior to 01/07/2024. Article 20(1) bar against ex post facto penal statutes applies.</div>
+          <div class="mt-2 font-semibold text-primary">Procedural Code: <span class="text-secondary font-bold">BNSS 2023 applies</span></div>
+          <div class="text-text-secondary mt-0.5">FIR/Police report lodged after 01/07/2024; investigation procedural norms governed by BNSS 2023.</div>
+        </div>
+      `;
+    } else {
+      out.className = "bg-surface-variant p-space-md rounded-xl flex flex-col gap-space-xs transition-all";
+      out.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary text-[18px]">gavel</span>
+          <span class="font-title-sm text-title-sm text-secondary font-semibold">Statutory Determination</span>
+        </div>
+        <div class="font-body-dense text-body-dense text-text-primary leading-relaxed">
+          <div class="font-semibold text-primary">Substantive Penal Code: <span class="text-secondary font-bold">BNS 2023 applies exclusively</span></div>
+          <div class="text-text-secondary mt-0.5">Offence committed post 01/07/2024. Charge under Section 318(4) BNS directly.</div>
+          <div class="mt-2 font-semibold text-primary">Procedural Code: <span class="text-secondary font-bold">BNSS 2023 applies exclusively</span></div>
+          <div class="text-text-secondary mt-0.5">Complete investigation and trial governed under Bharatiya Nagarik Suraksha Sanhita.</div>
+        </div>
+      `;
+    }
+  }
+
+  function switchLegislation(code) {
+    const tabs = ['bns', 'bnss', 'bsa'];
+    tabs.forEach(t => {
+      const el = document.getElementById('tab-' + t);
+      if (t === code) {
+        el.className = "transition-all duration-200 px-3.5 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 bg-secondary text-on-secondary shadow-sm";
+      } else {
+        el.className = "transition-all duration-200 px-3.5 py-2 rounded-lg font-title-sm text-title-sm flex items-center gap-2 text-surface-variant hover:text-on-primary hover:bg-midnight-dark-surface/60";
+      }
+    });
+  }
+
+  function copyCitationSummary() {
+    const txt = "Central Bureau of Investigation vs. R. Singhania & Ors. [(2024) 6 SCC 412, Paras 18-22]: Police remand under Sec 187(3) BNSS can be sought in tandem across initial 40/60 day window.";
+    navigator.clipboard.writeText(txt).then(() => {
+      alert("Citation ratio and paragraph pins copied to clipboard with verified SCC format.");
+    });
+  }
+</script></div></main></div></body></html>

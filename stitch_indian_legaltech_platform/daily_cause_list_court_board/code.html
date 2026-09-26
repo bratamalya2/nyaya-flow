@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"text-secondary":"#475569","tertiary-fixed-dim":"#ffb77d","surface-variant":"#d3e4fe","surface-canvas":"#F8FAFC","status-verified-text":"#065F46","error-container":"#ffdad6","status-stale-text":"#92400E","background":"#f8f9ff","secondary":"#006876","on-surface-variant":"#44474e","status-conflict-border":"#FECACA","text-muted":"#94A3B8","inverse-primary":"#b3c7ee","on-tertiary-fixed":"#2f1500","on-error":"#ffffff","surface-subtle":"#F1F5F9","status-stale-border":"#FDE68A","secondary-fixed-dim":"#84d2e2","on-primary-fixed":"#031b39","status-manual-border":"#E2E8F0","error":"#ba1a1a","secondary-fixed":"#a0efff","on-secondary-fixed-variant":"#004e59","on-background":"#0b1c30","status-verified-border":"#A7F3D0","border-strong":"#CBD5E1","surface-container-low":"#eff4ff","on-secondary-fixed":"#001f25","surface-bright":"#f8f9ff","on-error-container":"#93000a","primary-fixed-dim":"#b3c7ee","midnight-dark-base":"#020617","status-verified-bg":"#ECFDF5","on-tertiary-fixed-variant":"#6e3900","primary-container":"#0b2240","surface-container":"#e5eeff","status-conflict-text":"#991B1B","on-surface":"#0b1c30","status-manual-text":"#334155","primary":"#000b1f","status-manual-bg":"#F8FAFC","tertiary-container":"#381a00","tertiary-fixed":"#ffdcc3","inverse-surface":"#213145","surface-card":"#FFFFFF","status-stale-bg":"#FFFBEB","surface-container-highest":"#d3e4fe","on-primary-container":"#768aad","tertiary":"#170700","outline-variant":"#c4c6ce","status-conflict-bg":"#FEF2F2","on-secondary-container":"#0d6e7d","primary-fixed":"#d5e3ff","on-primary":"#ffffff","midnight-dark-surface":"#0B1528","surface-container-lowest":"#ffffff","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","border-subtle":"#E2E8F0","surface":"#f8f9ff","outline":"#74777e","secondary-container":"#a0efff","on-secondary":"#ffffff","on-primary-fixed-variant":"#334767","text-primary":"#0F172A","midnight-dark-border":"#1E293B","on-tertiary-container":"#cf7100","brand-accent-amber":"#D8892A","inverse-on-surface":"#eaf1ff","surface-tint":"#4b5f80","on-tertiary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-sm":"0.5rem","gutter":"1rem","space-xl":"2rem","space-xs":"0.25rem","space-md":"0.75rem","space-lg":"1.25rem","margin":"1.25rem"},"fontFamily":{"display-lg":["Domine"],"title-md":["Inter"],"label-strong":["Inter"],"headline-statutory":["Domine"],"display-md":["Domine"],"headline-ui":["Inter"],"body-default":["Inter"],"title-sm":["Inter"],"label-code":["Inter"],"body-legal":["Domine"],"body-dense":["Inter"],"caption":["Inter"]},"fontSize":{"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"title-md":["15px",{"lineHeight":"20px","fontWeight":"600"}],"label-strong":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-statutory":["20px",{"lineHeight":"28px","fontWeight":"600"}],"display-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-ui":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-default":["13px",{"lineHeight":"20px","fontWeight":"400"}],"title-sm":["13px",{"lineHeight":"18px","fontWeight":"600"}],"label-code":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-legal":["15px",{"lineHeight":"26px","fontWeight":"400"}],"body-dense":["12px",{"lineHeight":"16px","fontWeight":"400"}],"caption":["11px",{"lineHeight":"14px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface-canvas font-body-default text-text-primary antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-card border-b border-border-subtle"><div class="h-16 w-full px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md min-w-[280px]"><img alt="Logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wd8pl1ZnY8J6tFKX_OFpcXUkgfHkleAjWX2nWEAR1CUucI7Q53tZLDcrs4SCsc7aiJZ_mAW-3SipAnblDENGyFCPZjB1_MPXnuU3KnCtlAkVpkxarJwbQIfM7uN1QogcaRJ7mjWR6_rfU83jbR_jNF1JrRzdNqWRanRxP4vBHVJid021TWisyeFwzhJVeGXICX3SBv2GQjqBzmwwyvpek5BkBETQypBTrijFWVdHQi--gxZteqZR0zYrGf09HPdUp97fcuzXydoQ"/><div class="flex items-center gap-space-xs"><span class="font-headline-ui text-headline-ui text-primary font-bold tracking-tight">NyayaFlow</span><span class="font-label-code text-label-code uppercase px-1.5 py-0.5 rounded bg-surface-container text-secondary font-semibold">IN Core</span></div><div class="h-5 w-[1px] bg-border-strong mx-space-xs"></div><div class="flex items-center gap-space-xs cursor-pointer px-2 py-1.5 rounded-lg hover:bg-surface-subtle transition-colors group"><div class="flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary leading-none group-hover:text-primary">Shardul &amp; Associates</span><span class="font-caption text-caption text-text-muted leading-tight">New Delhi (HQ)</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">expand_more</span></div></div><div class="flex-1 max-w-xl mx-auto flex items-center gap-gutter"><div class="flex-1 relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-text-muted text-[18px]">search</span><input class="w-full pl-9 pr-14 py-2 bg-surface-canvas border border-border-subtle rounded-xl font-body-default text-body-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Search Matters, CNRs, Case Citations, Statutes (IPC/BNS)..." type="text"/><kbd class="absolute right-3 px-1.5 py-0.5 rounded border border-border-strong bg-surface-card font-label-code text-label-code text-text-muted">⌘K</kbd></div><div class="hidden xl:flex items-center gap-space-xs px-2.5 py-1.5 rounded-full bg-status-verified-bg border border-status-verified-border"><span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span><span class="font-label-strong text-label-strong text-status-verified-text">eCourts Live</span><span class="font-caption text-caption text-text-secondary">• Del/Mumb 12m</span></div></div><div class="flex items-center gap-space-md justify-end min-w-[280px]"><button class="relative p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Conflict Alerts" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-code text-[10px] font-bold">2</span></button><button class="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Help &amp; Statutory References" type="button"><span class="material-symbols-outlined text-[22px]">help_outline</span></button><div class="h-5 w-[1px] bg-border-strong"></div><div class="flex items-center gap-space-sm pl-space-xs cursor-pointer group"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary group-hover:text-primary leading-tight">Adv. Vikram Sen</span><span class="font-caption text-caption text-secondary font-medium leading-none">Senior Partner</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">arrow_drop_down</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-card border-r border-border-subtle z-40 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-md px-space-md"><button class="w-full flex items-center justify-center gap-space-xs py-2 px-space-md rounded-lg bg-primary-container text-on-primary hover:bg-midnight-dark-surface transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span class="font-label-strong text-label-strong tracking-wide uppercase">New Matter Filing</span></button><div class="p-2.5 rounded-lg bg-surface-subtle border border-border-subtle flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-code text-label-code uppercase text-text-muted">Pinned Case</span><span class="font-label-code text-label-code text-brand-accent-amber font-semibold">Urgent</span></div><span class="font-title-sm text-title-sm text-text-primary line-clamp-1">State v. R. Singhania</span><div class="flex items-center justify-between text-text-secondary"><span class="font-caption text-caption font-mono">DHC/2024/0891</span><span class="font-caption text-caption font-medium text-secondary">Court 4, Item 11</span></div></div><div class="h-[1px] bg-border-subtle my-0.5"></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="matters-360" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-body-default text-body-default">Matters 360</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-2 rounded-lg transition-all bg-primary-container text-on-primary font-semibold shadow-sm" data-path="daily-cause-list" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span class="font-body-default text-body-default">Daily Cause List</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="bns-bnss-transition" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="font-body-default text-body-default">BNS / BNSS Matrix</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="smart-vault-ocr" href="#"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span class="font-body-default text-body-default">Smart Vault &amp; OCR</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="e-filing-defect-auditor" href="#"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-body-default text-body-default">E-Filing Auditor</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="finance-bci-billing" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-body-default text-body-default">Finance &amp; BCI Billing</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="client-updates-portal" href="#"><span class="material-symbols-outlined text-[20px]">supervisor_account</span><span class="font-body-default text-body-default">Client Portal</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="firm-audit-dpdp" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-default text-body-default">Firm Audit &amp; DPDP</span></a></nav></div><div class="px-space-md flex flex-col gap-space-sm border-t border-border-subtle pt-space-md"><div class="flex items-center justify-between text-text-muted px-2"><span class="font-label-code text-label-code uppercase tracking-wider">DPDP ACT COMPLIANT</span><span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span></div><div class="flex items-center gap-space-sm px-2 py-1.5 text-text-secondary rounded-lg hover:bg-surface-subtle cursor-pointer transition-colors"><span class="material-symbols-outlined text-[18px]">dns</span><div class="flex flex-col"><span class="font-caption text-caption text-text-primary font-medium">Chamber Node #04</span><span class="font-label-code text-[10px] text-text-muted">Latency 14ms (MeitY Vault)</span></div></div></div></aside><div class="pl-64"><main class="relative pt-16 bg-surface-canvas min-h-screen"><div class="w-full px-margin py-space-md"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-space-lg w-full">
+<!-- Top Action & Filter Strip -->
+<div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-text-muted">
+<span class="font-label-code text-label-code uppercase tracking-wider text-secondary">Roster &amp; Cause List Docket</span>
+<span class="font-label-code text-label-code">•</span>
+<span class="font-label-code text-label-code text-text-secondary">NCR Multi-Jurisdiction Engine</span>
+</div>
+<div class="flex items-baseline gap-space-md">
+<h1 class="font-display-md text-display-md text-primary font-bold">Daily Cause List &amp; Hearing Board</h1>
+<span class="font-label-code text-label-code bg-surface-container px-2 py-0.5 rounded-full text-secondary font-semibold">Live Feed Auto-Poll</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm w-full xl:w-auto">
+<!-- Date Navigator -->
+<div class="flex items-center bg-surface-card rounded-xl p-1 shadow-sm">
+<button class="p-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<div class="flex items-center gap-1.5 px-3 py-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">calendar_today</span>
+<span class="font-title-sm text-title-sm text-text-primary">Today: Thu, 12 Oct 2026</span>
+</div>
+<button class="p-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<!-- Advocate Selector Pill -->
+<div class="flex items-center gap-2 bg-surface-card px-3 py-2 rounded-xl shadow-sm cursor-pointer hover:bg-surface-subtle transition-colors">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="font-label-code text-[10px] font-bold">VS</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-title-sm text-title-sm text-text-primary leading-tight">Adv. Vikramaditya Sen</span>
+<span class="font-caption text-caption text-text-muted">Senior Counsel • Lead Roster</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted ml-1">expand_more</span>
+</div>
+<button class="flex items-center gap-1.5 bg-primary-container hover:bg-midnight-dark-surface text-on-primary px-3.5 py-2.5 rounded-xl font-label-strong text-label-strong uppercase tracking-wider transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Bench Printouts</span>
+</button>
+</div>
+</div>
+<!-- Forum Filters Row -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-1.5">
+<button class="px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-strong text-label-strong shadow-sm" type="button">All Forums (7)</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-card hover:bg-surface-subtle text-text-secondary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span>Supreme Court of India</span>
+<span class="font-label-code text-[10px] px-1.5 rounded-full bg-surface-subtle text-text-primary font-bold">1</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-card hover:bg-surface-subtle text-text-secondary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span>Delhi High Court</span>
+<span class="font-label-code text-[10px] px-1.5 rounded-full bg-surface-subtle text-text-primary font-bold">3</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-card hover:bg-surface-subtle text-text-secondary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span>NCLT Delhi (PB)</span>
+<span class="font-label-code text-[10px] px-1.5 rounded-full bg-surface-subtle text-text-primary font-bold">2</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-card hover:bg-surface-subtle text-text-secondary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span>Patiala House Courts</span>
+<span class="font-label-code text-[10px] px-1.5 rounded-full bg-surface-subtle text-text-primary font-bold">1</span>
+</button>
+</div>
+<div class="flex items-center gap-2 text-text-muted">
+<span class="font-caption text-caption">Sort:</span>
+<span class="font-title-sm text-title-sm text-secondary cursor-pointer hover:underline">Chamber Run Priority</span>
+</div>
+</div>
+<!-- Summary Metrics Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric 1 -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider">Listed Today</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-md text-display-md text-primary font-bold">07</span>
+<span class="font-caption text-caption text-status-verified-text font-medium">Matters Prepared</span>
+</div>
+<span class="font-label-code text-[11px] text-text-secondary mt-1">5 Lead Counsel • 2 Proxy Briefs</span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-surface-subtle flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">balance</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider">Active Bench Rooms</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-md text-display-md text-primary font-bold">04</span>
+<span class="font-caption text-caption text-secondary font-medium">Courtrooms Live</span>
+</div>
+<span class="font-label-code text-[11px] text-text-secondary mt-1">2 Division • 2 Single Benches</span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[24px]">meeting_room</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-status-conflict-bg rounded-xl p-space-md shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-status-conflict-text font-bold uppercase tracking-wider">Overlap Conflict</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-md text-display-md text-status-conflict-text font-bold">01</span>
+<span class="font-label-strong text-label-strong text-error uppercase">Urgent Action</span>
+</div>
+<span class="font-label-code text-[11px] text-status-conflict-text mt-1">DHC Ct 12 vs NCLT Ct 2</span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">crisis_alert</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider">eCourts CIS Engine</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-title-md text-title-md text-status-verified-text font-bold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-status-verified-text animate-ping"></span>
+              Live Sync
+            </span>
+<span class="font-caption text-caption text-text-muted">14m ago</span>
+</div>
+<span class="font-label-code text-[11px] text-text-secondary mt-1">NIC Scraper v4.2 • API 200 OK</span>
+</div>
+<div class="w-11 h-11 rounded-xl bg-status-verified-bg text-status-verified-text flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">sync_saved_locally</span>
+</div>
+</div>
+</div>
+<!-- Emergency Schedule Conflict Banner -->
+<div class="rounded-xl p-space-md bg-status-conflict-bg shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex items-start gap-space-md pl-2">
+<div class="w-10 h-10 rounded-xl bg-error text-on-error flex-shrink-0 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">warning</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-code text-label-code px-2 py-0.5 rounded bg-error text-on-error font-bold tracking-wider uppercase">Hearing Overlap Alert</span>
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Item #14 (DHC Court 12) &amp; Item #8 (NCLT PB Court 2) Collision</span>
+</div>
+<p class="font-body-default text-body-default text-text-secondary mt-1 max-w-4xl">
+            Delhi HC Hon. Justice Mehta is on <span class="font-bold text-text-primary">Item #11</span> (ETA ~11:45 AM). NCLT PB is on <span class="font-bold text-text-primary">Item #6</span> (ETA ~11:30 AM). Inter-court transit time via Shershah Road is <span class="font-bold text-status-conflict-text">~35 mins</span>. Physical presence at both forums is mathematically unviable.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 w-full md:w-auto justify-end flex-shrink-0">
+<button class="px-3.5 py-2 rounded-xl bg-surface-card hover:bg-surface-subtle text-text-primary font-label-strong text-label-strong shadow-sm transition-colors whitespace-nowrap" type="button">
+          Dismiss Alert
+        </button>
+<button class="px-4 py-2 rounded-xl bg-error hover:bg-midnight-dark-base text-on-error font-label-strong text-label-strong uppercase tracking-wider shadow-sm transition-colors whitespace-nowrap flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">forward_to_inbox</span>
+<span>Deploy Proxy Brief</span>
+</button>
+</div>
+</div>
+<!-- Main Split Layout (65% Live Hearing Board / 35% Morning Digest & Tactical Workspace) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Live Hearing Board & Order of Proceedings (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Live Board Header -->
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">gavel</span>
+<h2 class="font-headline-statutory text-headline-statutory text-primary font-bold">Courtroom Live Board</h2>
+<span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span>
+</div>
+<span class="font-caption text-caption text-text-muted">Display Boards polling interval: 45 sec</span>
+</div>
+<!-- Court 1 Card: Delhi High Court -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm bg-surface-subtle p-3 rounded-lg">
+<div class="flex items-center gap-space-sm">
+<span class="px-2.5 py-1 rounded bg-primary-container text-on-primary font-label-code text-label-code font-bold uppercase">Court Room 12</span>
+<div>
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Delhi High Court (Division Bench-II)</span>
+<span class="font-caption text-caption text-text-muted block">Hon'ble Mr. Justice P.K. Mehta &amp; Hon'ble Ms. Justice S. Rao</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-[11px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sensors</span>
+                Verified Display Board
+              </span>
+</div>
+</div>
+<!-- Live Progress Track -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center py-1">
+<div class="md:col-span-3 flex flex-col bg-surface-canvas p-3 rounded-xl">
+<span class="font-caption text-caption text-text-muted uppercase">Currently Arguing</span>
+<div class="flex items-baseline gap-2 mt-0.5">
+<span class="font-display-md text-display-md text-secondary font-bold">Item #11</span>
+</div>
+<span class="font-caption text-caption text-text-secondary truncate">Union v. Bhushan Ltd</span>
+</div>
+<div class="md:col-span-6 flex flex-col gap-1.5 px-2">
+<div class="flex items-center justify-between text-text-muted">
+<span class="font-caption text-caption">Progress to NyayaFlow Item: <strong class="text-text-primary">Item #14</strong></span>
+<span class="font-label-code text-label-code text-brand-accent-amber font-semibold">3 Items Away (~25 mins)</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2.5 bg-surface-subtle rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary rounded-full" style="width: 78%;"></div>
+</div>
+<div class="flex items-center justify-between font-label-code text-[10px] text-text-muted">
+<span>Start: Item #1</span>
+<span>Current: #11</span>
+<span class="text-primary font-bold">Ours: #14</span>
+<span>End: #42</span>
+</div>
+</div>
+<div class="md:col-span-3 flex flex-col items-start md:items-end justify-center bg-surface-canvas p-3 rounded-xl text-right">
+<span class="font-caption text-caption text-text-muted uppercase">Estimated Call Time</span>
+<span class="font-title-md text-title-md text-primary font-bold">~11:45 AM</span>
+<span class="font-caption text-caption text-status-verified-text font-medium">Session On Time</span>
+</div>
+</div>
+<!-- Matter Details & Action Drawer -->
+<div class="p-3.5 rounded-xl bg-surface-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-statutory text-headline-statutory text-primary font-bold">W.P.(C) 4892/2024</span>
+<span class="font-label-code text-label-code px-2 py-0.5 rounded bg-surface-card text-text-secondary font-mono">CNR: DLHC010048922024</span>
+<span class="font-label-code text-label-code px-2 py-0.5 rounded bg-surface-container-high text-primary font-semibold">For Admission &amp; Stay</span>
+</div>
+<span class="font-body-legal text-body-legal text-text-primary mt-1 font-semibold">Tata Steel Ltd. &amp; Anr. v. Union of India, Ministry of Mines</span>
+<div class="flex items-center gap-space-md text-text-muted font-caption text-caption mt-1">
+<span>Role: <strong class="text-text-primary">Petitioner (Adv. V. Sen)</strong></span>
+<span>Assisting Junior: <strong class="text-text-primary">Adv. Ananya Roy</strong></span>
+<span>Bench Clerk: <strong class="text-text-primary">+91 98110-XXXXX</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto justify-end">
+<button class="px-3 py-2 rounded-xl bg-surface-card hover:bg-surface-container text-text-primary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">sms</span>
+<span>Ping Junior</span>
+</button>
+<button class="px-3.5 py-2 rounded-xl bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span>Pass-over Slip</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Court 2 Card: NCLT Principal Bench (Overlap Culprit) -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm bg-status-conflict-bg p-3 rounded-lg">
+<div class="flex items-center gap-space-sm">
+<span class="px-2.5 py-1 rounded bg-error text-on-error font-label-code text-label-code font-bold uppercase">Court Room 2</span>
+<div>
+<span class="font-title-sm text-title-sm text-status-conflict-text font-bold">NCLT Principal Bench, CGO Complex</span>
+<span class="font-caption text-caption text-status-conflict-text">President Bench • Company Petition (IBC) List</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded-full bg-error text-on-error font-label-code text-[11px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">near_me</span>
+                Conflict Forum
+              </span>
+</div>
+</div>
+<!-- Live Progress Track -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center py-1">
+<div class="md:col-span-3 flex flex-col bg-surface-canvas p-3 rounded-xl">
+<span class="font-caption text-caption text-text-muted uppercase">Currently Arguing</span>
+<div class="flex items-baseline gap-2 mt-0.5">
+<span class="font-display-md text-display-md text-brand-accent-amber font-bold">Item #6</span>
+</div>
+<span class="font-caption text-caption text-text-secondary truncate">SBI vs Clarion Infra</span>
+</div>
+<div class="md:col-span-6 flex flex-col gap-1.5 px-2">
+<div class="flex items-center justify-between text-text-muted">
+<span class="font-caption text-caption">Progress to NyayaFlow Item: <strong class="text-text-primary">Item #8</strong></span>
+<span class="font-label-code text-label-code text-error font-semibold">2 Items Away (~15 mins)</span>
+</div>
+<div class="w-full h-2.5 bg-surface-subtle rounded-full overflow-hidden flex">
+<div class="h-full bg-brand-accent-amber rounded-full" style="width: 75%;"></div>
+</div>
+<div class="flex items-center justify-between font-label-code text-[10px] text-text-muted">
+<span>Start: Item #1</span>
+<span>Current: #6</span>
+<span class="text-error font-bold">Ours: #8</span>
+<span>End: #24</span>
+</div>
+</div>
+<div class="md:col-span-3 flex flex-col items-start md:items-end justify-center bg-surface-canvas p-3 rounded-xl text-right">
+<span class="font-caption text-caption text-text-muted uppercase">Estimated Call Time</span>
+<span class="font-title-md text-title-md text-error font-bold">~11:30 AM</span>
+<span class="font-caption text-caption text-error font-medium">Imminent Clash</span>
+</div>
+</div>
+<!-- Matter Details & Proxy Dispatcher -->
+<div class="p-3.5 rounded-xl bg-surface-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-headline-statutory text-headline-statutory text-primary font-bold">CP(IB)/102/2025</span>
+<span class="font-label-code text-label-code px-2 py-0.5 rounded bg-surface-card text-text-secondary font-mono">CNR: NCLT010001022025</span>
+<span class="font-label-code text-label-code px-2 py-0.5 rounded bg-error-container text-on-error-container font-semibold">Section 7 IBC (CIRP)</span>
+</div>
+<span class="font-body-legal text-body-legal text-text-primary mt-1 font-semibold">Apex Finvest Corp v. Solarium Energetics Ltd</span>
+<div class="flex items-center gap-space-md text-text-muted font-caption text-caption mt-1">
+<span>Role: <strong class="text-text-primary">Financial Creditor</strong></span>
+<span>Proxy Nominee: <strong class="text-brand-accent-amber font-semibold">Adv. Rohan Mittal (Available at CGO)</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto justify-end">
+<button class="px-4 py-2 rounded-xl bg-primary hover:bg-midnight-dark-base text-on-primary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">transfer_within_a_station</span>
+<span>Authorize Rohan</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Court 3 Card: Supreme Court of India (Afternoon Sitting) -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm bg-surface-subtle p-3 rounded-lg">
+<div class="flex items-center gap-space-sm">
+<span class="px-2.5 py-1 rounded bg-secondary text-on-secondary font-label-code text-label-code font-bold uppercase">Court Room 1</span>
+<div>
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Supreme Court of India (CJI Court)</span>
+<span class="font-caption text-caption text-text-muted">Hon'ble The Chief Justice of India &amp; Companion Judges</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-[11px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                Post-Lunch Docket (2:00 PM)
+              </span>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary font-label-code text-label-code font-bold">Item #28</span>
+<span class="font-headline-statutory text-headline-statutory text-primary font-bold">SLP (Crl) No. 9934/2026</span>
+<span class="font-label-code text-label-code px-2 py-0.5 rounded bg-surface-card text-text-secondary font-mono">CNR: SCIN010099342026</span>
+</div>
+<span class="font-body-legal text-body-legal text-text-primary mt-1 font-semibold">Anand Varma v. Directorate of Enforcement (PMLA)</span>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Special Leave Petition seeking regular bail under twin conditions test (Section 45 PMLA).</p>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto justify-end">
+<button class="px-3 py-2 rounded-xl bg-surface-card hover:bg-surface-subtle text-text-primary font-label-strong text-label-strong shadow-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+<span>SLP Compendium</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Inactive / Later Items Summary Drawer -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-text-primary font-semibold">Remaining 4 Matters in Session</span>
+<span class="font-caption text-caption text-text-muted">Patiala House (NI Act #138), DHC (Arbitration Section 9, Ct 22), NCLT (Court 4)</span>
+</div>
+</div>
+<button class="font-label-strong text-label-strong text-secondary hover:underline flex items-center gap-1" type="button">
+<span>Expand Full Docket</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Morning Tactical Digest & Quick Command Pad (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Morning 7:00 AM Dispatch Digest Card -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">notifications_active</span>
+<h3 class="font-title-md text-title-md text-primary font-bold">07:00 AM Morning Digest</h3>
+</div>
+<span class="font-label-code text-label-code text-status-verified-text bg-status-verified-bg px-2 py-0.5 rounded-full font-bold">Dispatched</span>
+</div>
+<p class="font-caption text-caption text-text-muted">
+            Automated intelligence brief dispatched via WhatsApp &amp; Encrypted Chamber Vault to Lead Senior Counsel &amp; 3 briefing advocates.
+          </p>
+<div class="flex flex-col gap-2 mt-1">
+<!-- Digest Checklist Item 1 -->
+<div class="flex items-start gap-2.5 p-2 rounded-lg hover:bg-surface-subtle transition-colors cursor-pointer group">
+<input checked="" class="mt-0.5 accent-secondary h-4 w-4 rounded cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-text-primary font-medium line-through text-text-muted">Tata Steel Pre-Briefing Conference</span>
+<span class="font-caption text-caption text-text-muted">Completed 08:30 IST • Senior Briefing Room</span>
+</div>
+</div>
+<!-- Digest Checklist Item 2 -->
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-canvas transition-colors cursor-pointer group">
+<input class="mt-0.5 accent-secondary h-4 w-4 rounded cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-text-primary font-semibold">SC SLP Synopsis Filing Deadline</span>
+<span class="font-caption text-caption text-error font-medium">Due at Supreme Court Registry by 13:00 IST</span>
+</div>
+</div>
+<!-- Digest Checklist Item 3 -->
+<div class="flex items-start gap-2.5 p-2 rounded-lg hover:bg-surface-subtle transition-colors cursor-pointer group">
+<input class="mt-0.5 accent-secondary h-4 w-4 rounded cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-text-primary font-medium">Review Ad-Interim Injunction Order</span>
+<span class="font-caption text-caption text-text-muted">Re: Single Bench DHC yesterday evening</span>
+</div>
+</div>
+<!-- Digest Checklist Item 4 -->
+<div class="flex items-start gap-2.5 p-2 rounded-lg hover:bg-surface-subtle transition-colors cursor-pointer group">
+<input class="mt-0.5 accent-secondary h-4 w-4 rounded cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-default text-body-default text-text-primary font-medium">Evening Client Consultation: Jindal Power</span>
+<span class="font-caption text-caption text-text-muted">18:00 IST • Video Room 2 (Delhi HQ)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-text-muted">
+<span class="font-caption text-caption">Recipients: Adv. Sen, Roy, Mittal</span>
+<button class="font-label-code text-label-code text-secondary uppercase hover:underline" type="button">Re-send Brief</button>
+</div>
+</div>
+<!-- Quick Chamber Note Pad (Syncs to Case Repository) -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">edit_note</span>
+<h3 class="font-title-sm text-title-sm text-primary font-bold">Chamber Bench Notepad</h3>
+</div>
+<span class="font-label-code text-[10px] text-text-muted uppercase">Autosave: Active</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-caption text-caption text-text-muted">Tag Matter:</span>
+<select class="bg-surface-canvas text-text-primary font-title-sm text-caption px-2 py-1 rounded-lg border-0 focus:ring-1 focus:ring-secondary">
+<option>W.P.(C) 4892/2024 (Tata Steel)</option>
+<option>CP(IB)/102/2025 (Solarium)</option>
+<option>SLP (Crl) 9934/2026 (PMLA)</option>
+<option>General Judicial Precedents</option>
+</select>
+</div>
+<textarea class="w-full bg-surface-canvas p-3 rounded-xl font-body-default text-body-default text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-1 focus:ring-secondary resize-none" placeholder="Dictate bench observation, Judge Mehta queries on limitation under Sec 14, or senior notes..." rows="4"></textarea>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-caption text-caption">Lawyer-Client Privilege Encrypted</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-subtle hover:bg-surface-container text-text-primary font-label-strong text-label-strong shadow-sm transition-colors" type="button">
+              Save to Docket
+            </button>
+</div>
+</div>
+<!-- Quick Proxy Dispatch Module -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">assignment_ind</span>
+<h4 class="font-title-sm text-title-sm text-primary font-bold">Proxy Advocate Dispatch</h4>
+</div>
+<span class="font-label-code text-label-code text-secondary font-bold">BCI FORM-VII</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+            Instantly forward cause list briefs, case memo, and authorization pass-over letter to junior advocates registered with Delhi High Court Bar Association.
+          </p>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex -space-x-2 overflow-hidden">
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-card bg-primary text-on-primary flex items-center justify-center font-label-code text-[11px] font-bold">RM</div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-card bg-secondary text-on-secondary flex items-center justify-center font-label-code text-[11px] font-bold">AR</div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-card bg-text-secondary text-on-primary flex items-center justify-center font-label-code text-[11px] font-bold">PK</div>
+</div>
+<button class="flex-1 py-2 px-3 rounded-xl bg-primary text-on-primary font-label-strong text-label-strong uppercase tracking-wider hover:bg-midnight-dark-base transition-colors shadow-sm text-center" type="button">
+              Delegate Brief
+            </button>
+</div>
+</div>
+<!-- Static Court Timings Reference Pill -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-card shadow-sm text-text-secondary font-caption text-caption">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[18px]">timelapse</span>
+<span>Lunch Recess: <strong class="text-text-primary">13:15 – 14:00 IST</strong></span>
+</div>
+<span class="text-secondary font-medium">All NCR High Courts</span>
+</div>
+</div>
+</div>
+</div>
+</div></div></main></div></body></html>

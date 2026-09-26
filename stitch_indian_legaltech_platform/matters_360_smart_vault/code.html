@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"text-secondary":"#475569","tertiary-fixed-dim":"#ffb77d","surface-variant":"#d3e4fe","surface-canvas":"#F8FAFC","status-verified-text":"#065F46","error-container":"#ffdad6","status-stale-text":"#92400E","background":"#f8f9ff","secondary":"#006876","on-surface-variant":"#44474e","status-conflict-border":"#FECACA","text-muted":"#94A3B8","inverse-primary":"#b3c7ee","on-tertiary-fixed":"#2f1500","on-error":"#ffffff","surface-subtle":"#F1F5F9","status-stale-border":"#FDE68A","secondary-fixed-dim":"#84d2e2","on-primary-fixed":"#031b39","status-manual-border":"#E2E8F0","error":"#ba1a1a","secondary-fixed":"#a0efff","on-secondary-fixed-variant":"#004e59","on-background":"#0b1c30","status-verified-border":"#A7F3D0","border-strong":"#CBD5E1","surface-container-low":"#eff4ff","on-secondary-fixed":"#001f25","surface-bright":"#f8f9ff","on-error-container":"#93000a","primary-fixed-dim":"#b3c7ee","midnight-dark-base":"#020617","status-verified-bg":"#ECFDF5","on-tertiary-fixed-variant":"#6e3900","primary-container":"#0b2240","surface-container":"#e5eeff","status-conflict-text":"#991B1B","on-surface":"#0b1c30","status-manual-text":"#334155","primary":"#000b1f","status-manual-bg":"#F8FAFC","tertiary-container":"#381a00","tertiary-fixed":"#ffdcc3","inverse-surface":"#213145","surface-card":"#FFFFFF","status-stale-bg":"#FFFBEB","surface-container-highest":"#d3e4fe","on-primary-container":"#768aad","tertiary":"#170700","outline-variant":"#c4c6ce","status-conflict-bg":"#FEF2F2","on-secondary-container":"#0d6e7d","primary-fixed":"#d5e3ff","on-primary":"#ffffff","midnight-dark-surface":"#0B1528","surface-container-lowest":"#ffffff","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","border-subtle":"#E2E8F0","surface":"#f8f9ff","outline":"#74777e","secondary-container":"#a0efff","on-secondary":"#ffffff","on-primary-fixed-variant":"#334767","text-primary":"#0F172A","midnight-dark-border":"#1E293B","on-tertiary-container":"#cf7100","brand-accent-amber":"#D8892A","inverse-on-surface":"#eaf1ff","surface-tint":"#4b5f80","on-tertiary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-sm":"0.5rem","gutter":"1rem","space-xl":"2rem","space-xs":"0.25rem","space-md":"0.75rem","space-lg":"1.25rem","margin":"1.25rem"},"fontFamily":{"display-lg":["Domine"],"title-md":["Inter"],"label-strong":["Inter"],"headline-statutory":["Domine"],"display-md":["Domine"],"headline-ui":["Inter"],"body-default":["Inter"],"title-sm":["Inter"],"label-code":["Inter"],"body-legal":["Domine"],"body-dense":["Inter"],"caption":["Inter"]},"fontSize":{"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"title-md":["15px",{"lineHeight":"20px","fontWeight":"600"}],"label-strong":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-statutory":["20px",{"lineHeight":"28px","fontWeight":"600"}],"display-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-ui":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-default":["13px",{"lineHeight":"20px","fontWeight":"400"}],"title-sm":["13px",{"lineHeight":"18px","fontWeight":"600"}],"label-code":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-legal":["15px",{"lineHeight":"26px","fontWeight":"400"}],"body-dense":["12px",{"lineHeight":"16px","fontWeight":"400"}],"caption":["11px",{"lineHeight":"14px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface-canvas font-body-default text-text-primary antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 z-50 bg-surface-card border-b border-border-subtle"><div class="h-16 w-full px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md min-w-[280px]"><img alt="Logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wd8pl1ZnY8J6tFKX_OFpcXUkgfHkleAjWX2nWEAR1CUucI7Q53tZLDcrs4SCsc7aiJZ_mAW-3SipAnblDENGyFCPZjB1_MPXnuU3KnCtlAkVpkxarJwbQIfM7uN1QogcaRJ7mjWR6_rfU83jbR_jNF1JrRzdNqWRanRxP4vBHVJid021TWisyeFwzhJVeGXICX3SBv2GQjqBzmwwyvpek5BkBETQypBTrijFWVdHQi--gxZteqZR0zYrGf09HPdUp97fcuzXydoQ"/><div class="flex items-center gap-space-xs"><span class="font-headline-ui text-headline-ui text-primary font-bold tracking-tight">NyayaFlow</span><span class="font-label-code text-label-code uppercase px-1.5 py-0.5 rounded bg-surface-container text-secondary font-semibold">IN Core</span></div><div class="h-5 w-[1px] bg-border-strong mx-space-xs"></div><div class="flex items-center gap-space-xs cursor-pointer px-2 py-1.5 rounded-lg hover:bg-surface-subtle transition-colors group"><div class="flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary leading-none group-hover:text-primary">Shardul &amp; Associates</span><span class="font-caption text-caption text-text-muted leading-tight">New Delhi (HQ)</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">expand_more</span></div></div><div class="flex-1 max-w-xl mx-auto flex items-center gap-gutter"><div class="flex-1 relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-text-muted text-[18px]">search</span><input class="w-full pl-9 pr-14 py-2 bg-surface-canvas border border-border-subtle rounded-xl font-body-default text-body-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Search Matters, CNRs, Case Citations, Statutes (IPC/BNS)..." type="text"/><kbd class="absolute right-3 px-1.5 py-0.5 rounded border border-border-strong bg-surface-card font-label-code text-label-code text-text-muted">⌘K</kbd></div><div class="hidden xl:flex items-center gap-space-xs px-2.5 py-1.5 rounded-full bg-status-verified-bg border border-status-verified-border"><span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span><span class="font-label-strong text-label-strong text-status-verified-text">eCourts Live</span><span class="font-caption text-caption text-text-secondary">• Del/Mumb 12m</span></div></div><div class="flex items-center gap-space-md justify-end min-w-[280px]"><button class="relative p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Conflict Alerts" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error text-on-error font-label-code text-[10px] font-bold">2</span></button><button class="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-subtle transition-colors" title="Help &amp; Statutory References" type="button"><span class="material-symbols-outlined text-[22px]">help_outline</span></button><div class="h-5 w-[1px] bg-border-strong"></div><div class="flex items-center gap-space-sm pl-space-xs cursor-pointer group"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-title-sm text-title-sm text-text-primary group-hover:text-primary leading-tight">Adv. Vikram Sen</span><span class="font-caption text-caption text-secondary font-medium leading-none">Senior Partner</span></div><span class="material-symbols-outlined text-[18px] text-text-muted group-hover:text-text-primary">arrow_drop_down</span></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-card border-r border-border-subtle z-40 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-md px-space-md"><button class="w-full flex items-center justify-center gap-space-xs py-2 px-space-md rounded-lg bg-primary-container text-on-primary hover:bg-midnight-dark-surface transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span class="font-label-strong text-label-strong tracking-wide uppercase">New Matter Filing</span></button><div class="p-2.5 rounded-lg bg-surface-subtle border border-border-subtle flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-code text-label-code uppercase text-text-muted">Pinned Case</span><span class="font-label-code text-label-code text-brand-accent-amber font-semibold">Urgent</span></div><span class="font-title-sm text-title-sm text-text-primary line-clamp-1">State v. R. Singhania</span><div class="flex items-center justify-between text-text-secondary"><span class="font-caption text-caption font-mono">DHC/2024/0891</span><span class="font-caption text-caption font-medium text-secondary">Court 4, Item 11</span></div></div><div class="h-[1px] bg-border-subtle my-0.5"></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-2 rounded-lg transition-all bg-primary-container text-on-primary font-semibold shadow-sm" data-path="matters-360" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-body-default text-body-default">Matters 360</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="daily-cause-list" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span class="font-body-default text-body-default">Daily Cause List</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="bns-bnss-transition" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span class="font-body-default text-body-default">BNS / BNSS Matrix</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="smart-vault-ocr" href="#"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span class="font-body-default text-body-default">Smart Vault &amp; OCR</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="e-filing-defect-auditor" href="#"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-body-default text-body-default">E-Filing Auditor</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="finance-bci-billing" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-body-default text-body-default">Finance &amp; BCI Billing</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="client-updates-portal" href="#"><span class="material-symbols-outlined text-[20px]">supervisor_account</span><span class="font-body-default text-body-default">Client Portal</span></a><a class="flex items-center gap-space-md px-space-md py-2 rounded-lg text-text-secondary hover:bg-surface-subtle hover:text-text-primary transition-all" data-path="firm-audit-dpdp" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-default text-body-default">Firm Audit &amp; DPDP</span></a></nav></div><div class="px-space-md flex flex-col gap-space-sm border-t border-border-subtle pt-space-md"><div class="flex items-center justify-between text-text-muted px-2"><span class="font-label-code text-label-code uppercase tracking-wider">DPDP ACT COMPLIANT</span><span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span></div><div class="flex items-center gap-space-sm px-2 py-1.5 text-text-secondary rounded-lg hover:bg-surface-subtle cursor-pointer transition-colors"><span class="material-symbols-outlined text-[18px]">dns</span><div class="flex flex-col"><span class="font-caption text-caption text-text-primary font-medium">Chamber Node #04</span><span class="font-label-code text-[10px] text-text-muted">Latency 14ms (MeitY Vault)</span></div></div></div></aside><div class="pl-64"><main class="relative pt-16 bg-surface-canvas min-h-screen"><div class="w-full px-margin py-space-md"><div class="flex flex-col w-full gap-space-lg pb-16">
+<!-- MATTER BANNER & COMMAND TELEMETRY -->
+<div class="w-full bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-20 -top-24 w-80 h-80 rounded-full bg-surface-container opacity-40 blur-3xl pointer-events-none"></div>
+<div class="absolute right-48 -bottom-20 w-64 h-64 rounded-full bg-secondary-fixed opacity-20 blur-2xl pointer-events-none"></div>
+<!-- Tier 1: Case Identifier & Live Telemetry -->
+<div class="flex flex-wrap items-center justify-between gap-space-md z-10">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="px-2.5 py-1 rounded bg-midnight-dark-surface text-on-primary font-label-code text-label-code uppercase tracking-wider">High Court of Delhi</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-code text-label-code">Court 18 • Bench II</span>
+<span class="px-2 py-0.5 rounded bg-surface-subtle text-text-secondary font-label-code text-label-code">Hon'ble Mr. Justice S. Sharma</span>
+<div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-status-verified-bg text-status-verified-text">
+<span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span>
+<span class="font-label-code text-label-code uppercase font-bold tracking-tight">eCourts Live: Active (Hearing Stage)</span>
+</div>
+</div>
+<!-- Quick Actions Bar -->
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-subtle hover:bg-surface-container text-text-primary rounded-lg transition-all text-caption font-medium" id="copyCnrBtn" onclick="copyCNR()">
+<span class="material-symbols-outlined text-[16px] text-secondary">content_copy</span>
+<span class="font-mono text-caption" id="cnrText">DLHC010098422024</span>
+<span class="font-label-code text-[10px] text-status-verified-text uppercase font-bold hidden" id="copyToast">Copied!</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-primary text-on-primary rounded-lg text-caption font-medium hover:bg-midnight-dark-surface transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Sync Docket</span>
+</button>
+</div>
+</div>
+<!-- Tier 2: Cause Title & Parties -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md z-10">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-code text-label-code">W.P.(C) 8812/2024</span>
+<span class="font-caption text-caption text-text-muted">Listed under Art. 226/227 Constitution of India</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-text-primary tracking-tight">Tata Consumer Products Ltd. <span class="text-text-muted font-light text-[22px] italic">v.</span> Union of India &amp; Anr.</h1>
+<p class="font-body-default text-body-default text-text-secondary flex items-center gap-2">
+<span class="font-semibold text-text-primary">Petitioner:</span> Tata Consumer Products Ltd. (through Auth. Signatory)
+          <span class="text-text-muted">•</span>
+<span class="font-semibold text-text-primary">Respondents:</span> (1) Ministry of Corporate Affairs, (2) Competition Commission of India
+        </p>
+</div>
+<!-- Critical Timeline Pill Box -->
+<div class="flex items-stretch gap-2 shrink-0">
+<div class="bg-surface-canvas rounded-xl p-3 flex flex-col justify-center min-w-[140px]">
+<span class="font-label-code text-label-code uppercase text-text-muted">Next Listing Date</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-statutory text-headline-statutory text-primary font-bold">28 Oct 2026</span>
+</div>
+<span class="font-caption text-caption text-brand-accent-amber font-semibold">Final Arguments • Item #14</span>
+</div>
+<div class="bg-surface-canvas rounded-xl p-3 flex flex-col justify-center min-w-[130px]">
+<span class="font-label-code text-label-code uppercase text-text-muted">Limitation Window</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-statutory text-headline-statutory text-status-verified-text font-bold">14 Days</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">Safe to file Rejoinder</span>
+</div>
+</div>
+</div>
+<!-- Tier 3: Metadata Badges, Leads, & Compliance -->
+<div class="pt-space-sm flex flex-wrap items-center justify-between gap-space-sm text-caption text-text-secondary z-10 bg-surface-subtle/60 rounded-lg p-2.5">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px] text-secondary">gavel</span>
+<span>Lead Counsel: <strong class="text-text-primary">Adv. Vikramaditya Sen</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px] text-text-muted">badge</span>
+<span>Briefing Associate: <strong class="text-text-primary">Adv. Ananya Deshmukh</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px] text-text-muted">corporate_fare</span>
+<span>Client Rep: <strong class="text-text-primary">R. K. Nair (GC, TCPL)</strong></span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-card text-on-surface-variant font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[13px] text-status-verified-text">lock</span> RLS Enforced (Partner Exclusive)
+        </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-card text-on-surface-variant font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[13px] text-secondary">policy</span> Retention: Active Hold (7 Yrs)
+        </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-card text-on-surface-variant font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[13px] text-brand-accent-amber">shield</span> DPDP 2023 Privileged
+        </span>
+</div>
+</div>
+</div>
+<!-- MATTER TABS NAVIGATION -->
+<div class="w-full flex items-center justify-between gap-2 overflow-x-auto">
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-xl">
+<button class="px-4 py-2 rounded-lg font-title-sm text-title-sm text-text-secondary hover:text-text-primary hover:bg-surface-card transition-all whitespace-nowrap">
+        Overview &amp; Proceedings History
+      </button>
+<button class="px-4 py-2 rounded-lg font-title-sm text-title-sm bg-midnight-dark-surface text-on-primary shadow-sm flex items-center gap-2 whitespace-nowrap">
+<span>Smart Document Vault</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-code text-[11px] font-bold">14</span>
+</button>
+<button class="px-4 py-2 rounded-lg font-title-sm text-title-sm text-text-secondary hover:text-text-primary hover:bg-surface-card transition-all whitespace-nowrap flex items-center gap-1.5">
+<span>Synopsis &amp; List of Dates</span>
+<span class="w-2 h-2 rounded-full bg-brand-accent-amber"></span>
+</button>
+<button class="px-4 py-2 rounded-lg font-title-sm text-title-sm text-text-secondary hover:text-text-primary hover:bg-surface-card transition-all whitespace-nowrap flex items-center gap-2">
+<span>Legal Research</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant font-label-code text-[11px]">3</span>
+</button>
+<button class="px-4 py-2 rounded-lg font-title-sm text-title-sm text-text-secondary hover:text-text-primary hover:bg-surface-card transition-all whitespace-nowrap">
+        Billing &amp; Retainers
+      </button>
+<button class="px-4 py-2 rounded-lg font-title-sm text-title-sm text-text-secondary hover:text-text-primary hover:bg-surface-card transition-all whitespace-nowrap">
+        Audit Trail (DPDP)
+      </button>
+</div>
+<!-- Auxiliary Vault Controls -->
+<div class="flex items-center gap-2 shrink-0">
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-text-muted">search</span>
+<input class="bg-transparent text-caption font-body-default text-text-primary px-2 focus:outline-none w-48 placeholder:text-text-muted" placeholder="Passage &amp; citation search..." type="text"/>
+<kbd class="font-label-code text-[9px] bg-surface-subtle px-1 py-0.5 rounded text-text-muted">Ctrl+F</kbd>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-secondary hover:bg-secondary/90 text-on-secondary rounded-lg font-title-sm text-caption shadow-sm transition-all">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<span>Upload Document</span>
+</button>
+</div>
+</div>
+<!-- WORKSPACE MAIN CANVAS: 12-COLUMN BENTO GRID -->
+<div class="grid grid-cols-12 gap-space-lg">
+<!-- LEFT & CENTER: DOCKET REPOSITORY & CONTINUOUS PAGINATION PREVIEW (8 COLS) -->
+<div class="col-span-12 xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Vault Metrics & OCR Engine Status Card -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px]">document_scanner</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-sm text-title-sm text-text-primary">OCR &amp; Indian Judicial Script Engine</span>
+<span class="px-2 py-0.2 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-[10px]">Tesseract 5.3 + Indic Legal LLM</span>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-0.5">14 Documents indexed • 1,280 pages processed • Bilingual Hindi/English OCR Confidence avg: <strong>98.7%</strong></p>
+</div>
+</div>
+<!-- Inline Visual: OCR Confidence Sparkline & Storage Stat -->
+<div class="flex items-center gap-space-lg">
+<div class="flex flex-col text-right">
+<span class="font-label-code text-label-code text-text-muted uppercase">Indexed Footprint</span>
+<span class="font-title-sm text-title-sm text-text-primary">142.4 MB <span class="text-caption text-text-muted font-normal">(Encrypted)</span></span>
+</div>
+<svg class="w-24 h-8 text-secondary" fill="none" viewbox="0 0 100 30">
+<path d="M0 25 L15 22 L30 18 L45 23 L60 12 L75 14 L90 6 L100 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M0 25 L15 22 L30 18 L45 23 L60 12 L75 14 L90 6 L100 4 L100 30 L0 30 Z" fill="currentColor" fill-opacity="0.1"></path>
+</svg>
+</div>
+</div>
+<!-- Smart Document Vault Table Card -->
+<div class="w-full bg-surface-card rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="p-space-md bg-surface-subtle/50 flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-sm text-title-sm text-text-primary">Primary Docket Repository</span>
+<span class="font-caption text-caption text-text-muted">(Master Index for E-Filing DHC)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-caption text-caption text-text-secondary">View:</span>
+<button class="px-2 py-1 bg-surface-card rounded text-caption font-medium text-text-primary shadow-xs">Categorized</button>
+<button class="px-2 py-1 text-caption text-text-muted hover:text-text-primary">Flat Sequence</button>
+<button class="px-2 py-1 text-caption text-text-muted hover:text-text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">filter_list</span> Filter
+            </button>
+</div>
+</div>
+<!-- Document Table Grid -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-canvas text-text-secondary font-label-code text-label-code uppercase tracking-wider">
+<th class="py-2.5 px-4">Document Title &amp; Registry Metadata</th>
+<th class="py-2.5 px-3">Classification</th>
+<th class="py-2.5 px-3">Version</th>
+<th class="py-2.5 px-3">OCR Accuracy</th>
+<th class="py-2.5 px-3">Security &amp; Vault</th>
+<th class="py-2.5 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-default text-body-default divide-y divide-transparent">
+<!-- Item 1: Main Petition -->
+<tr class="hover:bg-surface-subtle/70 transition-colors group cursor-pointer bg-surface-card">
+<td class="py-3 px-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">description</span>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">Writ_Petition_Final_Revised_Signed.pdf</span>
+<span class="px-1.5 py-0.2 rounded bg-midnight-dark-base text-on-primary font-label-code text-[9px] uppercase">Master</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Pages: 1-64 • Registered: 12 Aug 2024 • MD5: 9a8f...32b1</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-primary-fixed-variant font-label-strong text-caption">Writ Petition (Main)</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-code text-caption font-bold text-text-primary">v3.2 Approved</span>
+<span class="block font-caption text-[10px] text-text-muted">By Adv. V. Sen</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-subtle overflow-hidden">
+<div class="h-full bg-status-verified-text rounded-full" style="width: 99.4%"></div>
+</div>
+<span class="font-label-code text-caption font-semibold text-status-verified-text">99.4%</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[12px]">verified</span> Clean (Supabase)
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1 text-text-secondary">
+<button class="p-1 hover:bg-surface-container rounded transition-colors" title="Deep Search Inside"><span class="material-symbols-outlined text-[18px]">find_in_page</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors" title="Diff with v3.1"><span class="material-symbols-outlined text-[18px]">difference</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors text-status-verified-text" title="eSign Validated"><span class="material-symbols-outlined text-[18px]">verified_user</span></button>
+</div>
+</td>
+</tr>
+<!-- Item 2: Annexure P-1 (Impugned Order) -->
+<tr class="hover:bg-surface-subtle/70 transition-colors group cursor-pointer bg-surface-canvas/40">
+<td class="py-3 px-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-brand-accent-amber text-[22px] mt-0.5">gavel</span>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">Annexure_P1_Impugned_Order_14062024.pdf</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-code text-[9px]">CRITICAL</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Pages: 65-88 • Order No: CCI/NF/088/2024 • Issued by DG-CCI</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-label-strong text-caption">Annexure P-1</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-code text-caption font-bold text-text-primary">v1.0 Certified</span>
+<span class="block font-caption text-[10px] text-text-muted">True Copy Attested</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-subtle overflow-hidden">
+<div class="h-full bg-status-verified-text rounded-full" style="width: 98.1%"></div>
+</div>
+<span class="font-label-code text-caption font-semibold text-status-verified-text">98.1%</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[12px]">verified</span> Scanned &amp; Clean
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1 text-text-secondary">
+<button class="p-1 hover:bg-surface-container rounded transition-colors" title="Inspect Citations"><span class="material-symbols-outlined text-[18px]">find_in_page</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors" title="Bookmark in List of Dates"><span class="material-symbols-outlined text-[18px]">bookmark_add</span></button>
+</div>
+</td>
+</tr>
+<!-- Item 3: Annexure P-2 (Board Resolution) -->
+<tr class="hover:bg-surface-subtle/70 transition-colors group cursor-pointer bg-surface-card">
+<td class="py-3 px-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-text-muted text-[22px] mt-0.5">assignment</span>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">Annexure_P2_Board_Resolution_Auth.pdf</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Pages: 89-94 • Extracted from TCPL Secretarial Records</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-label-strong text-caption">Annexure P-2</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-code text-caption font-bold text-text-primary">v2.0 Clean</span>
+<span class="block font-caption text-[10px] text-text-muted">Board Seal Verified</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-subtle overflow-hidden">
+<div class="h-full bg-status-verified-text rounded-full" style="width: 100%"></div>
+</div>
+<span class="font-label-code text-caption font-semibold text-status-verified-text">100%</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[12px]">verified</span> Digital Sign OK
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1 text-text-secondary">
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">find_in_page</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">more_horiz</span></button>
+</div>
+</td>
+</tr>
+<!-- Item 4: Rejoinder Affidavit -->
+<tr class="hover:bg-surface-subtle/70 transition-colors group cursor-pointer bg-surface-canvas/40">
+<td class="py-3 px-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">edit_document</span>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">Draft_Rejoinder_Affidavit_In_Reply_MCA.docx</span>
+<span class="px-1.5 py-0.2 rounded bg-status-stale-bg text-status-stale-text font-label-code text-[9px]">DRAFTING</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Pages: 95-122 • Author: Adv. A. Deshmukh • Redlines active</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-text-primary font-label-strong text-caption">Rejoinder Affidavit</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-code text-caption font-bold text-brand-accent-amber">v4.0 Draft</span>
+<span class="block font-caption text-[10px] text-text-muted">Under Senior Review</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="font-label-code text-caption font-semibold text-text-muted">Native DOCX</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-status-manual-bg text-status-manual-text font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[12px]">lock_clock</span> Quarantine Staging
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1 text-text-secondary">
+<button class="p-1 hover:bg-surface-container rounded transition-colors text-brand-accent-amber" title="Resolve Comments"><span class="material-symbols-outlined text-[18px]">rate_review</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">difference</span></button>
+</div>
+</td>
+</tr>
+<!-- Item 5: Interim Stay Order -->
+<tr class="hover:bg-surface-subtle/70 transition-colors group cursor-pointer bg-surface-card">
+<td class="py-3 px-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-status-verified-text text-[22px] mt-0.5">verified</span>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">DHC_Interim_Stay_Order_Dated_24082024.pdf</span>
+<span class="px-1.5 py-0.2 rounded bg-status-verified-bg text-status-verified-text font-label-code text-[9px]">JUDICIAL ORDER</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Pages: 123-148 • Issued by High Court Bench • No coercive steps</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-primary-fixed-variant font-label-strong text-caption">Interim Order</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-label-code text-caption font-bold text-text-primary">v1.0 Official</span>
+<span class="block font-caption text-[10px] text-text-muted">Court Certified</span>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1.5 rounded-full bg-surface-subtle overflow-hidden">
+<div class="h-full bg-status-verified-text rounded-full" style="width: 97.6%"></div>
+</div>
+<span class="font-label-code text-caption font-semibold text-status-verified-text">97.6%</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-[10px]">
+<span class="material-symbols-outlined text-[12px]">verified</span> Validated
+                  </span>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="flex items-center justify-end gap-1 text-text-secondary">
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">share</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination Bar -->
+<div class="p-3 bg-surface-canvas flex items-center justify-between font-caption text-caption text-text-secondary">
+<div class="flex items-center gap-2">
+<span>Showing <strong>5</strong> of <strong>14</strong> docket documents</span>
+<span class="text-text-muted">•</span>
+<span class="text-secondary cursor-pointer hover:underline">Download Master Merged PDF with Bookmarks</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-card text-text-primary disabled:opacity-40">Previous</button>
+<button class="px-2 py-1 rounded bg-midnight-dark-surface text-on-primary font-bold">1</button>
+<button class="px-2 py-1 rounded bg-surface-card text-text-primary hover:bg-surface-subtle">2</button>
+<button class="px-2 py-1 rounded bg-surface-card text-text-primary hover:bg-surface-subtle">3</button>
+<button class="px-2 py-1 rounded bg-surface-card text-text-primary hover:bg-surface-subtle">Next</button>
+</div>
+</div>
+</div>
+<!-- AUTO-INDEX & HIGH COURT CONTINUOUS PAGINATION AUDITOR -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">rule</span>
+<div>
+<h3 class="font-title-sm text-title-sm text-text-primary">Delhi High Court Practice Directions Auditor</h3>
+<p class="font-caption text-caption text-text-secondary">Continuous Pagination &amp; Font Compliance Check (Rules 2018 as amended)</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-status-verified-bg text-status-verified-text font-label-code text-caption font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 100% REGISTRY COMPLIANT
+          </span>
+</div>
+<!-- 4-Grid Compliance Diagnostic -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm">
+<div class="p-3 bg-surface-canvas rounded-lg">
+<span class="font-label-code text-[10px] uppercase text-text-muted">Master Continuous Folio</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-title-sm text-title-sm text-primary font-bold">1 – 148</span>
+<span class="font-caption text-caption text-status-verified-text font-semibold">Continuous</span>
+</div>
+<p class="font-caption text-[10px] text-text-muted mt-0.5">No broken jumps detected</p>
+</div>
+<div class="p-3 bg-surface-canvas rounded-lg">
+<span class="font-label-code text-[10px] uppercase text-text-muted">Page Margins &amp; Header</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-title-sm text-title-sm text-primary font-bold">3.5 cm Left</span>
+<span class="font-caption text-caption text-status-verified-text font-semibold">OK</span>
+</div>
+<p class="font-caption text-[10px] text-text-muted mt-0.5">2.5 cm Right, Top, Bottom</p>
+</div>
+<div class="p-3 bg-surface-canvas rounded-lg">
+<span class="font-label-code text-[10px] uppercase text-text-muted">Typography &amp; Spacing</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-title-sm text-title-sm text-primary font-bold">1.5 Line Space</span>
+<span class="font-caption text-caption text-status-verified-text font-semibold">OK</span>
+</div>
+<p class="font-caption text-[10px] text-text-muted mt-0.5">Bookman Old Style / Times 14pt</p>
+</div>
+<div class="p-3 bg-surface-canvas rounded-lg">
+<span class="font-label-code text-[10px] uppercase text-text-muted">Index Bookmark Tree</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-title-sm text-title-sm text-primary font-bold">PDF/A-1b</span>
+<span class="font-caption text-caption text-status-verified-text font-semibold">Compliant</span>
+</div>
+<p class="font-caption text-[10px] text-text-muted mt-0.5">Ready for DHC e-portal push</p>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT: INTERACTIVE SYNOPSIS GENERATOR & WORKSPACE DRAWER (4 COLS) -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Synopsis & List of Dates Generator Panel -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">calendar_view_day</span>
+<h2 class="font-title-sm text-title-sm text-text-primary">Master Synopsis &amp; List of Dates</h2>
+</div>
+<button class="px-2 py-1 bg-surface-subtle hover:bg-surface-container rounded text-caption font-semibold text-secondary flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[14px]">auto_fix_high</span> Auto-Generate
+          </button>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+          Statutory chronological index automatically mapped against case annexures with verified folio bookmarks.
+        </p>
+<!-- Chronological Timeline List -->
+<div class="flex flex-col gap-3 relative before:absolute before:top-2 before:bottom-2 before:left-[17px] before:w-[2px] before:bg-surface-variant">
+<!-- Event 1 -->
+<div class="flex items-start gap-3 relative z-10 group">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 text-caption font-bold shadow-xs">
+              01
+            </div>
+<div class="flex-1 bg-surface-canvas p-2.5 rounded-lg group-hover:bg-surface-subtle transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-secondary font-bold">14 JUNE 2024</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-code text-[10px] font-bold">Annexure P-1</span>
+</div>
+<p class="font-body-dense text-body-dense text-text-primary font-medium mt-1">Impugned Order passed by DG-CCI</p>
+<p class="font-caption text-caption text-text-muted mt-0.5">CCI orders investigation into packaging market practices without prima facie hearing under Sec. 26(1) Competition Act.</p>
+<div class="mt-2 flex items-center justify-between text-[11px] text-secondary font-mono">
+<span>Page 65 @ Folio 001</span>
+<button class="hover:underline flex items-center gap-0.5 text-text-secondary hover:text-secondary">
+<span class="material-symbols-outlined text-[12px]">open_in_new</span> Jump to PDF
+                </button>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex items-start gap-3 relative z-10 group">
+<div class="w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 text-caption font-bold shadow-xs">
+              02
+            </div>
+<div class="flex-1 bg-surface-canvas p-2.5 rounded-lg group-hover:bg-surface-subtle transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-secondary font-bold">02 JULY 2024</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-secondary font-label-code text-[10px] font-bold">Annexure P-2</span>
+</div>
+<p class="font-body-dense text-body-dense text-text-primary font-medium mt-1">Board Resolution approving Special Writ Petition</p>
+<p class="font-caption text-caption text-text-muted mt-0.5">TCPL Board passes resolution authorising GC R. K. Nair and advocates to institute constitutional remedy before DHC.</p>
+<div class="mt-2 flex items-center justify-between text-[11px] text-secondary font-mono">
+<span>Page 89 @ Folio 025</span>
+<button class="hover:underline flex items-center gap-0.5 text-text-secondary hover:text-secondary">
+<span class="material-symbols-outlined text-[12px]">open_in_new</span> Jump to PDF
+                </button>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex items-start gap-3 relative z-10 group">
+<div class="w-9 h-9 rounded-full bg-brand-accent-amber text-midnight-dark-base flex items-center justify-center shrink-0 text-caption font-bold shadow-xs">
+              03
+            </div>
+<div class="flex-1 bg-surface-canvas p-2.5 rounded-lg group-hover:bg-surface-subtle transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-brand-accent-amber font-bold">24 AUG 2024</span>
+<span class="px-1.5 py-0.2 rounded bg-status-verified-bg text-status-verified-text font-label-code text-[10px] font-bold">Interim Order</span>
+</div>
+<p class="font-body-dense text-body-dense text-text-primary font-medium mt-1">Hon'ble High Court grants ad-interim relief</p>
+<p class="font-caption text-caption text-text-muted mt-0.5">Court 18 directs Respondent No. 2 not to initiate coercive summons until next listing date. Notice issued to MCA.</p>
+<div class="mt-2 flex items-center justify-between text-[11px] text-secondary font-mono">
+<span>Page 123 @ Folio 059</span>
+<button class="hover:underline flex items-center gap-0.5 text-text-secondary hover:text-secondary">
+<span class="material-symbols-outlined text-[12px]">open_in_new</span> Jump to PDF
+                </button>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-subtle hover:bg-surface-container text-text-primary rounded-lg font-title-sm text-caption flex items-center justify-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">add_circle</span> Add Chronological Entry
+        </button>
+</div>
+<!-- Quick Action Drawer & Litigator Tools -->
+<div class="w-full bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<h3 class="font-title-sm text-title-sm text-text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span> Litigator Action Console
+        </h3>
+<div class="flex flex-col gap-space-xs">
+<!-- Action 1: Client Quarantine Upload -->
+<div class="p-3 rounded-lg bg-surface-canvas hover:bg-surface-subtle transition-all cursor-pointer flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+</div>
+<div>
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">Request Client Evidence</span>
+<p class="font-caption text-caption text-text-muted">Generate quarantine upload link for GC Nair</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<!-- Action 2: Proxy Brief Generator -->
+<div class="p-3 rounded-lg bg-surface-canvas hover:bg-surface-subtle transition-all cursor-pointer flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined text-[20px]">summarize</span>
+</div>
+<div>
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">Generate 1-Page Proxy Brief</span>
+<p class="font-caption text-caption text-text-muted">Compact passover/adjournment note for Court 18</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<!-- Action 3: BCI Billing & Retainer -->
+<div class="p-3 rounded-lg bg-surface-canvas hover:bg-surface-subtle transition-all cursor-pointer flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-brand-accent-amber group-hover:bg-brand-accent-amber group-hover:text-midnight-dark-base transition-all">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div>
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-secondary transition-colors">Log Hearing Fee &amp; Time Entry</span>
+<p class="font-caption text-caption text-text-muted">Bar Council Rule 36 Ethical Standard Compliant</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-text-muted group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Law Firm Chamber Footnote & Security Tag -->
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-[10px] text-text-muted uppercase">Cloud Security Node</span>
+<span class="font-label-code text-[10px] text-status-verified-text font-bold">ACTIVE (TLS 1.3)</span>
+</div>
+<p class="font-caption text-[11px] text-text-secondary leading-snug">
+            All stored petitions are hashed, encrypted client-side using Indian MeitY-accredited key stores.
+          </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function copyCNR() {
+    const cnr = document.getElementById('cnrText').innerText;
+    navigator.clipboard.writeText(cnr).then(() => {
+      const toast = document.getElementById('copyToast');
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2000);
+    });
+  }
+</script></div></main></div></body></html>

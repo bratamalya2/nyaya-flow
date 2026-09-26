@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed-dim":"#b3c7ee","surface-subtle":"#F1F5F9","surface-container-low":"#eff4ff","status-manual-bg":"#F8FAFC","secondary-container":"#a0efff","surface-container":"#e5eeff","inverse-on-surface":"#eaf1ff","surface-canvas":"#F8FAFC","surface-card":"#FFFFFF","secondary-fixed":"#a0efff","surface-variant":"#d3e4fe","tertiary":"#170700","on-primary-container":"#768aad","midnight-dark-surface":"#0B1528","secondary":"#006876","brand-accent-amber":"#D8892A","on-surface-variant":"#44474e","inverse-primary":"#b3c7ee","status-manual-border":"#E2E8F0","on-primary-fixed-variant":"#334767","on-tertiary-container":"#cf7100","status-manual-text":"#334155","primary-container":"#0b2240","border-strong":"#CBD5E1","on-primary":"#ffffff","border-subtle":"#E2E8F0","on-secondary-fixed-variant":"#004e59","error-container":"#ffdad6","text-secondary":"#475569","on-tertiary":"#ffffff","status-stale-border":"#FDE68A","tertiary-container":"#381a00","status-verified-text":"#065F46","surface-bright":"#f8f9ff","primary-fixed":"#d5e3ff","status-stale-bg":"#FFFBEB","status-stale-text":"#92400E","status-conflict-border":"#FECACA","secondary-fixed-dim":"#84d2e2","primary":"#000b1f","status-verified-bg":"#ECFDF5","inverse-surface":"#213145","on-error":"#ffffff","on-secondary":"#ffffff","background":"#f8f9ff","midnight-dark-base":"#020617","on-surface":"#0b1c30","surface-container-high":"#dce9ff","text-muted":"#94A3B8","outline":"#74777e","surface-container-highest":"#d3e4fe","tertiary-fixed":"#ffdcc3","on-secondary-container":"#0d6e7d","surface":"#f8f9ff","midnight-dark-border":"#1E293B","outline-variant":"#c4c6ce","on-tertiary-fixed":"#2f1500","on-primary-fixed":"#031b39","status-verified-border":"#A7F3D0","on-tertiary-fixed-variant":"#6e3900","surface-dim":"#cbdbf5","surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#ffb77d","status-conflict-text":"#991B1B","on-error-container":"#93000a","surface-tint":"#4b5f80","status-conflict-bg":"#FEF2F2","error":"#ba1a1a","on-background":"#0b1c30","on-secondary-fixed":"#001f25","text-primary":"#0F172A"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"space-sm":"0.5rem","space-md":"0.75rem",margin:"1.25rem","space-xs":"0.25rem","space-xl":"2rem",gutter:"1rem","space-lg":"1.25rem"},fontFamily:{"display-md":["Domine"],"title-sm":["Inter"],"headline-ui":["Inter"],"headline-statutory":["Domine"],"display-lg":["Domine"],"label-code":["Inter"],"body-default":["Inter"],"label-strong":["Inter"],"body-legal":["Domine"],"title-md":["Inter"],"body-dense":["Inter"],caption:["Inter"]},fontSize:{"display-md":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}],"title-sm":["13px",{lineHeight:"18px",fontWeight:"600"}],"headline-ui":["18px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-statutory":["20px",{lineHeight:"28px",fontWeight:"600"}],"display-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-code":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"body-default":["13px",{lineHeight:"20px",fontWeight:"400"}],"label-strong":["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"600"}],"body-legal":["15px",{lineHeight:"26px",fontWeight:"400"}],"title-md":["15px",{lineHeight:"20px",fontWeight:"600"}],"body-dense":["12px",{lineHeight:"16px",fontWeight:"400"}],caption:["11px",{lineHeight:"14px",fontWeight:"400"}]}}}}</script></head><body class="bg-background font-body-default text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-card z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-14 px-space-lg flex items-center gap-space-sm bg-surface-card"><img alt="Logo.png" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Wd8pl1ZnY8J6tFKX_OFpcXUkgfHkleAjWX2nWEAR1CUucI7Q53tZLDcrs4SCsc7aiJZ_mAW-3SipAnblDENGyFCPZjB1_MPXnuU3KnCtlAkVpkxarJwbQIfM7uN1QogcaRJ7mjWR6_rfU83jbR_jNF1JrRzdNqWRanRxP4vBHVJid021TWisyeFwzhJVeGXICX3SBv2GQjqBzmwwyvpek5BkBETQypBTrijFWVdHQi--gxZteqZR0zYrGf09HPdUp97fcuzXydoQ"/><div class="flex flex-col leading-none"><span class="font-headline-statutory text-headline-ui text-primary tracking-tight font-bold">NyayaFlow</span><span class="font-caption text-caption text-text-muted tracking-wider uppercase font-semibold">Chamber Suite</span></div></div><div class="p-space-md"><button class="w-full h-10 bg-primary-container text-on-primary hover:bg-midnight-dark-surface rounded-lg flex items-center justify-center gap-space-xs font-label-strong text-label-strong transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>New Matter Filing</span></button></div><div class="px-space-md pb-space-sm"><div class="bg-surface-subtle rounded-lg p-space-sm flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-code text-label-code text-status-conflict-text uppercase flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">notification_important</span>Pinned Hearing</span><span class="bg-status-conflict-bg text-status-conflict-text font-caption text-caption px-1.5 py-0.5 rounded font-bold">Court 3 #12</span></div><p class="font-title-sm text-title-sm text-text-primary truncate">State v. R. Singhania</p><p class="font-caption text-caption text-text-muted">Today · Est. 11:30 AM · CrPC/BNSS</p></div></div><nav class="flex flex-col gap-0.5 px-space-sm overflow-y-auto max-h-[calc(100vh-340px)]" data-active-classes="bg-surface-container text-primary font-title-sm"><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="matters-360" href="#"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span>Matters 360</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="daily-cause-list" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">view_timeline</span><span>Daily Cause List</span></div><span class="font-label-code text-label-code bg-surface-container-high text-primary px-1.5 py-0.5 rounded">14</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="bns-bnss-matrix" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span><span>BNS / BNSS Matrix</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="smart-vault-ocr" href="#"><span class="material-symbols-outlined text-[20px]">document_scanner</span><span>Smart Vault &amp; OCR</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="e-filing-auditor" href="#"><span class="material-symbols-outlined text-[20px]">verified</span><span>E-Filing Auditor</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="finance-bci-billing" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Finance &amp; BCI Billing</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="client-portal" href="#"><span class="material-symbols-outlined text-[20px]">supervised_user_circle</span><span>Client Portal</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="firm-audit-dpdp" href="#"><span class="material-symbols-outlined text-[20px]">security</span><span>Firm Audit &amp; DPDP</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-2 rounded-lg transition-colors bg-surface-container text-primary font-title-sm" data-path="contracts-clm" href="#"><span class="material-symbols-outlined text-[20px]">draw</span><span>Contracts &amp; CLM</span></a><a class="flex items-center gap-space-sm px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-dense text-body-dense" data-path="precedent-knowledge-graph" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span>Precedent Graph</span></a></nav></div><div class="p-space-md bg-surface-subtle/50 flex flex-col gap-2"><div class="flex items-center justify-between"><span class="font-label-code text-label-code text-status-verified-text flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">gavel</span>DPDP Act 2023 Compliant</span><span class="font-caption text-caption text-text-muted">Vault #04</span></div><div class="flex items-center justify-between text-text-muted"><span class="font-caption text-caption">Chamber Node Latency</span><span class="font-label-code text-label-code text-text-secondary">24ms · SSL v3</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-14 bg-surface-card/90 backdrop-blur-md z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs bg-surface-subtle px-space-md py-1.5 rounded-lg text-on-surface"><span class="material-symbols-outlined text-[18px] text-secondary">account_balance</span><div class="flex flex-col text-left"><span class="font-label-strong text-label-strong leading-none text-text-primary">Shardul &amp; Associates</span><span class="font-caption text-caption text-text-muted leading-none mt-0.5">New Delhi HQ · Supreme Court</span></div><span class="material-symbols-outlined text-[16px] text-text-muted ml-1">expand_more</span></div><div class="hidden md:flex items-center gap-2 bg-surface px-space-md py-1.5 rounded-lg text-text-secondary w-80 shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><span class="material-symbols-outlined text-[18px] text-text-muted">search</span><span class="font-body-dense text-body-dense text-text-muted flex-1">Search CNR, Cause List, Sections...</span><kbd class="bg-surface-card px-1.5 py-0.5 rounded text-caption font-label-code text-text-muted shadow-sm">⌘K</kbd></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5 bg-status-verified-bg text-status-verified-text px-2.5 py-1 rounded-full font-label-code text-label-code"><span class="w-2 h-2 rounded-full bg-status-verified-text animate-pulse"></span><span>eCourts Live • Synced</span></div><button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:bg-surface-subtle transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-brand-accent-amber"></span></button><button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:bg-surface-subtle transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="h-5 w-px bg-surface-subtle"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right leading-none"><span class="font-title-sm text-title-sm text-text-primary">Adv. Vikramaditya Sen</span><span class="font-caption text-caption text-secondary font-semibold">Senior Partner · SC/DHC</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-14 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Command & Metrics Header Bar -->
+<div class="p-space-lg bg-surface-card shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-code text-label-code bg-surface-container-high text-primary px-2 py-0.5 rounded font-bold uppercase tracking-wider">Module CLM-7.4</span>
+<span class="font-caption text-caption text-text-muted">Updated 3m ago via MCA &amp; SHCIL Gateway</span>
+</div>
+<h1 class="font-headline-statutory text-display-md text-primary tracking-tight">Contract Lifecycle Management &amp; State Stamp Duty Engine</h1>
+<p class="font-body-default text-body-default text-text-secondary max-w-4xl">
+          500+ Indian law verified templates, AI clause risk auditing under Indian Contract Act 1872, state-wise ad-valorem stamp duty calculation, and SHCIL e-stamp procurement.
+        </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="h-9 px-space-md bg-surface-subtle hover:bg-surface-variant text-text-primary rounded-lg flex items-center gap-1.5 font-label-strong text-label-strong transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[17px] text-secondary">cloud_upload</span>
+<span>Import Third-Party Contract</span>
+</button>
+<button class="h-9 px-space-md bg-secondary hover:bg-on-secondary-container text-on-secondary rounded-lg flex items-center gap-1.5 font-label-strong text-label-strong transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[17px]">calculate</span>
+<span>Calculate Stamp Duty</span>
+</button>
+<button class="h-9 px-space-md bg-primary-container hover:bg-midnight-dark-surface text-on-primary rounded-lg flex items-center gap-1.5 font-label-strong text-label-strong transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[17px]">add_circle</span>
+<span>+ New Agreement from Template</span>
+</button>
+</div>
+</div>
+<!-- Live Status Telemetry Tiles -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md pt-1">
+<div class="bg-surface-subtle p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted font-semibold tracking-wider">Active Drafts</span>
+<span class="font-display-md text-display-md text-primary font-bold mt-0.5">18</span>
+<span class="font-caption text-caption text-text-secondary mt-0.5">In negotiation / Markups</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-card flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">history_edu</span>
+</div>
+</div>
+<div class="bg-status-conflict-bg p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-status-conflict-text font-bold tracking-wider">Clause Risk Index</span>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-display-md text-display-md text-status-conflict-text font-bold">2 High Risk</span>
+</div>
+<span class="font-caption text-caption text-status-conflict-text truncate max-w-[190px]">Sec 27 Restraint &amp; Liability</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-card flex items-center justify-center text-status-conflict-text shadow-sm">
+<span class="material-symbols-outlined text-[22px]">policy</span>
+</div>
+</div>
+<div class="bg-surface-subtle p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted font-semibold tracking-wider">E-Stamping Ready</span>
+<span class="font-display-md text-display-md text-secondary font-bold mt-0.5">4 Instruments</span>
+<span class="font-caption text-caption text-status-verified-text flex items-center gap-1 mt-0.5 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified-text"></span> SHCIL API connected
+          </span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-card flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+</div>
+<div class="bg-surface-subtle p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted font-semibold tracking-wider">State Duty Schedules</span>
+<span class="font-display-md text-display-md text-primary font-bold mt-0.5">NCT Delhi</span>
+<span class="font-caption text-caption text-brand-accent-amber font-semibold mt-0.5">Maharashtra Cross-Applies</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-card flex items-center justify-center text-brand-accent-amber shadow-sm">
+<span class="material-symbols-outlined text-[22px]">account_balance</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Dual-Pane Workspace (65% CLM & Audit / 35% Stamp Engine & eSign) -->
+<div class="p-space-lg grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: 65% (8 Cols of 12) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Active Master Agreement Identity Sheet -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-brand-accent-amber"></div>
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm pt-1">
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-code text-label-code bg-surface-container text-primary px-2 py-0.5 rounded font-bold uppercase">CNR: DLHC01-08942-2024</span>
+<span class="font-label-code text-label-code bg-brand-accent-amber/15 text-brand-accent-amber px-2 py-0.5 rounded font-bold uppercase">Arbitration Bound</span>
+<span class="font-caption text-caption text-text-muted">Draft Version 3.4 (Redlined)</span>
+</div>
+<h2 class="font-display-md text-display-md text-primary font-bold tracking-tight mt-1">Commercial Master Services Agreement (MSA) - Tier-1 Telecom Infrastructure</h2>
+<div class="flex items-center gap-2 text-text-secondary font-title-sm text-title-sm mt-0.5">
+<span class="text-text-primary font-bold">Bharti Hexacom Ltd.</span>
+<span class="font-caption text-caption text-text-muted uppercase">Constituted with</span>
+<span class="text-text-primary font-bold">Indus Towers Ltd.</span>
+</div>
+</div>
+<div class="flex flex-col items-start sm:items-end gap-1 shrink-0">
+<span class="bg-amber-100 text-status-stale-text px-2.5 py-1 rounded-full font-label-strong text-label-strong flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[15px]">rate_review</span>
+              Under Counsel Review (Partner Stage)
+            </span>
+<span class="font-caption text-caption text-text-muted">Assigned: Adv. Vikramaditya Sen</span>
+</div>
+</div>
+<!-- High-Density Transaction & Statutory Metadata Matrix -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm p-space-md bg-surface-subtle rounded-lg">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase font-semibold">Contract Consideration</span>
+<span class="font-title-md text-title-md text-text-primary font-bold mt-0.5">₹18.50 Cr</span>
+<span class="font-caption text-caption text-text-secondary">GST exclusive rate</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase font-semibold">Governing Law</span>
+<span class="font-title-md text-title-md text-text-primary font-semibold mt-0.5">Laws of India</span>
+<span class="font-caption text-caption text-text-secondary">Delhi High Court Bar</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase font-semibold">Arbitration Seat</span>
+<span class="font-title-md text-title-md text-text-primary font-semibold mt-0.5">New Delhi</span>
+<span class="font-caption text-caption text-text-secondary">DIAC Administered Rules</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted uppercase font-semibold">Confidentiality Term</span>
+<span class="font-title-md text-title-md text-text-primary font-semibold mt-0.5">5 Years Post-Expiry</span>
+<span class="font-caption text-caption text-status-verified-text">Surviving covenant</span>
+</div>
+</div>
+</div>
+<!-- Smart Clause Audit & Explainable Indian Statutory Scorer -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">rule_folder</span>
+<h3 class="font-headline-statutory text-headline-statutory text-primary font-bold">Clause-by-Clause Indian Law Compliance Audit</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-code text-label-code text-text-secondary">Scanner: Indian Contract Act 1872 &amp; Arb. Act 1996</span>
+<button class="text-secondary hover:text-on-secondary-container font-label-strong text-label-strong flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">refresh</span>
+              Re-Scan
+            </button>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Clause 14.2: High Risk -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-col gap-space-xs shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-2">
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Clause 14.2: Limitation of Liability &amp; Indemnity Carve-Out</span>
+<span class="bg-status-conflict-bg text-status-conflict-text px-2 py-0.5 rounded font-label-code text-label-code uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">dangerous</span>
+                  High Risk (Uncapped)
+                </span>
+</div>
+<span class="font-caption text-caption text-text-muted">Page 28, Para 3</span>
+</div>
+<div class="bg-surface-card p-space-sm rounded font-body-legal text-body-legal text-text-secondary text-sm">
+              “...Neither party’s liability shall be limited with respect to indirect, punitive or consequential loss resulting from vendor negligence, and Supplier agrees to fully indemnify Bharti Hexacom without any financial aggregate cap whatsoever...”
+            </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pt-1">
+<div class="flex items-start gap-1.5 text-text-secondary font-body-dense text-body-dense max-w-xl">
+<span class="material-symbols-outlined text-status-conflict-text text-[16px] shrink-0 mt-0.5">report_problem</span>
+<span><strong class="text-text-primary">Statutory Conflict:</strong> Consequential damages without an aggregate cap exceed customary judicial limits under <strong class="text-primary font-semibold">Section 73 of the Indian Contract Act 1872</strong> (remote losses inadmissible). Threatens vendor balance sheet and triggers cross-claim un-insurability.</span>
+</div>
+<button class="h-8 px-space-md bg-secondary hover:bg-on-secondary-container text-on-secondary rounded-lg font-label-strong text-label-strong flex items-center gap-1.5 shrink-0 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">auto_fix_high</span>
+<span>Apply Standard Bilateral Cap (1x Annual Fees)</span>
+</button>
+</div>
+</div>
+<!-- Clause 22.4: Statutory Violation Non-Compete Sec 27 -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-col gap-space-xs shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-2">
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Clause 22.4: Post-Termination Restraint on Key Personnel (Non-Compete)</span>
+<span class="bg-red-100 text-status-conflict-text px-2 py-0.5 rounded font-label-code text-label-code uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">gavel</span>
+                  Statutory Violation (Void Ab Initio)
+                </span>
+</div>
+<span class="font-caption text-caption text-text-muted">Page 39, Para 6</span>
+</div>
+<div class="bg-surface-card p-space-sm rounded font-body-legal text-body-legal text-text-secondary text-sm">
+              “...For a period of 24 months following the termination of this Agreement, Indus Towers shall not directly or indirectly engage in, contract with, or tender for any competing 5G tower infrastructure rollouts within the telecom circles of Delhi NCR, Mumbai, and Punjab...”
+            </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pt-1">
+<div class="flex items-start gap-1.5 text-text-secondary font-body-dense text-body-dense max-w-xl">
+<span class="material-symbols-outlined text-brand-accent-amber text-[16px] shrink-0 mt-0.5">warning</span>
+<span><strong class="text-text-primary">Precedent Authority:</strong> Under <strong class="text-primary font-semibold">Section 27, Indian Contract Act 1872</strong>, post-employment restrictive covenants are non-severable and wholly void (<em class="text-text-primary">Niranjan Shankar Golikari v. Century Spg. &amp; Mfg. Co.</em> &amp; <em class="text-text-primary">Percept D’Mark (India) v. Zaheer Khan</em>).</span>
+</div>
+<button class="h-8 px-space-md bg-primary-container hover:bg-midnight-dark-surface text-on-primary rounded-lg font-label-strong text-label-strong flex items-center gap-1.5 shrink-0 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">difference</span>
+<span>Replace with Non-Solicitation (12 Mo.)</span>
+</button>
+</div>
+</div>
+<!-- Clause 26.1: Critical Defect - Unilateral Appointment -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-col gap-space-xs shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-2">
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Clause 26.1: Dispute Resolution &amp; Unilateral Arbitrator Appointment</span>
+<span class="bg-status-conflict-bg text-status-conflict-text px-2 py-0.5 rounded font-label-code text-label-code uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">block</span>
+                  Critical Defect (Non-Enforceable)
+                </span>
+</div>
+<span class="font-caption text-caption text-text-muted">Page 44, Para 1</span>
+</div>
+<div class="bg-surface-card p-space-sm rounded font-body-legal text-body-legal text-text-secondary text-sm">
+              “...All disputes shall be referred to a Sole Arbitrator appointed unilaterally by the Managing Director of Bharti Hexacom Ltd. whose determination shall be conclusive and binding upon both entities...”
+            </div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pt-1">
+<div class="flex items-start gap-1.5 text-text-secondary font-body-dense text-body-dense max-w-xl">
+<span class="material-symbols-outlined text-status-conflict-text text-[16px] shrink-0 mt-0.5">balance</span>
+<span><strong class="text-text-primary">Supreme Court Ruling:</strong> Supreme Court bench in <em class="text-text-primary">Perkins Eastman Architects DVM v. HSCC (India) Ltd. (2020)</em> and <strong class="text-primary font-semibold">Section 12(5) read with Seventh Schedule of Arbitration Act 1996</strong> explicitly prohibits interested parties from appointing a sole arbitrator.</span>
+</div>
+<button class="h-8 px-space-md bg-secondary hover:bg-on-secondary-container text-on-secondary rounded-lg font-label-strong text-label-strong flex items-center gap-1.5 shrink-0 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[15px]">handshake</span>
+<span>Default to DIAC / 3-Arbitrator Tribunal</span>
+</button>
+</div>
+</div>
+<!-- Clause 11.3: Verified / Low Risk -->
+<div class="bg-status-verified-bg p-space-md rounded-xl flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-start justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-2">
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Clause 11.3: Liquidated Damages vs Inchoate Penalty</span>
+<span class="bg-surface-card text-status-verified-text px-2 py-0.5 rounded font-label-code text-label-code uppercase font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+                  Verified Indian Law Standard
+                </span>
+</div>
+<span class="font-caption text-caption text-text-muted">Page 22, Para 4</span>
+</div>
+<div class="bg-surface-card p-space-sm rounded font-body-legal text-body-legal text-text-secondary text-sm">
+              “...Failure to meet site uptime availability SLA of 99.95% yields pre-estimated liquidated damages at 0.5% per week capped at 5% of monthly recurring fee, agreed as a genuine pre-estimate of loss...”
+            </div>
+<div class="flex items-center gap-1.5 text-text-secondary font-body-dense text-body-dense pt-0.5">
+<span class="material-symbols-outlined text-status-verified-text text-[16px]">verified</span>
+<span>Fully compliant under <strong class="text-primary font-semibold">Kailash Nath Associates v. DDA (2015) 4 SCC 136</strong> and <strong class="text-primary font-semibold">Section 74 of the Indian Contract Act 1872</strong>. Reasonable pre-estimate without penal forfeiture.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Template Library (500+ Indian Law Library Bar) -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">library_books</span>
+<h4 class="font-title-md text-title-md text-primary font-bold">Recommended Indian Law Standard Templates</h4>
+</div>
+<a class="font-label-strong text-label-strong text-secondary hover:underline flex items-center gap-1" href="#">
+            Browse all 500+ drafts <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-1">
+<div class="p-space-sm bg-surface-subtle hover:bg-surface-container rounded-lg flex flex-col gap-1 transition-colors cursor-pointer group shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code bg-surface-card px-1.5 py-0.5 rounded text-primary font-bold">SHA v4.2</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary text-[18px]">launch</span>
+</div>
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-primary font-bold truncate">Shareholders Agreement</span>
+<span class="font-caption text-caption text-text-muted">Companies Act 2013 compliant with ROFR &amp; Tag-along</span>
+</div>
+<div class="p-space-sm bg-surface-subtle hover:bg-surface-container rounded-lg flex flex-col gap-1 transition-colors cursor-pointer group shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code bg-surface-card px-1.5 py-0.5 rounded text-primary font-bold">Lease v3.1</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary text-[18px]">launch</span>
+</div>
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-primary font-bold truncate">Commercial Lease Deed</span>
+<span class="font-caption text-caption text-text-muted">Registered &amp; stamped schedule with escalation caps</span>
+</div>
+<div class="p-space-sm bg-surface-subtle hover:bg-surface-container rounded-lg flex flex-col gap-1 transition-colors cursor-pointer group shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code bg-surface-card px-1.5 py-0.5 rounded text-primary font-bold">NDA v5.0</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary text-[18px]">launch</span>
+</div>
+<span class="font-title-sm text-title-sm text-text-primary group-hover:text-primary font-bold truncate">Vendor Non-Disclosure</span>
+<span class="font-caption text-caption text-text-muted">Bilateral, DPDP Act 2023 compliant data definitions</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: 35% (4 Cols of 12) - State Stamp Duty & eSign Pipeline -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- State Stamp Duty Estimator & SHCIL Engine -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center text-brand-accent-amber">
+<span class="material-symbols-outlined text-[20px]">local_atm</span>
+</div>
+<div>
+<h3 class="font-headline-statutory text-headline-statutory text-primary font-bold leading-tight">State Stamp Duty Engine</h3>
+<p class="font-caption text-caption text-text-muted">Indian Stamp Act 1899 &amp; State Acts</p>
+</div>
+</div>
+<span class="font-label-code text-label-code bg-status-verified-bg text-status-verified-text px-2 py-0.5 rounded font-bold uppercase">Live API</span>
+</div>
+<!-- Input Parameters Form -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-strong text-label-strong text-text-secondary">Jurisdiction / State Schedule</label>
+<div class="relative">
+<select class="w-full h-9 bg-surface-subtle text-text-primary font-body-dense text-body-dense rounded-lg px-space-md appearance-none focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer">
+<option selected="">National Capital Territory of Delhi (Schedule 1A)</option>
+<option>Maharashtra (Bombay Stamp Act 1958)</option>
+<option>Karnataka (Karnataka Stamp Act 1957)</option>
+<option>Tamil Nadu (Indian Stamp TN Amendment)</option>
+<option>West Bengal (Bengal Stamp Act)</option>
+</select>
+<span class="material-symbols-outlined text-text-muted text-[18px] absolute right-2.5 top-2 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-strong text-label-strong text-text-secondary">Instrument Classification</label>
+<div class="relative">
+<select class="w-full h-9 bg-surface-subtle text-text-primary font-body-dense text-body-dense rounded-lg px-space-md appearance-none focus:outline-none focus:ring-1 focus:ring-secondary cursor-pointer">
+<option selected="">Agreement or Memorandum of Agreement (Art. 5(c))</option>
+<option>Conveyance Deed (Art. 23)</option>
+<option>Indemnity Bond (Art. 34)</option>
+<option>Power of Attorney (Art. 48)</option>
+<option>Hypothecation / Simple Mortgage (Art. 40)</option>
+</select>
+<span class="material-symbols-outlined text-text-muted text-[18px] absolute right-2.5 top-2 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-strong text-label-strong text-text-secondary">Declared Transaction Value (INR)</label>
+<div class="relative">
+<span class="absolute left-3 top-2 font-label-strong text-label-strong text-text-muted">₹</span>
+<input class="w-full h-9 bg-surface-subtle text-text-primary font-title-sm text-title-sm rounded-lg pl-7 pr-space-md focus:outline-none focus:ring-1 focus:ring-secondary font-mono" type="text" value="18,50,00,000"/>
+</div>
+<span class="font-caption text-caption text-text-muted">Eighteen Crores Fifty Lakhs Indian Rupees</span>
+</div>
+</div>
+<!-- Calculated Fee Breakdown -->
+<div class="bg-surface-subtle p-space-md rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between text-text-secondary font-body-dense text-body-dense">
+<span>Basic Ad-Valorem Duty (Art 5(c) NCT Delhi)</span>
+<span class="font-semibold text-text-primary font-mono">₹100.00</span>
+</div>
+<div class="flex items-center justify-between text-text-secondary font-body-dense text-body-dense">
+<span>SHCIL E-Stamping Gateway Convenience</span>
+<span class="font-semibold text-text-primary font-mono">₹20.00</span>
+</div>
+<div class="flex items-center justify-between text-text-secondary font-body-dense text-body-dense">
+<span>Local Municipality Surcharge / Cess</span>
+<span class="font-semibold text-text-primary font-mono">₹0.00</span>
+</div>
+<div class="h-px bg-border-subtle my-0.5"></div>
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-primary font-bold">Total Stamp Payable</span>
+<span class="font-headline-statutory text-headline-statutory text-secondary font-bold font-mono">₹120.00</span>
+</div>
+<div class="bg-surface-card p-2 rounded text-text-muted font-caption text-caption flex items-start gap-1.5 mt-1">
+<span class="material-symbols-outlined text-brand-accent-amber text-[15px] shrink-0 mt-0.5">info</span>
+<span>Note: If document creates possessory lien, charge, or conveyance of assets, ad-valorem 3%–6% rate shall apply immediately.</span>
+</div>
+</div>
+<!-- SHCIL Procurement Box -->
+<div class="flex flex-col gap-space-sm pt-1">
+<button class="w-full h-10 bg-secondary hover:bg-on-secondary-container text-on-secondary rounded-lg font-label-strong text-label-strong flex items-center justify-center gap-2 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Procure E-Stamp Certificate via SHCIL</span>
+</button>
+<div class="bg-surface-canvas p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-text-muted">Draft SHCIL Order Reference</span>
+<span class="font-label-code text-label-code text-text-primary font-mono font-bold">IN-DL89210941829029X</span>
+</div>
+<span class="bg-amber-100 text-status-stale-text px-2 py-0.5 rounded font-label-code text-label-code uppercase font-bold">
+              Pending Seal
+            </span>
+</div>
+</div>
+</div>
+<!-- Digital Signing & DSC / Aadhaar eSign Pipeline -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">draw</span>
+</div>
+<div>
+<h3 class="font-headline-statutory text-headline-statutory text-primary font-bold leading-tight">Digital Execution Pipeline</h3>
+<p class="font-caption text-caption text-text-muted">IT Act 2000 &amp; CCA Compliant</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[18px]">lock</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Signatory 1: Bharti Hexacom -->
+<div class="p-space-sm bg-surface-subtle rounded-lg flex items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-strong text-label-strong shrink-0">
+                RS
+              </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-text-primary truncate font-bold">Rajesh Singhal</span>
+<span class="font-caption text-caption text-text-muted truncate">Auth. Signatory, Bharti Hexacom</span>
+</div>
+</div>
+<span class="bg-status-verified-bg text-status-verified-text px-2 py-1 rounded font-label-code text-label-code uppercase font-bold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">vpn_key</span>
+              DSC Class 3 Ready
+            </span>
+</div>
+<!-- Signatory 2: Indus Towers -->
+<div class="p-space-sm bg-surface-subtle rounded-lg flex items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-strong text-label-strong shrink-0">
+                PM
+              </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-sm text-title-sm text-text-primary truncate font-bold">Priya Menon</span>
+<span class="font-caption text-caption text-text-muted truncate">Director, Indus Towers Ltd.</span>
+</div>
+</div>
+<span class="bg-amber-100 text-status-stale-text px-2 py-1 rounded font-label-code text-label-code uppercase font-bold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">sms</span>
+              Aadhaar eSign Pending
+            </span>
+</div>
+</div>
+<!-- Signing Actions -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full h-10 bg-primary hover:bg-midnight-dark-surface text-on-primary rounded-lg font-label-strong text-label-strong flex items-center justify-center gap-2 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Send Signing Invites &amp; Freeze Draft</span>
+</button>
+<div class="flex items-center justify-between px-1 text-text-muted font-caption text-caption">
+<span>Audit Trail: Hash SHA-256</span>
+<span>Tamper-evident envelope</span>
+</div>
+</div>
+</div>
+<!-- State Stamp Act Quick Reference Card -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-subtle flex items-center justify-center text-text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">book_online</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-text-primary font-bold">Indian Stamp Duty Compendium 2024</span>
+<span class="font-caption text-caption text-text-muted">Updated across 28 states &amp; 8 UTs for corporate instruments</span>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>
