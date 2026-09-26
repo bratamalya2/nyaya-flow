@@ -1,15 +1,27 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { callApi } from "@/lib/client-api";
 
-export function TaskToggle({ id, initialDone }: { id: string; initialDone: boolean }) {
-  const [done,setDone]=useState(initialDone);
-  const [busy,setBusy]=useState(false);
-  async function change(next:boolean) {
-    setDone(next); setBusy(true);
-    const response=await fetch(`/api/v1/tasks/${encodeURIComponent(id)}`,{method:"PATCH",headers:{"content-type":"application/json"},body:JSON.stringify({state:next?"done":"open"})});
-    if(!response.ok) setDone(!next);
+export function TaskToggle({ id, initialDone, label }: { id: string; initialDone: boolean; label: string }) {
+  const router = useRouter();
+  const [done, setDone] = useState(initialDone);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  async function change(next: boolean) {
+    setDone(next);
+    setBusy(true);
+    setError(null);
+    const result = await callApi(`/api/v1/tasks/${encodeURIComponent(id)}`, { method: "PATCH", body: { state: next ? "done" : "open" } });
     setBusy(false);
+    if (!result.ok) { setDone(!next); setError(result.error); return; }
+    router.refresh();
   }
-  return <input aria-label="Mark task complete" className="task-check" type="checkbox" checked={done} disabled={busy} onChange={(event)=>void change(event.target.checked)} />;
+  return (
+    <>
+      <input aria-label={`Mark "${label}" complete`} className="task-check" type="checkbox" checked={done} disabled={busy} onChange={(event) => void change(event.target.checked)} />
+      {error ? <span className="sr-only" role="alert">{error}</span> : null}
+    </>
+  );
 }

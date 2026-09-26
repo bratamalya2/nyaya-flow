@@ -1,30 +1,16 @@
 "use client";
 
 import {
-  Bell,
-  BookOpen,
-  BriefcaseBusiness,
-  CalendarDays,
-  ChartNoAxesCombined,
-  ChevronDown,
-  FileCheck2,
-  Files,
-  FolderLock,
-  Gavel,
-  HelpCircle,
-  Landmark,
-  Menu,
-  PlusCircle,
-  ReceiptIndianRupee,
-  Search,
-  ShieldCheck,
-  Users,
+  Bell, BookOpen, BriefcaseBusiness, CalendarDays, ChartNoAxesCombined, FileCheck2, Files, FolderLock, Gavel,
+  Landmark, Menu, PlusCircle, ReceiptIndianRupee, ShieldCheck, Users,
 } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ComponentType, ReactNode } from "react";
+import { GlobalSearch } from "@/components/global-search";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { UserMenu } from "@/components/user-menu";
 
 type NavItem = { href: string; label: string; icon: ComponentType<{ size?: number }>; preview?: boolean };
 
@@ -47,10 +33,10 @@ const previews: NavItem[] = [
 
 function NavLink({ item }: { item: NavItem }) {
   const pathname = usePathname();
-  const active = pathname === item.href || (item.href !== "/today" && pathname.startsWith(`${item.href}/`));
+  const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
   const Icon = item.icon;
   return (
-    <Link className={`nav-link ${active ? "active" : ""} ${item.preview ? "preview-link" : ""}`} href={item.href}>
+    <Link aria-current={active ? "page" : undefined} className={`nav-link ${active ? "active" : ""} ${item.preview ? "preview-link" : ""}`} href={item.href}>
       <Icon size={18} />
       <span>{item.label}</span>
       {item.preview ? <span className="preview-dot">Preview</span> : null}
@@ -58,30 +44,29 @@ function NavLink({ item }: { item: NavItem }) {
   );
 }
 
-export function AppShell({ children }: { children: ReactNode }) {
+export interface ShellProps {
+  children: ReactNode;
+  user: { name: string; initials: string; roleLabel: string; email: string };
+  organization: { id: string; name: string };
+  memberships: { organizationId: string; organizationName: string; roleLabel: string }[];
+  demoMode: boolean;
+}
+
+export function AppShell({ children, user, organization, memberships, demoMode }: ShellProps) {
   const pathname = usePathname();
   return (
     <div className="app-layout">
       <header className="topbar">
         <div className="brand">
           <Image src="/favicon.png" alt="NyayaFlow" width={38} height={34} priority />
-          <div><span className="brand-word">NyayaFlow</span> <span className="brand-chip">IN CORE</span></div>
-          <div className="firm-label"><strong>Sen & Deshmukh Chambers</strong><span>New Delhi · Pilot workspace</span></div>
+          <div><span className="brand-word">NyayaFlow</span></div>
+          <div className="firm-label"><strong>{organization.name}</strong><span>{demoMode ? "Synthetic demo workspace" : "Firm workspace"}</span></div>
         </div>
-        <div className="global-search">
-          <Search size={17} aria-hidden="true" />
-          <input aria-label="Search matters and documents" placeholder="Search matters, CNRs and documents…" />
-          <kbd>⌘ K</kbd>
-        </div>
+        <GlobalSearch />
         <div className="top-actions">
           <ThemeSwitcher />
-          <button className="icon-button" aria-label="Notifications" type="button"><Bell size={18} /></button>
-          <button className="icon-button" aria-label="Help" type="button"><HelpCircle size={18} /></button>
-          <div className="user">
-            <div className="avatar">VS</div>
-            <div className="user-copy"><strong>Adv. Vikram Sen</strong><span>Managing Partner</span></div>
-            <ChevronDown size={14} className="muted" />
-          </div>
+          <button className="icon-button" aria-label="Notifications (not yet available)" disabled title="Notifications arrive with the Expansion release" type="button"><Bell size={18} /></button>
+          <UserMenu memberships={memberships} organizationId={organization.id} user={user} />
         </div>
       </header>
       <aside className="sidebar">
@@ -94,21 +79,21 @@ export function AppShell({ children }: { children: ReactNode }) {
         </nav>
         <div className="sidebar-foot">
           <div className="policy-state">Manual-source mode</div>
-          <p>No live court connector enabled · India-hosted pilot</p>
+          <p>No live court connector is enabled. Court dates are entered by your team.</p>
         </div>
       </aside>
-      <main className="page-shell">{children}</main>
+      <main className="page-shell" id="main">{children}</main>
       <nav className="mobile-nav" aria-label="Mobile navigation">
         {[
           { href: "/today", label: "Today", icon: Gavel },
           { href: "/matters", label: "Matters", icon: BriefcaseBusiness },
           { href: "/vault", label: "Vault", icon: FolderLock },
           { href: "/admin", label: "Admin", icon: ShieldCheck },
-          { href: "/preview/research", label: "Preview", icon: Menu },
+          { href: "/preview/research", label: "Previews", icon: Menu },
         ].map((item) => {
           const Icon = item.icon;
-          const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
-          return <Link className={`mobile-link ${active ? "active" : ""}`} href={item.href} key={item.href}><Icon size={19} /><span>{item.label}</span></Link>;
+          const active = pathname === item.href || pathname.startsWith(`${item.href.replace(/\/research$/, "")}/`);
+          return <Link aria-current={active ? "page" : undefined} className={`mobile-link ${active ? "active" : ""}`} href={item.href} key={item.href}><Icon size={19} /><span>{item.label}</span></Link>;
         })}
       </nav>
     </div>

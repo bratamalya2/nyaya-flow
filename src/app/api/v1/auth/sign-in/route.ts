@@ -1,22 +1,29 @@
-import argon2 from "argon2";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { createOpaqueToken, createSession, hashToken } from "@/lib/auth";
+import { publicRoute, readJson } from "@/lib/api";
+import { clientIp, createOpaqueToken, createSession, hashToken, verifyPassword } from "@/lib/auth";
 import { query } from "@/lib/db";
+import { isDemoMode } from "@/lib/runtime";
+import { clearFailures, lockedUntil, recordFailure, signInRules } from "@/lib/throttle";
 
 const schema = z.object({ email: z.email().max(254), password: z.string().min(8).max(256) });
 
-export async function POST(request: Request) {
-  if (process.env.NEXT_PUBLIC_DEMO_MODE === "true") return NextResponse.json({ authenticated: true });
-  const parsed = schema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: "Invalid credentials." }, { status: 400 });
-  const users = await query<{ id: string; password_hash: string; mfa_enabled: boolean }>("select id, password_hash, mfa_enabled from app_users where email = lower($1) and disabled_at is null", [parsed.data.email]);
+export const POST = publicRoute(async (request) => {
+  if (isDemoMode()) return NextResponse.json({ authenticated: true, mode: "demo" });
+  const { email, password } = await readJson(request, schema);
+  const rules = signInRules(email, await clientIp());
+  const locked = await lockedUntil(rules);
+  if (locked) return NextResponse.json({ error: "Too many sign-in attempts. Try again in 15 minutes." }, { status: 429 });
+
+  const users = await query<{ id: string; password_hash: string; mfa_enabled: boolean }>("select id, password_hash, mfa_enabled from app_users where email = lower($1) and disabled_at is null", [email]);
   const user = users.rows[0];
-  const valid = user ? await argon2.verify(user.password_hash, parsed.data.password).catch(() => false) : false;
+  const valid = await verifyPassword(user?.password_hash, password);
   if (!user || !valid) {
-    await query("insert into security_events (event_type, outcome, metadata) values ('auth.sign_in', 'denied', jsonb_build_object('email_hash', encode(digest(lower($1), 'sha256'), 'hex')))", [parsed.data.email]);
+    await recordFailure(rules);
+    await query("insert into security_events (event_type, outcome, metadata) values ('auth.sign_in', 'denied', jsonb_build_object('email_hash', $1::text))", [hashToken(email.toLowerCase())]);
     return NextResponse.json({ error: "Invalid credentials." }, { status: 401 });
   }
+  await clearFailures(rules);
   if (user.mfa_enabled) {
     const challenge = createOpaqueToken();
     await query("insert into auth_challenges (user_id, token_hash, expires_at) values ($1, $2, now() + interval '5 minutes')", [user.id, hashToken(challenge)]);
@@ -24,4 +31,4 @@ export async function POST(request: Request) {
   }
   await createSession(user.id, false);
   return NextResponse.json({ authenticated: true, mfaSetupRequired: true });
-}
+});

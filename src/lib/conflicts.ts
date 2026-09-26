@@ -36,19 +36,4 @@ export function findHearingConflicts(hearings: Hearing[], travelMinutes = 30): H
   return conflicts;
 }
 
-export function formatTime(value: string) {
-  return new Intl.DateTimeFormat("en-IN", {
-    hour: "numeric",
-    minute: "2-digit",
-    timeZone: "Asia/Kolkata",
-  }).format(new Date(value));
-}
-
-export function formatDate(value: string) {
-  return new Intl.DateTimeFormat("en-IN", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-    timeZone: "Asia/Kolkata",
-  }).format(new Date(value));
-}
+export { formatDate, formatTime } from "@/lib/format";

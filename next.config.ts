@@ -20,6 +20,8 @@ const contentSecurityPolicy = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   output: "standalone",
+  // Lets the e2e server run beside a developer's own `next dev` (each dist dir has its own dev lock).
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   async headers() {
     return [
       {

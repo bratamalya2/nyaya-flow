@@ -4,7 +4,7 @@ import type { Hearing, Person } from "@/lib/types";
 
 const advocate: Person = { id: "advocate", name: "Advocate", initials: "AD", role: "advocate" };
 function hearing(id: string, start: string, end: string, forum = "Delhi High Court"): Hearing {
-  return { id, matterId: id, matterTitle: id, reference: id, forum, courtRoom: id, startsAt: start, endsAt: end, advocate, status: "confirmed", sourceState: "manual" };
+  return { id, matterId: id, matterTitle: id, reference: id, forum, courtRoom: id, startsAt: start, endsAt: end, advocate, status: "confirmed", sourceState: "manual", updatedAt: start };
 }
 
 describe("findHearingConflicts", () => {

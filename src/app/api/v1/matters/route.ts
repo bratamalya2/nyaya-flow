@@ -1,36 +1,38 @@
 import { NextResponse } from "next/server";
+import { ApiError, apiRoute, readJson } from "@/lib/api";
+import { canManageMatters } from "@/lib/permissions";
+import { listMatters } from "@/lib/repositories/workspace";
 import { matters as demoMatters } from "@/lib/sample-data";
-import { getSession } from "@/lib/auth";
-import { withActor } from "@/lib/db";
-import { recordAudit } from "@/lib/audit";
 import { matterInput } from "@/lib/validation";
 
-export async function GET() {
-  if (process.env.NEXT_PUBLIC_DEMO_MODE === "true") return NextResponse.json({ data: demoMatters, mode: "demo" });
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Authentication required." }, { status: 401 });
-  const result = await withActor(session.userId, (client) => client.query("select * from matters order by updated_at desc"));
-  return NextResponse.json({ data: result.rows });
-}
+export const GET = apiRoute({ demo: async () => NextResponse.json({ data: demoMatters, mode: "demo" }) }, async (_request, { workspace }) => {
+  return NextResponse.json({ data: await listMatters(workspace) });
+});
 
-export async function POST(request: Request) {
-  if (process.env.NEXT_PUBLIC_DEMO_MODE === "true") return NextResponse.json({ error: "Demo mode does not persist server mutations." }, { status: 409 });
-  const parsed = matterInput.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: "Invalid matter data.", issues: parsed.error.flatten() }, { status: 400 });
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Authentication required." }, { status: 401 });
-  try {
-    const result = await withActor(session.userId, async (client) => {
-      const inserted = await client.query(
-      `insert into matters (organization_id, title, reference, cnr, forum, client_name, created_by, source_state)
-       values ($1,$2,$3,$4,$5,$6,$7,'manual') returning *`,
-      [parsed.data.organizationId, parsed.data.title, parsed.data.reference, parsed.data.cnr || null, parsed.data.forum, parsed.data.client, session.userId],
+export const POST = apiRoute({}, async (request, { workspace, db, audit }) => {
+  const input = await readJson(request, matterInput);
+  // A restricted matter is invisible to non-leadership creators until someone grants them access,
+  // so only leadership may create one directly.
+  if (input.restricted && !canManageMatters(workspace.role)) throw new ApiError(403, "Only owners, managing partners, and admins can create restricted matters.");
+  const leadId = input.leadId ?? workspace.userId;
+  const created = await db(async (client) => {
+    const inserted = await client.query<{ id: string }>(
+      `insert into matters (organization_id, title, reference, cnr, forum, court_room, client_name, restricted, lead_id, created_by, source_state)
+       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,'manual') returning id`,
+      [workspace.organizationId, input.title, input.reference, input.cnr ?? null, input.forum, input.courtRoom ?? null, input.client, input.restricted, leadId, workspace.userId],
+    );
+    const matterId = inserted.rows[0].id;
+    for (const party of input.parties) {
+      await client.query("insert into parties (organization_id, matter_id, name, party_type) values ($1,$2,$3,$4)", [workspace.organizationId, matterId, party.name, party.partyType]);
+    }
+    if (input.restricted && leadId !== workspace.userId) {
+      await client.query(
+        `insert into matter_grants (organization_id, matter_id, user_id, permission, granted_by) values ($1,$2,$3,'manage',$4) on conflict do nothing`,
+        [workspace.organizationId, matterId, leadId, workspace.userId],
       );
-      await recordAudit(client, { organizationId: parsed.data.organizationId, actorId: session.userId, action: "matter.create", resourceType: "matter", resourceId: inserted.rows[0].id, outcome: "success" });
-      return inserted;
-    });
-    return NextResponse.json({ data: result.rows[0] }, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "Could not create matter." }, { status: 400 });
-  }
-}
+    }
+    await audit(client, { action: "matter.create", resourceType: "matter", resourceId: matterId, outcome: "success", metadata: { restricted: input.restricted, parties: input.parties.length } });
+    return matterId;
+  });
+  return NextResponse.json({ data: { id: created } }, { status: 201 });
+});

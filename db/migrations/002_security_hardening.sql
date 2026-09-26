@@ -68,6 +68,20 @@ create or replace function is_active_member(org_id uuid,member uuid) returns boo
   select exists(select 1 from memberships where organization_id=org_id and user_id=member and active)
 $$;
 
+-- RLS lets any editor update a matter row; restriction changes must additionally require manage,
+-- otherwise an edit grant on a restricted matter could publish it to the whole firm.
+create function guard_matter_update() returns trigger language plpgsql security definer set search_path=public as $$
+begin
+  if new.organization_id<>old.organization_id or new.created_by<>old.created_by then
+    raise exception 'Matter organization and creator cannot be changed.' using errcode='42501';
+  end if;
+  if new.restricted is distinct from old.restricted and current_app_user_id() is not null and not can_access_matter(old.id,'manage') then
+    raise exception 'Changing matter restriction requires manage permission.' using errcode='42501';
+  end if;
+  return new;
+end $$;
+create trigger matters_guard before update on matters for each row execute function guard_matter_update();
+
 drop policy matter_insert on matters;
 create policy matter_insert on matters for insert with check(
   has_org_role(organization_id,array['owner','managing_partner','admin','advocate','associate','paralegal']::app_role[])
@@ -263,9 +277,14 @@ begin
 end $$;
 
 -- ---------------------------------------------------------------------------------------------
--- Consent withdrawal attribution.
+-- Consent withdrawal attribution; data requests link to a matter so legal holds can block erasure.
 -- ---------------------------------------------------------------------------------------------
 alter table consent_records add column withdrawn_by uuid references app_users(id);
+alter table data_requests add column matter_id uuid;
+alter table data_requests add constraint data_requests_matter_org_fk foreign key (organization_id,matter_id) references matters(organization_id,id) on delete set null (matter_id);
+alter table data_requests add column hold_reviewed_by uuid references app_users(id);
+alter table data_requests add column hold_reviewed_at timestamptz;
+alter table data_requests add column hold_review_note text;
 
 -- ---------------------------------------------------------------------------------------------
 -- Search: organization-scoped and evaluated under the caller's own RLS.

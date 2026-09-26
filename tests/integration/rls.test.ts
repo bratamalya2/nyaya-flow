@@ -66,6 +66,17 @@ describe.skipIf(!hasDatabase)("PostgreSQL row-level security", () => {
     expect(await failure(nonMemberAdvocate)).toBe("42501");
   });
 
+  it("requires manage permission to change a matter's restriction", async () => {
+    await owner.query("insert into matter_grants(organization_id,matter_id,user_id,permission,granted_by) values ($1,$2,$3,'edit',$4) on conflict do nothing", [ids.orgA, ids.restrictedMatterA, ids.granteeA, ids.partnerA]);
+    const unrestrict = withActor(ids.granteeA, (client) => client.query("update matters set restricted=false where id=$1", [ids.restrictedMatterA]));
+    expect(await failure(unrestrict)).toBe("42501");
+    const rename = await withActor(ids.granteeA, (client) => client.query("update matters set stage='Evidence' where id=$1", [ids.restrictedMatterA]));
+    expect(rename.rowCount).toBe(1);
+    const move = withActor(ids.partnerA, (client) => client.query("update matters set organization_id=$2 where id=$1", [ids.openMatterA, ids.orgB]));
+    expect(await failure(move)).not.toBeNull();
+    await owner.query("delete from matter_grants where user_id=$1 and permission='edit'", [ids.granteeA]);
+  });
+
   it("prevents admins from creating or promoting owners", async () => {
     const promote = withActor(ids.adminA, (client) => client.query("update memberships set role='owner' where user_id=$1 and organization_id=$2", [ids.adminA, ids.orgA]));
     expect(await failure(promote)).toBe("42501");

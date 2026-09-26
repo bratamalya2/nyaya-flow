@@ -1,12 +1,20 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
-import { withActor } from "@/lib/db";
+import { ApiError, apiRoute } from "@/lib/api";
+import { hashToken } from "@/lib/auth";
+import { searchDocuments } from "@/lib/repositories/workspace";
 
-export async function GET(request: Request) {
-  const session = await getSession();
-  if (!session) return NextResponse.json({ error: "Authentication required." }, { status: 401 });
+const queryOf = (request: Request) => {
   const search = new URL(request.url).searchParams.get("q")?.trim();
-  if (!search || search.length < 2 || search.length > 200) return NextResponse.json({ error: "Search query must contain 2–200 characters." }, { status: 400 });
-  const result = await withActor(session.userId, (client) => client.query("select * from document_search($1)", [search]));
-  return NextResponse.json({ data: result.rows });
-}
+  if (!search || search.length < 2 || search.length > 200) throw new ApiError(400, "Search query must contain 2–200 characters.");
+  return search;
+};
+
+export const GET = apiRoute({
+  demo: async (request) => NextResponse.json({ data: await searchDocuments({} as never, queryOf(request)), mode: "demo" }),
+}, async (request, { workspace, db, audit }) => {
+  const search = queryOf(request);
+  const hits = await searchDocuments(workspace, search);
+  // Search terms can themselves be privileged; the audit trail keeps only a hash.
+  await db((client) => audit(client, { action: "document.search", resourceType: "search", outcome: "success", metadata: { queryHash: hashToken(search.toLowerCase()), results: hits.length } }));
+  return NextResponse.json({ data: hits });
+});
