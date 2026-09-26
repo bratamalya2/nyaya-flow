@@ -75,6 +75,11 @@ if [[ "${1:-}" == "e2e" ]]; then
   export E2E_OWNER_PASSWORD="e2e-owner-passphrase-${suffix}"
   DATABASE_ADMIN_URL="${TEST_DATABASE_ADMIN_URL}" OPERATOR_EMAIL="${E2E_OWNER_EMAIL}" OPERATOR_PASSWORD="${E2E_OWNER_PASSWORD}" \
     OPERATOR_NAME="Adv. E2E Owner" ORGANIZATION_NAME="E2E Chambers" ORGANIZATION_SLUG="e2e-chambers" npx tsx scripts/provision-operator.ts
+  export SUPERADMIN_EMAIL="superadmin@e2e.nyayaflow.test"
+  export SUPERADMIN_PASSWORD="superadmin-e2e-passphrase-${suffix}"
+  SUPERADMIN_PASSWORD_HASH="$(node -e 'require("argon2").hash(process.env.SUPERADMIN_PASSWORD, { type: 2 }).then((h) => process.stdout.write(Buffer.from(h).toString("base64url")))')"
+  SUPERADMIN_TOTP_SECRET="$(node -e 'process.stdout.write(require("otplib").authenticator.generateSecret(20))')"
+  export SUPERADMIN_PASSWORD_HASH SUPERADMIN_TOTP_SECRET
   export DOCUMENT_STORAGE_ROOT="${storage_dir}"
   export MFA_ENCRYPTION_KEY="$(openssl rand -base64 32)"
   export SESSION_SECRET="$(openssl rand -base64 48)"

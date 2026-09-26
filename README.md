@@ -67,6 +67,35 @@ Requirements:
 
 The owner enrols TOTP MFA at first sign-in and can then invite members from **Firm Admin**. Each invitation is a one-time link, and invitees also enrol MFA before they see firm data.
 
+### Platform superadmin: creating operators
+
+A platform superadmin creates **operators** (new firm workspaces) at `/platform`.
+- **Credentials:** kept only in the server environment, not in the database.
+- **What it can see:** organization metadata only (name, slug, owners, member count), never matters, documents, or firm audit contents.
+
+1. Generate the credentials. You are prompted for a 16+ character password, which is never echoed; the command also prints a QR code to scan with your authenticator app:
+
+   ```bash
+   npm run superadmin:setup -- you@example.in --write .env
+   ```
+
+   This writes three values:
+   - `SUPERADMIN_EMAIL`;
+   - `SUPERADMIN_PASSWORD_HASH`, an Argon2id hash stored base64url-encoded so `.env` variable expansion cannot corrupt its `$` characters;
+   - `SUPERADMIN_TOTP_SECRET`.
+
+   On the VPS, run the command without `--write` and copy the three lines into `/etc/nyayaflow/nyayaflow.env`. Every run creates a new TOTP secret, so rescan the QR code.
+2. Restart the web server and sign in at `/platform/sign-in` with the email, password, and a current authenticator code.
+   - Sessions last 8 hours, or 30 minutes idle.
+   - Sign-in is rate-limited.
+   - Every sign-in and action is recorded in `platform_audit_events`.
+3. Use **Create operator**: organization name, workspace slug, and owner email.
+   - NyayaFlow creates the workspace and shows a one-time owner invitation link. No email is sent, so share it yourself.
+   - The owner sets their own password and enrols MFA; the superadmin never knows tenant passwords.
+   - **New owner link** replaces a lost or expired link.
+
+The console returns 404 unless all three `SUPERADMIN_*` values are set and valid. The server logs a warning at start-up if they are present but unusable. `npm run db:provision` still works for scripted setups.
+
 ### Demo mode
 
 `DEMO_MODE=true` serves synthetic data without authentication or persistence, for UI review only.
@@ -84,7 +113,7 @@ npm run lint
 npm test                   # unit tests
 npm run test:integration   # RLS, audit-chain, and worker tests against a throwaway PostgreSQL
 npm run test:e2e           # browser tests in demo mode (desktop + mobile)
-npm run test:e2e:db        # full browser flow against a real database, RLS, and the OCR worker
+npm run test:e2e:db        # full browser flows (firm workspace and platform console) against a real database
 npm run build && npm run build:worker
 ```
 

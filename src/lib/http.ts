@@ -11,3 +11,12 @@ export function csvCell(value: unknown) {
   if (/^[=+\-@\t\r]/.test(text)) text = `'${text}`;
   return `"${text.replace(/"/g, '""')}"`;
 }
+
+/**
+ * Relative 303 redirect. Never build redirect targets from `request.url`: behind Nginx (or with
+ * HOSTNAME=127.0.0.1) Next reports the bind address, so an absolute URL would send the browser to
+ * another origin — which the CSP form-action rule then blocks.
+ */
+export function seeOther(path: string) {
+  return new Response(null, { status: 303, headers: { location: path, "cache-control": "no-store" } });
+}

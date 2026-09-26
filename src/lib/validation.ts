@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SLUG_PATTERN } from "@/lib/slug";
 
 /** eCourts CNR: four-letter establishment code followed by twelve digits, e.g. DLHC010012342026. */
 export const CNR_PATTERN = /^[A-Z]{4}\d{12}$/;
@@ -138,3 +139,21 @@ export const retentionClassInput = z.object({
 });
 
 export const organizationPolicyUpdate = z.object({ externalAiEnabled: z.boolean() });
+
+const email = z.email().max(254).transform((value) => value.trim().toLowerCase());
+const inviteDays = z.number().int().min(1).max(14).default(7);
+
+export const platformSignInInput = z.object({
+  email: z.email().max(254),
+  password: z.string().min(1).max(256),
+  code: z.string().regex(/^\d{6}$/),
+});
+
+export const operatorInput = z.object({
+  organizationName: z.string().trim().min(2).max(200),
+  slug: z.string().trim().toLowerCase().regex(SLUG_PATTERN, "Use 2–63 lowercase letters, digits, or hyphens, starting with a letter or digit."),
+  ownerEmail: email,
+  expiresInDays: inviteDays,
+});
+
+export const ownerInvitationInput = z.object({ ownerEmail: email, expiresInDays: inviteDays });

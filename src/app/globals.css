@@ -431,6 +431,10 @@ html[data-theme="reader"] .reading, html[data-theme="reader"] .ocr-text { font-f
   .pv-page { padding: 16px; }
 }
 
+
+.platform-shell { min-height: 100vh; }
+.platform-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 24px; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--card) 94%, transparent); backdrop-filter: blur(12px); }
+
 .mobile-nav { display: none; }
 
 @media (max-width: 1050px) {

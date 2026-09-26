@@ -50,6 +50,11 @@ The Next.js app serves the user-facing screens and a backend-for-frontend API un
 - **Legal intelligence (Research beta):** corpus ingestion with source rights, retrieval, answer generation with passage locators, and evaluation.
 - **Graph projection (Research beta):** judgments, provisions, citation edges, and reviewed treatment in Neo4j.
 - **Communications and commercial (Expansion):** consented notifications, invoices, advances, and reconciliation.
+- **Platform administration:**
+  - The superadmin is configured in the environment: email, encoded Argon2id hash, and TOTP secret.
+  - It has its own sessions and audit log.
+  - `SECURITY DEFINER` functions create organizations with a one-time owner invitation and list organization metadata; the web role still cannot insert organizations directly.
+  - The console never reads tenant matters or documents.
 - **Compliance and audit:** consent records, the data-request workflow with legal-hold checks, retention classes, legal holds, and a hash-chained audit log verified daily by the worker.
 
 For the pilot these are modules in one Next.js codebase plus one worker process. Split into networked services only when scaling, team ownership, or isolation needs justify it.
@@ -69,6 +74,7 @@ PostgreSQL is the system of record. All tenant-owned tables carry `organization_
 | `consent_records`, `data_requests`, `retention_classes`, `legal_holds` | one active hold per matter | DPDP workflows. |
 | `audit_events`, `audit_chain_heads`, `audit_verifications` | per-organization `chain_index`, SHA-256 chain | Tamper-evident audit trail. |
 | `background_jobs`, `outbox_events` | status, lease, attempts | Durable processing and future projections. |
+| `platform_sessions`, `platform_totp_steps`, `platform_audit_events` | hashed tokens; last TOTP step; append-only for the web role | Superadmin console sessions and audit. |
 
 ### Authorization design
 
@@ -122,6 +128,7 @@ All endpoints live under `/api/v1` and use cookie sessions. Mutations must come 
 - **Hearings and tasks:** `POST /matters/{id}/hearings`, `PATCH /hearings/{id}`, `POST /matters/{id}/tasks`, `PATCH /tasks/{id}`, `POST /conflict-dismissals`
 - **Access:** `POST|DELETE /matters/{id}/grants`, `POST /matters/{id}/legal-holds`
 - **Members:** `POST /invitations`, `POST /invitations/accept`, `PATCH /members/{id}`
+- **Platform console:** `POST /auth/platform/sign-in`, `GET|POST /platform/organizations`, `POST /platform/organizations/{id}/owner-invitations`
 - **Sessions:** `GET|DELETE /sessions`, `POST /session/organization`
 - **Documents:** `POST /documents/upload-intents`, `PUT /documents/uploads/{token}`, `GET /documents/{versionId}/download`, `GET /documents/versions/{id}/pages`, `GET /search`, `POST /ocr/pages/{id}/corrections`
 - **Privacy:** `POST /privacy/consents`, `PATCH /privacy/requests/{id}`, `POST /retention-classes`, `PATCH /organization/policies`

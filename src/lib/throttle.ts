@@ -45,3 +45,9 @@ export async function recordFailure(rules: ThrottleRule[]) {
 export async function clearFailures(rules: ThrottleRule[]) {
   await query("delete from auth_throttle where bucket = any($1)", [rules.filter((rule) => !rule.bucket.startsWith("ip:")).map((rule) => rule.bucket)]);
 }
+
+// One superadmin account: a tight per-IP limit plus an account-wide limit with a longer lock.
+export const platformRules = (ip: string): ThrottleRule[] => [
+  { bucket: `platform:ip:${hashToken(ip)}`, limit: 5, windowMinutes: 15, lockMinutes: 30 },
+  { bucket: "platform:account", limit: 10, windowMinutes: 15, lockMinutes: 30 },
+];

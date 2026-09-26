@@ -19,7 +19,8 @@
     "worker": "tsx worker/index.ts",
     "test:integration": "bash scripts/test-db.sh",
     "build:worker": "esbuild worker/index.ts --bundle --platform=node --format=cjs --target=node24 --external:pg-native --outfile=.worker-build/worker.cjs && esbuild scripts/migrate.ts scripts/provision-operator.ts --bundle --platform=node --format=cjs --target=node24 --external:pg-native --external:argon2 --outdir=.worker-build/scripts --out-extension:.js=.cjs",
-    "test:e2e:db": "bash scripts/test-db.sh e2e"
+    "test:e2e:db": "bash scripts/test-db.sh e2e",
+    "superadmin:setup": "tsx scripts/superadmin-setup.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -244,7 +244,8 @@ export async function listMembers(workspace: Workspace): Promise<Member[]> {
 export async function listInvitations(workspace: Workspace): Promise<Invitation[]> {
   if (isDemoMode()) return demo.invitations;
   const result = await run(workspace, (client) => client.query<{ id: string; email: string; role: AppRole; expires_at: Timestamp; invited_by: string }>(
-    `select i.id, i.email, i.role, i.expires_at, u.display_name invited_by from invitations i join app_users u on u.id = i.invited_by
+    `select i.id, i.email, i.role, i.expires_at, coalesce(u.display_name, 'Platform administrator') invited_by
+     from invitations i left join app_users u on u.id = i.invited_by
      where i.organization_id = $1 and i.accepted_at is null and i.revoked_at is null and i.expires_at > now() order by i.created_at desc`,
     [workspace.organizationId],
   ));

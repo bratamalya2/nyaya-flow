@@ -180,10 +180,13 @@ test("exports a verifiable audit chain", async () => {
   expect(verification.rows[0].ok).toBe(true);
 });
 
-test("signing out revokes the session", async () => {
+test("signing out from the user menu revokes the session", async () => {
   await page.goto("/account");
-  await page.getByRole("button", { name: "Sign out", exact: true }).click();
-  await expect(page).toHaveURL(/\/sign-in/);
+  await expect(page.getByRole("heading", { name: "Where you are signed in" })).toBeVisible();
+  await page.getByRole("button", { name: /E2E Owner/ }).click();
+  await page.getByRole("menuitem", { name: "Sign out" }).click();
+  await expect(page).toHaveURL(/\/sign-in$/);
+  expect((await page.context().cookies()).some((cookie) => cookie.name === "nf_session")).toBe(false);
   await page.goto("/today");
   await expect(page).toHaveURL(/\/sign-in/);
   const denied = await page.request.get("/api/v1/matters");
