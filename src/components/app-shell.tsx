@@ -58,7 +58,7 @@ export function AppShell({ children, user, organization, memberships, demoMode }
     <div className="app-layout">
       <header className="topbar">
         <div className="brand">
-          <Image src="/favicon.png" alt="NyayaFlow" width={38} height={34} priority />
+          <Image src="/favicon.png" alt="NyayaFlow" width={38} height={34} priority style={{ width: 38, height: "auto" }} />
           <div><span className="brand-word">NyayaFlow</span></div>
           <div className="firm-label"><strong>{organization.name}</strong><span>{demoMode ? "Synthetic demo workspace" : "Firm workspace"}</span></div>
         </div>

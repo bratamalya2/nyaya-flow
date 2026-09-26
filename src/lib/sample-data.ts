@@ -6,7 +6,7 @@ import type {
 } from "@/lib/types";
 
 export const members: Member[] = [
-  { id: DEMO_USER_ID, name: "Adv. Meera Iyer", initials: "MI", role: "managing_partner", email: "meera@demo.nyayaflow.test", active: true, mfaEnabled: true },
+  { id: DEMO_USER_ID, name: "Adv. Meera Iyer", initials: "MI", role: "owner", email: "meera@demo.nyayaflow.test", active: true, mfaEnabled: true },
   { id: "00000000-0000-4000-8000-000000000102", name: "Adv. Karan Rao", initials: "KR", role: "associate", email: "karan@demo.nyayaflow.test", active: true, mfaEnabled: true },
   { id: "00000000-0000-4000-8000-000000000103", name: "Adv. Farah Siddiqui", initials: "FS", role: "advocate", email: "farah@demo.nyayaflow.test", active: true, mfaEnabled: true },
   { id: "00000000-0000-4000-8000-000000000104", name: "Ritu Nair", initials: "RN", role: "paralegal", email: "ritu@demo.nyayaflow.test", active: true, mfaEnabled: true },

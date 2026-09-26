@@ -1,29 +1,42 @@
-import { AlertTriangle, ArrowRight, Beaker, BookOpen, ChartNoAxesCombined, FileCheck2, Files, Landmark, ReceiptIndianRupee, Users } from "lucide-react";
+import { AlertTriangle, ArrowRight, BookOpen, ChartNoAxesCombined, FileCheck2, Files, Landmark, ReceiptIndianRupee, Users } from "lucide-react";
 import { notFound } from "next/navigation";
+import type { ComponentType } from "react";
+import { AnalyticsPreview } from "@/components/previews/analytics";
+import { BillingPreview } from "@/components/previews/billing";
+import { BnsPreview } from "@/components/previews/bns";
+import { ClientPreview } from "@/components/previews/client";
+import { ContractsPreview } from "@/components/previews/contracts";
+import { FilingPreview } from "@/components/previews/filing";
+import { ResearchPreview } from "@/components/previews/research";
 
-const modules = {
-  research: { title: "Precedent Knowledge Graph", icon: BookOpen, description: "Evidence-linked citator relationships, reviewed treatment, and paragraph-level authority." },
-  bns: { title: "BNS / BNSS Transition Matrix", icon: Landmark, description: "Versioned old/new provision mapping with applicability worksheets and lawyer review." },
-  filing: { title: "E-Filing & Docket Assembly", icon: FileCheck2, description: "Forum-specific rule packs, annexure indexing, defect checks, and controlled export." },
-  client: { title: "Controlled Client Portal", icon: Users, description: "Approved milestones, selected documents, evidence intake, and revocable access." },
-  billing: { title: "Financials & BCI Billing", icon: ReceiptIndianRupee, description: "Approved charges, invoices, retainers, allocations, and reconciliation history." },
-  contracts: { title: "Contracts & CLM", icon: Files, description: "Versioned templates, clause review, digital signing, and supported stamp-duty workflows." },
-  analytics: { title: "Litigation Portfolio Analytics", icon: ChartNoAxesCombined, description: "Permission-safe workload, forum, risk, and firm performance summaries." },
-} as const;
+type Search = { view?: string; code?: string };
+const modules: Record<string, { title: string; icon: ComponentType<{ size?: number }>; description: string; phase: string; render: (search: Search) => React.ReactNode }> = {
+  research: { title: "Precedent Knowledge Graph", icon: BookOpen, phase: "Research beta", description: "Evidence-linked citation relationships, reviewed treatment, and paragraph-level authority.", render: () => <ResearchPreview /> },
+  bns: { title: "BNS / BNSS Transition Matrix", icon: Landmark, phase: "Advanced", description: "Versioned old/new provision mapping, an applicability worksheet, and draft updates that need lawyer approval.", render: (search) => <BnsPreview code={search.code} /> },
+  filing: { title: "E-Filing & Docket Assembly", icon: FileCheck2, phase: "Advanced", description: "Forum rule packs, defect checks with sources, annexure indexing, and a controlled export.", render: (search) => <FilingPreview view={search.view} /> },
+  client: { title: "Controlled Client Portal", icon: Users, phase: "Expansion", description: "Approved milestones, selected documents, evidence intake, and revocable access.", render: () => <ClientPreview /> },
+  billing: { title: "Financials & Fee Ledger", icon: ReceiptIndianRupee, phase: "Expansion", description: "Approved charges, invoices, client advances, allocations, and reconciliation history.", render: () => <BillingPreview /> },
+  contracts: { title: "Contracts & Stamp Duty", icon: Files, phase: "Advanced", description: "Versioned templates, clause review signals, supported stamp-duty estimates, and digital signing.", render: () => <ContractsPreview /> },
+  analytics: { title: "Litigation Portfolio Analytics", icon: ChartNoAxesCombined, phase: "Expansion", description: "Permission-safe workload, forum, and firm performance summaries.", render: () => <AnalyticsPreview /> },
+};
 
 export function generateStaticParams() { return Object.keys(modules).map((module) => ({ module })); }
 
-export default async function PreviewPage({ params }: { params: Promise<{ module: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ module: string }> }) {
   const { module } = await params;
-  if (!(module in modules)) notFound();
-  const item = modules[module as keyof typeof modules];
-  const Icon = item.icon;
+  return { title: modules[module] ? `${modules[module].title} (preview)` : "Preview" };
+}
+
+export default async function PreviewPage({ params, searchParams }: { params: Promise<{ module: string }>; searchParams: Promise<Search> }) {
+  const { module } = await params;
+  const item = modules[module];
+  if (!item) notFound();
   return <div className="page">
-    <header className="page-heading"><div><p className="eyebrow"><Beaker size={13} /> Roadmap preview</p><h1>{item.title}</h1><p className="lede">{item.description}</p></div><button className="button" disabled type="button">Production action unavailable <ArrowRight size={14} /></button></header>
-    <div className="preview-banner"><AlertTriangle size={18} /><span><strong>Synthetic preview—no live integration.</strong> Data on this page is fictional. Controls do not send, file, bill, message, or provide legal conclusions.</span></div>
-    <div className="preview-grid">
-      <section className="card preview-canvas"><div><div className="preview-node"><Icon size={31} /><span>{module.toUpperCase()}</span></div><h2 style={{ marginTop: 20 }}>Capability preview</h2><p className="lede" style={{ marginInline: "auto" }}>This composition preserves the supplied Stitch visual direction while keeping the unreleased workflow isolated from production matter data.</p></div></section>
-      <aside className="card"><div className="preview-stat"><span>Release phase</span><strong>{module === "research" ? "Research beta" : "Expansion / advanced"}</strong></div><div className="preview-stat"><span>Data source</span><strong>Synthetic fixtures</strong></div><div className="preview-stat"><span>External actions</span><strong className="danger">Disabled</strong></div><div className="preview-stat"><span>Required gate</span><strong>Legal, rights & provider review</strong></div></aside>
-    </div>
+    <header className="page-heading">
+      <div><p className="eyebrow"><item.icon size={13} /> Roadmap preview · {item.phase}</p><h1>{item.title}</h1><p className="lede">{item.description}</p></div>
+      <button className="button" disabled type="button">Production action unavailable <ArrowRight size={14} /></button>
+    </header>
+    <div className="preview-banner" role="note"><AlertTriangle size={18} /><span><strong>Synthetic preview—no live integration.</strong> Data on this page is fictional. Controls do not send, file, bill, message, or provide legal conclusions. Release requires legal, rights, and provider review.</span></div>
+    <div data-preview-body="">{item.render(await searchParams)}</div>
   </div>;
 }

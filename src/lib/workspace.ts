@@ -28,7 +28,7 @@ export const getWorkspace = cache(async (): Promise<Workspace | null> => {
   const session = await getSession();
   if (!session) return null;
   if (isDemoMode()) {
-    const membership: Membership = { organizationId: DEMO_ORGANIZATION_ID, organizationName: "Iyer & Rao Chambers (demo)", role: "managing_partner" };
+    const membership: Membership = { organizationId: DEMO_ORGANIZATION_ID, organizationName: "Iyer & Rao Chambers (demo)", role: "owner" };
     return { session, userId: session.userId, ...membership, memberships: [membership] };
   }
   const result = await withActor(session.userId, (client) => client.query<{ organization_id: string; name: string; role: AppRole }>(
