@@ -5,7 +5,7 @@ import { dataRequestUpdate } from "@/lib/validation";
 import type { DataRequest } from "@/lib/types";
 
 // FR-055: verify identity, review legal holds and retention, then fulfil or deny with a recorded decision.
-export const DATA_REQUEST_TRANSITIONS: Record<DataRequest["status"], DataRequest["status"][]> = {
+const DATA_REQUEST_TRANSITIONS: Record<DataRequest["status"], DataRequest["status"][]> = {
   received: ["identity_review", "denied"],
   identity_review: ["legal_hold_review", "denied"],
   legal_hold_review: ["processing", "denied"],

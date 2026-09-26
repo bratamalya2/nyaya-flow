@@ -1,13 +1,13 @@
 # NyayaFlow — Functional Requirements
 
 **Status:** Draft for implementation planning · **Source:** `feature_specification.md`  
-**Legend:** M = MVP; R = research beta; E = expansion; A = advanced. Supabase Auth, Postgres, and Storage are the identity, primary database, and file platform; Neo4j holds the derived legal graph. Each requirement is subject to tenant and matter authorization unless explicitly public.
+**Legend:** M = MVP; R = research beta; E = expansion; A = advanced. Application-owned authentication (Argon2id + mandatory TOTP), self-hosted PostgreSQL with row-level security, and private filesystem storage are the identity, primary database, and file platform; Neo4j holds the derived legal graph. Each requirement is subject to tenant and matter authorization unless explicitly public.
 
 ## 1. Identity, workspace, and dashboards
 
 | ID | Phase | Requirement and acceptance condition |
 | --- | --- | --- |
-| FR-001 | M | Admin creates an organization, invites/removes members tied to Supabase Auth identities, and assigns app roles in Postgres; unauthorized invite acceptance fails and is logged. |
+| FR-001 | M | Admin creates an organization, invites/removes members through single-use invitation links, and assigns app roles in PostgreSQL; unauthorized invite acceptance fails and is logged. |
 | FR-002 | M | Staff signs in with MFA, can revoke sessions, and sees only organizations to which they belong. |
 | FR-003 | M | Admin creates restricted matter grants for view/edit/manage/export; Postgres RLS, Storage policies, APIs, search, file access, and jobs enforce them, including direct client queries. |
 | FR-004 | M | Solo and staff dashboards show today's assigned hearings, tasks, matter changes, and stale source warnings, with timezone shown. |
@@ -44,8 +44,8 @@
 
 | ID | Phase | Requirement and acceptance condition |
 | --- | --- | --- |
-| FR-030 | M | Authorized user uploads PDF/image to a tenant-scoped private Supabase Storage path; Postgres tracks quarantine, and invalid type, size, or failed malware scan prevents publication. |
-| FR-031 | M | Every file version has a distinct Supabase Storage object and Postgres metadata preserving hash, uploader, timestamp, and access history; replacement never overwrites an approved version. |
+| FR-030 | M | Authorized user uploads PDF/image to a tenant-scoped private storage path; PostgreSQL tracks quarantine, and invalid type, size, or failed malware scan prevents publication. |
+| FR-031 | M | Every file version has a distinct stored object and PostgreSQL metadata preserving hash, uploader, timestamp, and access history; replacement never overwrites an approved version. |
 | FR-032 | M | OCR extracts page text for pilot languages with per-page confidence; user can correct searchable text without overwriting original. |
 | FR-033 | M | Search is scoped to granted matters and returns matched text/page; revoked users cannot retrieve cached snippets or file links. |
 | FR-034 | A | System drafts synopsis, list of dates, annexure labels, and hyperlinked index; reviewer can reorder/edit and export a controlled package. |
@@ -70,7 +70,7 @@
 
 | ID | Phase | Requirement and acceptance condition |
 | --- | --- | --- |
-| FR-050 | E | Admin invites a client through Supabase Auth to a specific matter view, selected milestones, and selected document versions; revocation blocks authenticated access immediately, while issued signed links expire on their own schedule. |
+| FR-050 | E | Admin invites a client through a single-use invitation to a specific matter view, selected milestones, and selected document versions; revocation blocks access immediately because every download is authorized per request and no bearer links are issued. |
 | FR-051 | E | Client uploads requested evidence to a quarantine/review queue, not directly into a published filing package. |
 | FR-052 | E | Authorized staff previews and approves client messages; deduplicated queue records channel, template version, delivery state, and opt-out. |
 | FR-053 | M | Capture notice/consent or other configured processing basis, purpose, and version; withdrawal changes future eligible processing. |
@@ -80,10 +80,10 @@
 
 ## 7. Cross-cutting acceptance gates
 
-- **Authorization:** automated tests cover Postgres and Storage RLS under anonymous, staff, client, revoked, and cross-tenant identities; include signed links, search, background jobs, graph queries, and service-role boundaries.
+- **Authorization:** automated tests cover PostgreSQL RLS and storage authorization under anonymous, staff, client, revoked, and cross-tenant identities; include downloads, search, background jobs, graph queries (Research beta), and worker/owner role boundaries.
 - **Accessibility:** keyboard use, focus state, readable contrast, screen reader labels, and responsive layout for primary workflows.
 - **Audit:** each sensitive workflow emits a traceable event with a correlation ID and tamper-evidence strategy.
-- **Reliability:** Supabase Queues/outbox retries are idempotent; failures display actionable status; Postgres, Storage, and Neo4j restore drill passes before pilot.
+- **Reliability:** PostgreSQL job-queue/outbox retries are idempotent; failures display actionable status; the PostgreSQL and document-storage restore drill passes before pilot (Neo4j is added to the drill with the Research beta).
 - **Research evaluation:** use a curated expert-reviewed test set for citations, abstention, treatment labels, multilingual queries, and source freshness before public claims.
 - **Connector acceptance:** permitted access, provenance, coverage, freshness, rate limits, and fallback are documented per forum/provider.
 - **Privacy:** no client document is sent to third-party OCR/AI/message service without the configured legal and contractual checks.

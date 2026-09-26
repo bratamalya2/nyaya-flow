@@ -1,7 +1,7 @@
 # NyayaFlow — Business Requirements
 
 **Status:** Draft for stakeholder review · **Date:** 26 September 2026  
-**Source:** `feature_specification.md`; stack decision: Supabase Postgres/Auth/Storage plus Next.js and Neo4j. This document states desired business outcomes and constraints; detailed behavior is in `Functional.md`.
+**Source:** `feature_specification.md`; stack decision (revised September 2026): Next.js with self-hosted PostgreSQL, application-owned authentication, and private document storage on an India-hosted VPS; Neo4j for the Research beta. This document states desired business outcomes and constraints; detailed behavior is in `Functional.md`.
 
 ## 1. Opportunity and objectives
 
@@ -11,7 +11,7 @@ Indian legal practitioners often manage matter records, court listings, document
 | --- | --- | --- | --- |
 | BR-01 | Reduce time spent preparing daily court schedules and tracking matters. | Pilot users can see assigned hearings, source freshness, conflicts, and pending tasks in one view; baseline and post-pilot time study. | Must |
 | BR-02 | Reduce missed actions from conflicting hearings, tasks, and changing dates. | Pilot counts confirmed conflict alerts, due-task completion, and missed events; no duplicate alert floods. | Must |
-| BR-03 | Preserve client confidentiality while enabling collaboration. | Supabase Auth and Postgres/Storage RLS restrict matters and objects; access tests pass; audit trail available for reads, downloads, edits, and shares. | Must |
+| BR-03 | Preserve client confidentiality while enabling collaboration. | Mandatory MFA and PostgreSQL row-level security restrict matters and documents; access tests pass; audit trail available for reads, downloads, edits, and shares. | Must |
 | BR-04 | Make document intake, retrieval, and version control faster. | Pilot measures upload-to-search readiness, retrieval success, and OCR correction burden. | Must |
 | BR-05 | Enable reliable, evidence-linked legal research. | Evaluated answers cite retrievable passages; unsupported claims and uncertain treatment are surfaced or withheld. | Must for research release |
 | BR-06 | Improve transparent client updates without exposing unapproved case facts. | Authorized clients see shared milestones; messages show approval and delivery status. | Should |
@@ -61,14 +61,14 @@ Proposed B2B subscription with fixed tiers and/or seats plus disclosed usage all
 - Legal AI cannot guarantee zero hallucinations; factual support, abstention, evaluation, and human verification are product controls.
 - OCR accuracy varies by script, handwriting, image quality, and forum. Claims require measured datasets by language.
 - Filing rules, stamp duty, privacy obligations, signature flows, and professional conduct change; maintain versioned rulebooks and review owners.
-- India's DPDP requirements and commencement dates need counsel review at implementation. If India hosting is selected, choose the specific Supabase Mumbai project region and verify every Auth, Storage, backup, log, Neo4j, and third-party processing path.
+- India's DPDP requirements and commencement dates need counsel review at implementation. The MVP is hosted on an OVH Mumbai VPS; verify every backup, log, future Neo4j, and third-party processing path before claiming India-only processing.
 
 ## 7. Launch decision checklist
 
 - Name, logo, and trademark clearance complete before public marketing.
 - Pilot persona, forum list, jurisdictions, language set, and licensed corpus approved.
 - Data-processing and professional-conduct assessment approved.
-- Supabase Auth configuration, MFA, Postgres/Storage RLS review, service-key isolation, accessibility check, incident runbook, Postgres/Storage/Neo4j restore, and support process complete.
+- Authentication and MFA configuration, PostgreSQL RLS review, database-role and secret isolation, accessibility check, incident runbook, PostgreSQL and document-storage restore drill, and support process complete.
 - Product metrics defined: activation, weekly active matters, time-to-brief, document search success, source freshness, citation verification pass, retention, support volume, gross margin.
 - Contracted partners and their fallback paths documented for every advertised integration.
 

@@ -6,7 +6,7 @@ This file describes how the product behaves. Legal conclusions, tax treatment, c
 ## 1. Business entities and ownership
 
 - **Organization** owns subscription, staff, policies, and private matter data.
-- **Member** signs in through Supabase Auth and has an application role (owner, managing partner, advocate, associate, paralegal, finance, admin) and explicit grants for restricted matters in Postgres.
+- **Member** signs in with a password and mandatory authenticator code and has an application role (owner, managing partner, advocate, associate, paralegal, finance, admin) and explicit grants for restricted matters in Postgres.
 - **Client** is a portal identity connected only to explicitly shared matters/documents.
 - **Matter** is the work unit: forum, identifiers, parties, assignees, status, dates, documents, tasks, fees, and activity.
 - **Source record** retains the external origin, fetched/observed time, parser version, and confidence for imported facts.
@@ -14,7 +14,7 @@ This file describes how the product behaves. Legal conclusions, tax treatment, c
 - **Document** has immutable versions; an approval or filing package points to a specific version.
 - **Ledger entry** tracks financial movements without changing previous entries.
 
-Every tenant-owned Postgres row and private Supabase Storage object belongs to exactly one tenant; shared identity records and the curated public corpus are segregated. A user can access a private resource only through membership and its matter/document grant; organization-wide analytics must not reveal restricted-matter titles or amounts to unauthorized members.
+Every tenant-owned PostgreSQL row and private stored document belongs to exactly one tenant; shared identity records and the curated public corpus are segregated. A user can access a private resource only through membership and its matter/document grant; organization-wide analytics must not reveal restricted-matter titles or amounts to unauthorized members.
 
 ## 2. Matter lifecycle
 
@@ -26,7 +26,7 @@ Hearings have `proposed`, `confirmed`, `adjourned`, `completed`, or `cancelled` 
 
 A change can trigger a message only if the rule is enabled, recipient and contact route are verified, consent/preferences allow that channel, and the underlying event has reached a publishable state. Preview includes source, audience, language, and sensitive fields. Queueing uses a unique `(tenant, event, recipient, channel, templateVersion)` key to avoid duplicates. Delivery status is separate from legal-event truth. Retries are bounded, and failures appear in an action queue. Court-date changes and orders default to advocate approval before client delivery.
 
-A client sees only explicitly published milestones and selected document versions. Revoking access blocks new authenticated reads and URL issuance; previously issued signed download URLs remain usable until expiry, so sensitive files should use authenticated downloads and very short link lifetimes where links are unavoidable. Already downloaded copies cannot be recalled. Daily digests use the recipient's timezone and a configurable send time (default proposed 07:00 IST), deduplicate events, and identify records that are stale or unconfirmed.
+A client sees only explicitly published milestones and selected document versions. Revoking access blocks new reads immediately: every download is authorized against the database at request time and no bearer links are issued. Already downloaded copies cannot be recalled. Daily digests use the recipient's timezone and a configurable send time (default proposed 07:00 IST), deduplicate events, and identify records that are stale or unconfirmed.
 
 ## 4. Research and legal authority
 
@@ -36,7 +36,7 @@ The old/new criminal-code mapping stores effective dates, jurisdiction, exceptio
 
 ## 5. Documents and filing
 
-Supabase Storage receives uploads only into private, tenant-scoped paths; Postgres records matter/owner linkage and quarantine status. Upload accepts allowed MIME/content types and size limits; quarantine until scan passes. OCR text keeps per-page language and confidence, plus references to the original image. A human can correct extracted text while preserving the original. A synopsis/list of dates or annexure index is a draft requiring review against the case file. Filing rules are versioned by forum and effective date. Defect checks classify `pass`, `warning`, `fail`, or `manual review`; a pass is not a guarantee of registry acceptance. Filing submissions require a human action and a supported, authorized court path.
+Document storage receives uploads only into private, tenant-scoped paths outside the web root; Postgres records matter/owner linkage and quarantine status. Upload accepts allowed MIME/content types and size limits; quarantine until scan passes. OCR text keeps per-page language and confidence, plus references to the original image. A human can correct extracted text while preserving the original. A synopsis/list of dates or annexure index is a draft requiring review against the case file. Filing rules are versioned by forum and effective date. Defect checks classify `pass`, `warning`, `fail`, or `manual review`; a pass is not a guarantee of registry acceptance. Filing submissions require a human action and a supported, authorized court path.
 
 Signing has a provider-specific flow: identify signers, verify consent, submit exact document hash, capture provider receipt/certificate evidence, and lock signed version. A changed document restarts signing. Token signing support is subject to a supported bridge or partner; eSign only through licensed/authorized providers.
 
@@ -67,4 +67,4 @@ Organizations have plan limits for seats, storage, OCR pages, research usage, an
 | AI answer lacks a passage supporting one sentence | Suppress that sentence or mark answer incomplete; do not fabricate a citation. |
 | A case citation is later overruled | Add evidence-backed treatment edge and notify only saved research/matters where enabled after review. |
 | Provider webhook repeats | Consume once by provider event ID and reconcile state; keep duplicate receipt in operational logs. |
-| Client access is revoked during a download | New URL requests fail; short-lived already-issued URLs expire quickly. |
+| Client access is revoked during a download | Any new request fails immediately; a transfer already in progress may complete. |

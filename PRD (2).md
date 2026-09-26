@@ -1,7 +1,7 @@
 # NyayaFlow — Product Requirements Document
 
 **Version:** Draft 0.1 · **Date:** 26 September 2026 · **Owner:** Product owner  
-**Basis:** Supplied `feature_specification.md`; stack decision: Next.js + Supabase (Postgres, Auth, Storage) + Neo4j. This PRD turns an ambitious concept into a phased, testable product plan.
+**Basis:** Supplied `feature_specification.md`; stack decision (revised September 2026): Next.js with self-hosted PostgreSQL, application-owned authentication, and private filesystem storage on an India-hosted VPS; Neo4j joins for the Research beta. This PRD turns an ambitious concept into a phased, testable product plan.
 
 ## 1. Product summary
 
@@ -35,9 +35,9 @@ A team can know what needs attention, find the right matter material, research w
 
 | Capability | MVP | Research beta | Expansion | Advanced |
 | --- | --- | --- | --- | --- |
-| Supabase Auth, MFA, Postgres roles/grants with RLS, audit | ✓ | | | |
+| Password + mandatory TOTP MFA, PostgreSQL roles/grants with RLS, audit | ✓ | | | |
 | Matter records, manual hearings/tasks, conflict warnings, dashboards | ✓ | | | |
-| Private Supabase Storage, version metadata in Postgres, initial OCR, matter search | ✓ | | | |
+| Private document storage, version metadata in PostgreSQL, initial OCR, matter search | ✓ | | | |
 | Narrow permitted court connector | Pilot only | | Broaden by forum | Live boards where available |
 | Evidence-linked research, citation graph, reviewed treatment | | ✓ | Broaden corpus | |
 | Client portal, controlled messages, billing and retainers | | | ✓ | |
@@ -57,7 +57,7 @@ The source specification's visual modes (light, dark, reader) belong in the MVP 
 
 `Functional.md` contains individual requirements FR-001–FR-056. `Business_Requirements.md` contains outcomes BR-01–BR-10. `Business.md` defines state transitions, decision rules, approvals, and edge cases. `Architecture.md` defines implementation boundaries and data flow.
 
-MVP is accepted when a pilot organization can sign in with Supabase Auth, create and restrict matters through Postgres and Storage RLS, work from daily hearing/task views, upload and find private Supabase Storage documents, inspect provenance and audit events, and restore Postgres/Storage/Neo4j data from backup. No known cross-tenant access defect may remain. A connector cannot be labeled live/automatic without validated source permission, measured freshness, and an operational fallback. Research beta additionally requires an expert-reviewed evaluation set, passage locator checks, false-treatment review, and an abstention path.
+MVP is accepted when a pilot organization can sign in with password and TOTP MFA, create and restrict matters under PostgreSQL row-level security, work from daily hearing/task views, upload and find private documents that are only served after an authorization check, inspect provenance and audit events, and restore PostgreSQL and document storage from backup with the restore drill passing. No known cross-tenant access defect may remain. A connector cannot be labeled live/automatic without validated source permission, measured freshness, and an operational fallback. Research beta additionally requires an expert-reviewed evaluation set, passage locator checks, false-treatment review, and an abstention path.
 
 ## 7. UX requirements
 
@@ -69,7 +69,7 @@ MVP is accepted when a pilot organization can sign in with Supabase Auth, create
 
 ## 8. Trust, privacy, and compliance
 
-Privileged files, client identity data, and firm strategy demand Supabase Auth, granular Postgres and Storage RLS, private buckets, authenticated downloads where immediate revocation is needed, MFA, audit, retention controls, and data vendor review. DPDP implementation, Bar Council conduct, billing/tax, copyright and court rules must be reviewed with qualified Indian counsel and an accountant as relevant. Supabase offers a specific Mumbai region for primary project data; verify Auth, Storage, backup, log, Neo4j, and other processor locations before making an India-only claim. AI is a drafting/research assistant with human responsibility for final advice and filings.
+Privileged files, client identity data, and firm strategy demand mandatory MFA, granular PostgreSQL row-level security, private document storage with authenticated downloads so revocation is immediate, audit, retention controls, and data vendor review. DPDP implementation, Bar Council conduct, billing/tax, copyright and court rules must be reviewed with qualified Indian counsel and an accountant as relevant. The MVP runs on an India-hosted VPS (OVH Mumbai, a single availability zone); keep encrypted backups in a separate India-hosted location and verify every processor location, including any future Neo4j, AI, or messaging provider, before making an India-only claim. AI is a drafting/research assistant with human responsibility for final advice and filings.
 
 ## 9. Success metrics and proposed pilot targets
 
@@ -106,9 +106,8 @@ No calendar dates are committed until data access, team capacity, and pilot part
 
 ## References checked
 
-- [Supabase regions](https://supabase.com/docs/guides/platform/regions)
-- [Supabase Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security)
-- [Supabase Storage private downloads](https://supabase.com/docs/guides/storage/serving/downloads)
+- [PostgreSQL Row Security Policies](https://www.postgresql.org/docs/16/ddl-rowsecurity.html)
+- [RFC 6238 TOTP](https://www.rfc-editor.org/rfc/rfc6238)
 - [eCourts case-status service](https://services.ecourts.gov.in/ecourtindia_v6/casestatus/)
 - [Controller of Certifying Authorities eSign](https://cca.gov.in/eSign.html)
 - [MeitY DPDP Rules 2025](https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa?pageTitle=Digital-Personal-Data-Protection-Rules-2025.pdf)
