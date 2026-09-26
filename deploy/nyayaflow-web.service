@@ -20,7 +20,8 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/var/lib/nyayaflow /var/log/nyayaflow
+ReadWritePaths=/var/lib/nyayaflow/documents /var/log/nyayaflow
+UMask=0027
 RestrictSUIDSGID=true
 LockPersonality=true
 

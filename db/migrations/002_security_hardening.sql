@@ -329,7 +329,8 @@ end if; end $$;
 do $$ begin if exists(select 1 from pg_roles where rolname='nyayaflow_worker') then
   grant delete on ocr_pages to nyayaflow_worker;
   grant select on organizations to nyayaflow_worker;
-  grant insert on audit_events,audit_verifications to nyayaflow_worker;
+  grant insert on audit_events to nyayaflow_worker;
+  grant select,insert on audit_verifications to nyayaflow_worker;
   grant execute on function verify_audit_chain(uuid) to nyayaflow_worker;
 end if; end $$;
 

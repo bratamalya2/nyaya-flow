@@ -17,7 +17,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "worker": "tsx worker/index.ts",
-    "test:integration": "bash scripts/test-db.sh"
+    "test:integration": "bash scripts/test-db.sh",
+    "build:worker": "esbuild worker/index.ts --bundle --platform=node --format=cjs --target=node24 --external:pg-native --outfile=.worker-build/worker.cjs && esbuild scripts/migrate.ts scripts/provision-operator.ts --bundle --platform=node --format=cjs --target=node24 --external:pg-native --external:argon2 --outdir=.worker-build/scripts --out-extension:.js=.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -43,6 +44,7 @@
     "@types/qrcode": "^1.5.5",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "esbuild": "^0.28.2",
     "eslint": "^9.37.0",
     "eslint-config-next": "^16.0.0",
     "jsdom": "^27.0.0",

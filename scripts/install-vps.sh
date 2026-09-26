@@ -16,7 +16,10 @@ id nyayaflow-backup >/dev/null 2>&1 || useradd --system --gid nyayaflow --home-d
 
 install -d -o nyayaflow -g nyayaflow -m 0750 /opt/nyayaflow/releases
 install -d -o root -g nyayaflow -m 0750 /etc/nyayaflow
-install -d -o nyayaflow-worker -g nyayaflow -m 0750 /var/lib/nyayaflow/documents
+# The web process writes originals; the worker and backup accounts read them through the nyayaflow group.
+# setgid keeps every new subdirectory in the nyayaflow group.
+install -d -o root -g root -m 0755 /var/lib/nyayaflow
+install -d -o nyayaflow -g nyayaflow -m 2750 /var/lib/nyayaflow/documents
 install -d -o nyayaflow -g nyayaflow -m 0750 /var/log/nyayaflow
 install -d -o nyayaflow-backup -g nyayaflow -m 0750 /var/backups/nyayaflow
 
@@ -26,4 +29,4 @@ install -o root -g root -m 0644 deploy/nyayaflow-backup.service /etc/systemd/sys
 install -o root -g root -m 0644 deploy/nyayaflow-backup.timer /etc/systemd/system/
 systemctl daemon-reload
 
-echo "Base packages and service accounts are ready. Install Node.js 24 LTS, configure PostgreSQL roles, and place environment files before enabling services."
+echo "Base packages and service accounts are ready. Install Node.js 24 LTS, create the PostgreSQL roles described in README.md, and place environment files before enabling services."

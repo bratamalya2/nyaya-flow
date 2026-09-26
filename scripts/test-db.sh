@@ -57,4 +57,5 @@ export TEST_DATABASE_APP_URL="postgresql://nyayaflow_app:${app_password}@${host}
 export TEST_DATABASE_WORKER_URL="postgresql://nyayaflow_worker:${worker_password}@${host}/${database}"
 
 DATABASE_ADMIN_URL="${TEST_DATABASE_ADMIN_URL}" npx tsx scripts/migrate.ts
+npm run --silent build:worker >/dev/null
 npx vitest run --config vitest.integration.config.mts "$@"

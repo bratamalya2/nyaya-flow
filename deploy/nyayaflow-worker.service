@@ -10,7 +10,7 @@ Group=nyayaflow
 WorkingDirectory=/opt/nyayaflow/current
 EnvironmentFile=/etc/nyayaflow/nyayaflow.env
 Environment=NODE_ENV=production
-ExecStart=/usr/bin/node worker/index.js
+ExecStart=/usr/bin/node worker/worker.cjs
 Restart=on-failure
 RestartSec=8
 TimeoutStopSec=120
@@ -18,7 +18,8 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/var/lib/nyayaflow /var/log/nyayaflow
+ReadOnlyPaths=/var/lib/nyayaflow/documents
+ReadWritePaths=/var/log/nyayaflow
 RestrictSUIDSGID=true
 LockPersonality=true
 
