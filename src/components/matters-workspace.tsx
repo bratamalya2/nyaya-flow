@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { StatusBadge } from "@/components/status-badge";
 import { FormError, Modal } from "@/components/ui/modal";
-import { callApi } from "@/lib/client-api";
+import { callApi, submitWith } from "@/lib/client-api";
 import type { Matter, Person } from "@/lib/types";
 
 const FORUMS = ["Supreme Court of India", "Delhi High Court", "Bombay High Court", "NCLT Principal Bench", "NCLAT", "District Court", "Consumer Commission", "Revenue Court"];
@@ -134,7 +134,7 @@ function CreateMatterDialog({ members, currentUserId, canCreateRestricted, demoM
 
   return (
     <Modal eyebrow="Manual matter intake" onClose={onClose} open title="Create matter" width={680}>
-      <form action={submit} onBlur={(event) => { const target = event.target; if (target instanceof HTMLInputElement && ["reference", "cnr", "forum"].includes(target.name)) void checkDuplicates(event.currentTarget); }}>
+      <form onSubmit={submitWith(submit)} onBlur={(event) => { const target = event.target; if (target instanceof HTMLInputElement && ["reference", "cnr", "forum"].includes(target.name)) void checkDuplicates(event.currentTarget); }}>
         <div className="form-grid">
           <div className="field span-2"><label htmlFor="title">Matter title</label><input id="title" name="title" required minLength={3} maxLength={240} placeholder="Petitioner v. Respondent" /></div>
           <div className="field"><label htmlFor="reference">Case reference</label><input id="reference" name="reference" required minLength={2} maxLength={100} placeholder="W.P.(C) 1234/2026" /></div>

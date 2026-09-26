@@ -4,7 +4,7 @@ import { AlertTriangle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormError, Modal } from "@/components/ui/modal";
-import { callApi } from "@/lib/client-api";
+import { callApi, submitWith } from "@/lib/client-api";
 
 type Props = { firstId: string; secondId: string; heading: string; detail: string; canDismiss: boolean; demoMode: boolean };
 
@@ -36,7 +36,7 @@ export function ConflictAlert({ firstId, secondId, heading, detail, canDismiss, 
         <button className="button" disabled title="Proxy briefs arrive with the Expansion release (FR-016)" type="button">Plan proxy counsel</button>
       </div>
       <Modal eyebrow="Conflict review" onClose={() => setOpen(false)} open={open} title="Dismiss this conflict">
-        <form action={dismiss}>
+        <form onSubmit={submitWith(dismiss)}>
           <p className="lede">The warning is hidden for this pair of hearings. Your reason is kept in the audit trail.</p>
           <div className="field"><label htmlFor="conflict-reason">Reason</label><textarea id="conflict-reason" maxLength={500} minLength={3} name="reason" placeholder="e.g. Junior counsel Karan Rao will appear in Court 2" required /></div>
           <FormError message={error} />

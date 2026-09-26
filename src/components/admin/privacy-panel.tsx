@@ -8,6 +8,7 @@ import { useMutation } from "@/components/matter/use-mutation";
 import { FormError, Modal } from "@/components/ui/modal";
 import { formatDate } from "@/lib/format";
 import type { ConsentRecord, DataRequest, LegalHold, Matter, OrganizationPolicies, RetentionClass } from "@/lib/types";
+import { submitWith } from "@/lib/client-api";
 
 const NEXT_STEPS: Record<DataRequest["status"], { status: DataRequest["status"]; label: string }[]> = {
   received: [{ status: "identity_review", label: "Start identity check" }],
@@ -77,7 +78,7 @@ export function PrivacyPanel({ policies, consents, requests, holds, retention, m
       </div>
 
       <Modal eyebrow="DPDP" onClose={close} open={dialog === "consent"} title="Record consent or processing basis">
-        <form action={async (data) => { if (await mutate("/api/v1/privacy/consents", "POST", { subjectReference: data.get("subject"), purpose: data.get("purpose"), legalBasis: data.get("basis"), noticeVersion: data.get("notice"), status: data.get("status") })) close(); }}>
+        <form onSubmit={submitWith(async (data) => { if (await mutate("/api/v1/privacy/consents", "POST", { subjectReference: data.get("subject"), purpose: data.get("purpose"), legalBasis: data.get("basis"), noticeVersion: data.get("notice"), status: data.get("status") })) close(); })}>
           <div className="field"><label htmlFor="c-subject">Data principal reference</label><input id="c-subject" maxLength={200} minLength={2} name="subject" placeholder="Client or witness reference — avoid full identity numbers" required /></div>
           <div className="field"><label htmlFor="c-purpose">Purpose</label><input id="c-purpose" maxLength={300} minLength={3} name="purpose" required /></div>
           <div className="form-grid">
@@ -91,7 +92,7 @@ export function PrivacyPanel({ policies, consents, requests, holds, retention, m
       </Modal>
 
       <Modal eyebrow="DPDP" onClose={close} open={dialog === "request"} title="Log a data request">
-        <form action={async (data) => { if (await mutate("/api/v1/privacy/requests", "POST", { requesterReference: data.get("requester"), requestType: data.get("type"), matterId: data.get("matter") || undefined })) close(); }}>
+        <form onSubmit={submitWith(async (data) => { if (await mutate("/api/v1/privacy/requests", "POST", { requesterReference: data.get("requester"), requestType: data.get("type"), matterId: data.get("matter") || undefined })) close(); })}>
           <div className="field"><label htmlFor="r-requester">Requester reference</label><input id="r-requester" maxLength={200} minLength={2} name="requester" required /></div>
           <div className="form-grid">
             <div className="field"><label htmlFor="r-type">Request type</label><select id="r-type" name="type">{["access", "correction", "erasure", "export"].map((type) => <option key={type} value={type}>{type}</option>)}</select></div>
@@ -104,7 +105,7 @@ export function PrivacyPanel({ policies, consents, requests, holds, retention, m
       </Modal>
 
       <Modal eyebrow="Retention" onClose={close} open={dialog === "retention"} title="Add retention class">
-        <form action={async (data) => { const days = String(data.get("days") ?? ""); if (await mutate("/api/v1/retention-classes", "POST", { name: data.get("name"), retentionDays: days ? Number(days) : undefined })) close(); }}>
+        <form onSubmit={submitWith(async (data) => { const days = String(data.get("days") ?? ""); if (await mutate("/api/v1/retention-classes", "POST", { name: data.get("name"), retentionDays: days ? Number(days) : undefined })) close(); })}>
           <div className="field"><label htmlFor="rc-name">Name</label><input id="rc-name" maxLength={120} minLength={2} name="name" required /></div>
           <div className="field"><label htmlFor="rc-days">Retention period in days (optional)</label><input id="rc-days" max={36500} min={1} name="days" type="number" /></div>
           <FormError message={error} />
@@ -114,7 +115,7 @@ export function PrivacyPanel({ policies, consents, requests, holds, retention, m
 
       <Modal eyebrow="Data request" onClose={() => setTransition(null)} open={Boolean(transition)} title={transition?.status === "denied" ? "Deny request" : "Advance request"}>
         {transition ? (
-          <form action={async (data) => { if (await mutate(`/api/v1/privacy/requests/${transition.request.id}`, "PATCH", { status: transition.status, decisionReason: data.get("decision") || undefined, holdReviewNote: data.get("hold") || undefined })) setTransition(null); }}>
+          <form onSubmit={submitWith(async (data) => { if (await mutate(`/api/v1/privacy/requests/${transition.request.id}`, "PATCH", { status: transition.status, decisionReason: data.get("decision") || undefined, holdReviewNote: data.get("hold") || undefined })) setTransition(null); })}>
             <p className="lede">{transition.request.requesterReference} · {transition.request.requestType} → {transition.status.replaceAll("_", " ")}</p>
             {transition.request.status === "legal_hold_review" && transition.status === "processing" ? (
               <div className="field"><label htmlFor="t-hold">Legal hold and retention review</label><textarea id="t-hold" maxLength={1000} name="hold" placeholder="Holds checked, retention obligations considered, scope of data identified" required /></div>

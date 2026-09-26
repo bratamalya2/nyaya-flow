@@ -4,7 +4,7 @@ import { CalendarPlus, ListPlus, Pencil } from "lucide-react";
 import { useState } from "react";
 import { useMutation } from "@/components/matter/use-mutation";
 import { FormError, Modal } from "@/components/ui/modal";
-import { istDateInput, istDateTime, istTimeInput, todayIst } from "@/lib/client-api";
+import { istDateInput, istDateTime, istTimeInput, submitWith, todayIst } from "@/lib/client-api";
 import type { Hearing, Matter, Person } from "@/lib/types";
 
 const text = (data: FormData, key: string) => String(data.get(key) ?? "").trim();
@@ -24,7 +24,7 @@ export function EditMatterButton({ matter, members, canManage, demoMode }: { mat
     <>
       <button className="button" onClick={() => setOpen(true)} type="button"><Pencil size={13} />Edit matter</button>
       <Modal eyebrow="Matter record" onClose={() => setOpen(false)} open={open} title="Edit matter" width={620}>
-        <form action={submit}>
+        <form onSubmit={submitWith(submit)}>
           <div className="form-grid">
             <div className="field span-2"><label htmlFor="m-title">Title</label><input defaultValue={matter.title} id="m-title" maxLength={240} minLength={3} name="title" required /></div>
             <div className="field"><label htmlFor="m-stage">Stage</label><input defaultValue={matter.stage} id="m-stage" maxLength={120} minLength={2} name="stage" required /></div>
@@ -66,7 +66,7 @@ export function HearingDialogButton({ matterId, members, hearing, defaultAdvocat
     <>
       {editing ? <button className="button small" onClick={() => setOpen(true)} type="button"><Pencil size={11} />Edit</button> : <button className="button primary" onClick={() => setOpen(true)} type="button"><CalendarPlus size={14} />Add hearing</button>}
       <Modal eyebrow="Manual listing · times in IST" onClose={() => setOpen(false)} open={open} title={editing ? "Update hearing" : "Add hearing"} width={620}>
-        <form action={submit}>
+        <form onSubmit={submitWith(submit)}>
           <div className="form-grid">
             <div className="field"><label htmlFor="h-date">Date</label><input defaultValue={hearing ? istDateInput(hearing.startsAt) : todayIst()} id="h-date" name="date" required type="date" /></div>
             <div className="field"><label htmlFor="h-advocate">Appearing advocate</label><select defaultValue={hearing?.advocate.id ?? defaultAdvocateId} id="h-advocate" name="advocateId">{members.map((member) => <option key={member.id} value={member.id}>{member.name}</option>)}</select></div>
@@ -98,7 +98,7 @@ export function TaskDialogButton({ matterId, members, defaultAssigneeId, demoMod
     <>
       <button className="button" onClick={() => setOpen(true)} style={{ width: "100%", marginTop: 12 }} type="button"><ListPlus size={14} />Add task</button>
       <Modal eyebrow="Matter task" onClose={() => setOpen(false)} open={open} title="Add task">
-        <form action={submit}>
+        <form onSubmit={submitWith(submit)}>
           <div className="field"><label htmlFor="t-title">Task</label><input id="t-title" maxLength={240} minLength={3} name="title" required /></div>
           <div className="form-grid">
             <div className="field"><label htmlFor="t-date">Due date</label><input defaultValue={todayIst()} id="t-date" name="date" required type="date" /></div>

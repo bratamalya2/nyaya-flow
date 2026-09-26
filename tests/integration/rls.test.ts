@@ -57,6 +57,19 @@ describe.skipIf(!hasDatabase)("PostgreSQL row-level security", () => {
     expect(await failure(grant(ids.associateA))).toBe("42501");
   });
 
+  it("lets editors create matters and read them back in the same statement", async () => {
+    const created = await withActor(ids.associateA, (client) => client.query<{ id: string }>(
+      "insert into matters(organization_id,title,reference,forum,client_name,created_by,lead_id) values ($1,'Associate matter','A/1','Forum','Client',$2,$2) returning id",
+      [ids.orgA, ids.associateA],
+    ));
+    expect(created.rows[0].id).toBeTruthy();
+    const restricted = await withActor(ids.partnerA, (client) => client.query<{ id: string }>(
+      "insert into matters(organization_id,title,reference,forum,client_name,restricted,created_by,lead_id) values ($1,'Partner restricted','R/9','Forum','Client',true,$2,$2) returning id",
+      [ids.orgA, ids.partnerA],
+    ));
+    expect(await visibleMatters(ids.associateA)).not.toContain(restricted.rows[0].id);
+  });
+
   it("stops finance from creating matters and rejects cross-organization rows", async () => {
     const create = withActor(ids.financeA, (client) => client.query("insert into matters(organization_id,title,reference,forum,client_name,created_by) values ($1,'Finance matter','X/1','Forum','Client',$2)", [ids.orgA, ids.financeA]));
     expect(await failure(create)).toBe("42501");

@@ -3,7 +3,7 @@
 import { ArrowRight, LockKeyhole } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { callApi } from "@/lib/client-api";
+import { callApi, submitWith } from "@/lib/client-api";
 
 type SignInResult = { authenticated?: boolean; mfaRequired?: boolean; challenge?: string; mfaSetupRequired?: boolean };
 
@@ -34,7 +34,7 @@ export function SignInForm({ demoMode }: { demoMode: boolean }) {
     router.refresh();
   }
 
-  return <form action={submit}>
+  return <form onSubmit={submitWith(submit)}>
     {!challenge ? <><div className="field"><label htmlFor="email">WORK EMAIL</label><input id="email" name="email" type="email" autoComplete="email" defaultValue={demoMode ? "advocate@demo.nyayaflow.test" : ""} required /></div>
     <div className="field"><label htmlFor="password">PASSWORD</label><input id="password" name="password" type="password" autoComplete="current-password" defaultValue={demoMode ? "demo-access-only" : ""} required /></div></> : <div className="field"><label htmlFor="code">AUTHENTICATOR CODE</label><input id="code" name="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" maxLength={6} required autoFocus /></div>}
     {error ? <p className="form-error" role="alert">{error}</p> : null}

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { StatusBadge } from "@/components/status-badge";
 import { FormError, Modal } from "@/components/ui/modal";
-import { callApi } from "@/lib/client-api";
+import { callApi, submitWith } from "@/lib/client-api";
 import type { Matter, OcrPage, SearchHit, VaultDocument } from "@/lib/types";
 
 const MAX_BYTES = 100 * 1024 * 1024;
@@ -232,7 +232,7 @@ function OcrViewer({ document, focusPage, canEdit, demoMode, onClose }: { docume
             {canEdit && editing !== page.id ? <button className="button small" onClick={() => setEditing(page.id)} type="button">Correct text</button> : null}
           </header>
           {editing === page.id ? (
-            <form action={(data) => void save(page, String(data.get("text") ?? ""))}>
+            <form onSubmit={submitWith((data) => void save(page, String(data.get("text") ?? "")))}>
               <label className="sr-only" htmlFor={`text-${page.id}`}>Corrected text for page {page.pageNumber}</label>
               <textarea defaultValue={page.correctedText ?? page.extractedText} id={`text-${page.id}`} name="text" required />
               <div className="modal-actions"><button className="button" onClick={() => setEditing(null)} type="button">Cancel</button><button className="button primary" type="submit">Save correction</button></div>

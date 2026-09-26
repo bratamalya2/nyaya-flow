@@ -5,7 +5,7 @@ import { useState } from "react";
 import { StatusBadge } from "@/components/status-badge";
 import { useMutation } from "@/components/matter/use-mutation";
 import { FormError, Modal } from "@/components/ui/modal";
-import { istDateTime } from "@/lib/client-api";
+import { istDateTime, submitWith } from "@/lib/client-api";
 import { formatDate, formatDateTime } from "@/lib/format";
 import type { LegalHold, MatterGrant, Person } from "@/lib/types";
 
@@ -32,7 +32,7 @@ export function GrantsPanel({ matterId, grants, members, canManage, restricted, 
         {!grants.length ? <div className="empty-state">No explicit grants.</div> : null}
       </div>
       {canManage ? (
-        <form action={add} className="actions" style={{ marginTop: 12, alignItems: "flex-end" }}>
+        <form onSubmit={submitWith(add)} className="actions" style={{ marginTop: 12, alignItems: "flex-end" }}>
           <div className="field" style={{ margin: 0, minWidth: 180 }}><label htmlFor="g-user">Person</label><select id="g-user" name="userId" required>{members.map((member) => <option key={member.id} value={member.id}>{member.name}</option>)}</select></div>
           <div className="field" style={{ margin: 0 }}><label htmlFor="g-permission">Permission</label><select defaultValue="view" id="g-permission" name="permission">{["view", "edit", "manage", "export"].map((permission) => <option key={permission} value={permission}>{permission}</option>)}</select></div>
           <div className="field" style={{ margin: 0 }}><label htmlFor="g-expires">Expires (optional)</label><input id="g-expires" name="expires" type="date" /></div>
@@ -53,7 +53,7 @@ export function LegalHoldPanel({ matterId, holds, canManage, demoMode }: { matte
       <div className="section-heading"><div><p className="eyebrow"><ShieldOff size={13} /> Retention</p><h2>Legal hold</h2></div><StatusBadge value={active ? "hold" : "none"} /></div>
       {active ? <p className="lede" style={{ marginTop: 0 }}>Placed {formatDate(active.createdAt)} by {active.createdBy}: {active.reason} Held material cannot be deleted, including through erasure requests.</p> : <p className="lede" style={{ marginTop: 0 }}>No active hold. Automatic deletion is disabled for the whole organization.</p>}
       {canManage && !active ? (
-        <form action={async (data) => { await mutate(`/api/v1/matters/${matterId}/legal-holds`, "POST", { reason: String(data.get("reason") ?? "") }); }} style={{ marginTop: 10 }}>
+        <form onSubmit={submitWith(async (data) => { await mutate(`/api/v1/matters/${matterId}/legal-holds`, "POST", { reason: String(data.get("reason") ?? "") }); })} style={{ marginTop: 10 }}>
           <div className="field"><label htmlFor="hold-reason">Reason</label><input id="hold-reason" maxLength={500} minLength={3} name="reason" placeholder="e.g. Appeal window open; preserve all versions" required /></div>
           <button className="button" disabled={busy} type="submit">Place legal hold</button>
         </form>
@@ -62,7 +62,7 @@ export function LegalHoldPanel({ matterId, holds, canManage, demoMode }: { matte
       {holds.filter((hold) => !hold.active).length ? <p className="form-help">{holds.filter((hold) => !hold.active).length} released hold(s) in history.</p> : null}
       <FormError message={error} />
       <Modal eyebrow="Legal hold" onClose={() => setReleasing(null)} open={Boolean(releasing)} title="Release legal hold">
-        <form action={async (data) => { if (await mutate(`/api/v1/legal-holds/${releasing?.id}`, "PATCH", { active: false, reason: String(data.get("reason") ?? "") })) setReleasing(null); }}>
+        <form onSubmit={submitWith(async (data) => { if (await mutate(`/api/v1/legal-holds/${releasing?.id}`, "PATCH", { active: false, reason: String(data.get("reason") ?? "") })) setReleasing(null); })}>
           <p className="lede">Releasing allows retention rules to apply again. Your reason is recorded in the audit trail.</p>
           <div className="field"><label htmlFor="release-reason">Reason</label><textarea id="release-reason" maxLength={500} minLength={3} name="reason" required /></div>
           <FormError message={error} />

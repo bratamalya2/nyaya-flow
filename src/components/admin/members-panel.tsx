@@ -7,6 +7,7 @@ import { useMutation } from "@/components/matter/use-mutation";
 import { FormError, Modal } from "@/components/ui/modal";
 import { formatDate } from "@/lib/format";
 import type { AppRole, Invitation, Member } from "@/lib/types";
+import { submitWith } from "@/lib/client-api";
 
 const label = (role: string) => role.replaceAll("_", " ");
 
@@ -76,7 +77,7 @@ export function MembersPanel({ members, invitations, currentUserId, canAdministe
             </div>
           </div>
         ) : (
-          <form action={sendInvite}>
+          <form onSubmit={submitWith(sendInvite)}>
             <p className="lede">The invitee sets a password and must enrol an authenticator app before seeing any firm data. No email is sent by NyayaFlow.</p>
             <div className="field"><label htmlFor="invite-email">Work email</label><input autoComplete="off" id="invite-email" name="email" required type="email" /></div>
             <div className="form-grid">

@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormError } from "@/components/ui/modal";
-import { callApi } from "@/lib/client-api";
+import { callApi, submitWith } from "@/lib/client-api";
 
 export function InviteAccept({ token, mode, email }: { token: string; mode: "new-account" | "accept-signed-in"; email: string }) {
   const router = useRouter();
@@ -21,7 +21,7 @@ export function InviteAccept({ token, mode, email }: { token: string; mode: "new
     router.refresh();
   }
   return (
-    <form action={submit}>
+    <form onSubmit={submitWith(submit)}>
       {mode === "new-account" ? <>
         <div className="field"><label htmlFor="email">WORK EMAIL</label><input id="email" readOnly value={email} /></div>
         <div className="field"><label htmlFor="name">FULL NAME</label><input autoComplete="name" id="name" maxLength={120} minLength={2} name="name" placeholder="Adv. First Last" required /></div>

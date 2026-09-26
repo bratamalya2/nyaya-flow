@@ -64,6 +64,18 @@ create or replace function can_access_matter(target uuid,required matter_permiss
             when 'export' then g.permission in ('export','manage') end)))
 $$;
 
+-- The matters SELECT policy must judge the row from its own columns: a STABLE lookup by id cannot see a
+-- row inserted by the current statement, which made every INSERT ... RETURNING on matters fail.
+create function can_view_matter_row(p_org uuid,p_matter uuid,p_restricted boolean) returns boolean language sql stable security definer set search_path=public as $$
+  select exists(
+    select 1 from memberships ms
+    where ms.organization_id=p_org and ms.user_id=current_app_user_id() and ms.active and (
+      ms.role in ('owner','managing_partner','admin') or not p_restricted or exists(
+        select 1 from matter_grants g where g.matter_id=p_matter and g.user_id=current_app_user_id() and (g.expires_at is null or g.expires_at>now()))))
+$$;
+drop policy matter_select on matters;
+create policy matter_select on matters for select using(can_view_matter_row(organization_id,id,restricted));
+
 create or replace function is_active_member(org_id uuid,member uuid) returns boolean language sql stable security definer set search_path=public as $$
   select exists(select 1 from memberships where organization_id=org_id and user_id=member and active)
 $$;
@@ -342,7 +354,7 @@ do $$ begin if exists(select 1 from pg_roles where rolname='nyayaflow_app') then
   grant select,insert on record_revisions,conflict_dismissals to nyayaflow_app;
   grant select on audit_verifications to nyayaflow_app;
   grant select,insert,update,delete on auth_throttle to nyayaflow_app;
-  grant execute on function document_search(text,uuid),is_active_member(uuid,uuid),accept_invitation(text,uuid),invitation_lookup(text) to nyayaflow_app;
+  grant execute on function document_search(text,uuid),is_active_member(uuid,uuid),can_view_matter_row(uuid,uuid,boolean),accept_invitation(text,uuid),invitation_lookup(text) to nyayaflow_app;
 end if; end $$;
 
 do $$ begin if exists(select 1 from pg_roles where rolname='nyayaflow_worker') then

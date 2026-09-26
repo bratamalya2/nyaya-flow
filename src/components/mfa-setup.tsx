@@ -4,7 +4,7 @@ import { ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { callApi } from "@/lib/client-api";
+import { callApi, submitWith } from "@/lib/client-api";
 
 type Setup = { qrCode?: string; manualKey?: string; alreadyEnabled?: boolean };
 
@@ -25,7 +25,7 @@ export function MfaSetup() {
     router.replace("/today");
     router.refresh();
   }
-  return <form action={verify}>
+  return <form onSubmit={submitWith(verify)}>
     <p className="lede">Scan this QR code with your authenticator app. MFA is required before firm data becomes accessible.</p>
     {setup?.qrCode ? <div style={{ textAlign: "center", margin: "18px 0" }}><Image src={setup.qrCode} alt="Authenticator setup QR code" width={190} height={190} unoptimized /><p className="tabular muted" style={{ wordBreak: "break-all" }}>Manual key: {setup.manualKey}</p></div> : <p>{error ? "" : "Preparing secure setup…"}</p>}
     <div className="field"><label htmlFor="code">SIX-DIGIT CODE</label><input id="code" name="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" maxLength={6} required /></div>

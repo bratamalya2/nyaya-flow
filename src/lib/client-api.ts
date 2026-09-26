@@ -30,3 +30,14 @@ const istParts = (value: string, options: Intl.DateTimeFormatOptions) => new Int
 export const istDateInput = (value: string) => istParts(value, { year: "numeric", month: "2-digit", day: "2-digit" });
 export const istTimeInput = (value: string) => istParts(value, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
 export const todayIst = () => istDateInput(new Date().toISOString());
+
+/**
+ * Submit handler that keeps the user's input on failure. React 19 resets uncontrolled fields after a
+ * `<form action>` finishes, which would wipe a form whose request was rejected.
+ */
+export function submitWith(handler: (data: FormData) => unknown) {
+  return (event: { preventDefault: () => void; currentTarget: HTMLFormElement }) => {
+    event.preventDefault();
+    void handler(new FormData(event.currentTarget));
+  };
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Creates a throwaway PostgreSQL database with the production role layout, applies every migration,
-# and runs the integration suite against it.
+# and runs the integration suite against it. With "e2e" as the first argument it instead provisions an
+# owner account and runs the database-backed Playwright suite (tests/e2e-db) against a real server.
 #
 # Default: starts an ephemeral local cluster (initdb/pg_ctl from PATH) on 127.0.0.1:${TEST_PG_PORT:-54330}
 # and deletes it afterwards. Set TEST_PG_SUPERUSER_URL to use an existing server instead; a database
@@ -58,4 +59,19 @@ export TEST_DATABASE_WORKER_URL="postgresql://nyayaflow_worker:${worker_password
 
 DATABASE_ADMIN_URL="${TEST_DATABASE_ADMIN_URL}" npx tsx scripts/migrate.ts
 npm run --silent build:worker >/dev/null
-npx vitest run --config vitest.integration.config.mts "$@"
+
+if [[ "${1:-}" == "e2e" ]]; then
+  shift
+  storage_dir="$(mktemp -d "${TMPDIR:-/tmp}/nyayaflow-docs.XXXXXX")"
+  trap 'rm -rf "${storage_dir}"; cleanup' EXIT
+  export E2E_OWNER_EMAIL="owner@e2e.nyayaflow.test"
+  export E2E_OWNER_PASSWORD="e2e-owner-passphrase-${suffix}"
+  DATABASE_ADMIN_URL="${TEST_DATABASE_ADMIN_URL}" OPERATOR_EMAIL="${E2E_OWNER_EMAIL}" OPERATOR_PASSWORD="${E2E_OWNER_PASSWORD}" \
+    OPERATOR_NAME="Adv. E2E Owner" ORGANIZATION_NAME="E2E Chambers" ORGANIZATION_SLUG="e2e-chambers" npx tsx scripts/provision-operator.ts
+  export DOCUMENT_STORAGE_ROOT="${storage_dir}"
+  export MFA_ENCRYPTION_KEY="$(openssl rand -base64 32)"
+  export SESSION_SECRET="$(openssl rand -base64 48)"
+  npx playwright test --config playwright.db.config.ts "$@"
+else
+  npx vitest run --config vitest.integration.config.mts "$@"
+fi
