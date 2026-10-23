@@ -5,13 +5,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormError } from "@/components/ui/modal";
 import { callApi, submitWith } from "@/lib/client-api";
-import { useHydrated } from "@/lib/use-hydrated";
 
 export function InviteAccept({ token, mode, email }: { token: string; mode: "new-account" | "accept-signed-in"; email: string }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const hydrated = useHydrated();
   async function submit(data: FormData) {
     setError(null);
     if (mode === "new-account" && data.get("password") !== data.get("confirm")) { setError("The passwords do not match."); return; }
@@ -32,7 +30,7 @@ export function InviteAccept({ token, mode, email }: { token: string; mode: "new
       </> : <p className="lede">You are signed in as {email}. Accept to join this organization.</p>}
       <FormError message={error} />
       <p className="form-help">You will enrol an authenticator app before any firm data is shown.</p>
-      <button className="button primary" disabled={busy || !hydrated} type="submit">{busy ? "Joining…" : "Accept invitation"}<ArrowRight size={15} /></button>
+      <button className="button primary" disabled={busy} type="submit">{busy ? "Joining…" : "Accept invitation"}<ArrowRight size={15} /></button>
     </form>
   );
 }

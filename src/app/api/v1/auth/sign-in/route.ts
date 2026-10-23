@@ -15,7 +15,7 @@ export const POST = publicRoute(async (request) => {
   const locked = await lockedUntil(rules);
   if (locked) return NextResponse.json({ error: "Too many sign-in attempts. Try again in 15 minutes." }, { status: 429 });
 
-  const users = await query<{ id: string; password_hash: string; mfa_enabled: boolean }>("select id, password_hash, mfa_enabled from app_users where email = lower($1) and disabled_at is null", [email]);
+  const users = await query<{ id: string; password_hash: string; mfa_enabled: boolean }>("select id, password_hash, mfa_enabled from app_users where email = lower($1) and disabled_at is null and not is_portal_client", [email]);
   const user = users.rows[0];
   const valid = await verifyPassword(user?.password_hash, password);
   if (!user || !valid) {

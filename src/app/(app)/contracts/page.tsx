@@ -1,0 +1,9 @@
+import { AlertTriangle, Files } from "lucide-react";
+import Link from "next/link";
+import { ContractsWorkspace } from "@/components/contracts-workspace";
+import { isContractsEnabled, listContracts, listContractTemplates } from "@/lib/filing-contracts";
+import { listMatters } from "@/lib/repositories/workspace";
+import { isDemoMode } from "@/lib/runtime";
+import { requireWorkspace } from "@/lib/workspace";
+export const metadata = { title: "Contracts & CLM" };
+export default async function ContractsPage() { const workspace = await requireWorkspace(); const enabled = isContractsEnabled() && !isDemoMode(); const [templates, contracts, matters] = enabled ? await Promise.all([listContractTemplates(workspace), listContracts(workspace), listMatters(workspace)]) : [[], [], []]; return <div className="page"><header className="page-heading"><div><p className="eyebrow"><Files size={13} /> Internal beta · private review</p><h1>Contracts & CLM</h1><p className="lede">Template snapshots, human clause review, approval history, and manual execution records. E-signing and stamp-duty actions are unavailable.</p></div><span className={`policy-state ${enabled ? "" : "warning"}`}>{enabled ? "Internal beta enabled" : "Beta disabled"}</span></header>{!enabled ? <section className="card empty-state"><Files size={24} /><strong>The Contracts & CLM beta is disabled.</strong><p>Set <code>CONTRACTS_BETA_ENABLED=true</code> after loading reviewed templates. The <Link href="/preview/contracts">synthetic preview</Link> remains available.</p></section> : <><div className="preview-banner"><AlertTriangle size={18} /><span><strong>Manual-only internal beta.</strong> Fictional templates and clause findings are clearly marked. No provider can sign, stamp, bill, or transact.</span></div><ContractsWorkspace templates={templates} contracts={contracts} matters={matters.map(({ id, title, reference }) => ({ id, title, reference }))} /></>}</div>; }

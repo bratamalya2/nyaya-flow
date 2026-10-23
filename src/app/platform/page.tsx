@@ -11,7 +11,7 @@ export default async function PlatformPage() {
   const organizations = await listPlatformOrganizations();
   return <div className="platform-shell">
     <header className="platform-bar">
-      <div className="brand"><Image src="/favicon.png" alt="NyayaFlow" width={34} height={30} style={{ width: 34, height: "auto" }} /><span className="brand-word">NyayaFlow</span><span className="brand-chip">PLATFORM</span></div>
+      <div className="brand"><Image src="/favicon.png" alt="NyayaFlow" width={34} height={29} /><span className="brand-word">NyayaFlow</span><span className="brand-chip">PLATFORM</span></div>
       <div className="actions">
         <span className="secondary" style={{ fontSize: 11 }}><ShieldCheck size={12} style={{ verticalAlign: "-2px" }} /> {session.email}</span>
         <form action="/api/v1/auth/platform/sign-out" method="post"><button className="button small" type="submit"><LogOut size={12} />Sign out</button></form>

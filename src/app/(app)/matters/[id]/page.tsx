@@ -80,6 +80,7 @@ export default async function MatterDetailPage({ params, searchParams }: { param
         {matter.nextListingAt ? <span><CalendarDays size={13} style={{ verticalAlign: "-2px" }} /> Next: <strong>{formatDate(matter.nextListingAt)} · {formatTime(matter.nextListingAt)}</strong></span> : null}
         <span className="muted">Updated {formatDateTime(matter.updatedAt)}</span>
       </div>
+      <div className="actions" style={{ marginTop: 14 }}><Link className="button small" href={`/matters/${id}/chronology`}>Chronology</Link><Link className="button small" href={`/matters/${id}/deadlines`}>Deadlines</Link></div>
       {detail.parties.length ? <div className="matter-facts"><span><Users size={13} style={{ verticalAlign: "-2px" }} /> {detail.parties.map((party) => `${party.name} (${party.partyType})`).join(" · ")}</span></div> : null}
       {permissions.edit ? <div className="actions" style={{ marginTop: 14 }}><EditMatterButton canManage={permissions.manage} demoMode={demoMode} matter={matter} members={activeMembers} /></div> : null}
     </section>

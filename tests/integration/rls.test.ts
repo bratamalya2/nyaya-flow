@@ -119,6 +119,63 @@ describe.skipIf(!hasDatabase)("PostgreSQL row-level security", () => {
     expect(await failure(worker.query("delete from ocr_pages where false"))).toBeNull();
   });
 
+  it("keeps firm research history tenant-scoped while exposing only enabled authority sources", async () => {
+    const source = await owner.query<{ id: string }>(
+      `insert into research_sources(slug,name,rights_basis,rights_reference,source_state,rights_verified_at,enabled)
+       values('rls-fixture','RLS fixture source','permission','Test-only permission record','verified',now(),true) returning id`,
+    );
+    const document = await owner.query<{ id: string }>(
+      `insert into research_documents(source_id,external_id,title,citation,jurisdiction,court,document_type,content_sha256,source_state)
+       values($1,'RLS-1','RLS fixture authority','[SYN] RLS 1','Fixture jurisdiction','Fixture court','judgment',$2,'verified') returning id`,
+      [source.rows[0].id, "b".repeat(64)],
+    );
+    await owner.query("insert into research_passages(document_id,ordinal,locator,body,checksum) values($1,1,'¶ 1','fixture research provenance',$2)", [document.rows[0].id, "c".repeat(64)]);
+
+    const search = await withActor(ids.advocateA, (client) => client.query<{ document_id: string }>("select document_id from research_search($1)", ["provenance"]));
+    expect(search.rows.map((row) => row.document_id)).toContain(document.rows[0].id);
+    expect((await withActor(ids.advocateA, (client) => client.query("select * from research_sources"))).rowCount).toBe(1);
+    expect((await withActor(ids.ownerB, (client) => client.query("select * from research_sources"))).rowCount).toBe(1);
+
+    const note = await withActor(ids.advocateA, (client) => client.query<{ id: string }>(
+      "insert into research_notes(organization_id,title,body,created_by) values($1,'Fixture note','Needs independent review.',$2) returning id", [ids.orgA, ids.advocateA],
+    ));
+    expect(note.rows[0].id).toBeTruthy();
+    expect((await withActor(ids.ownerB, (client) => client.query("select * from research_notes"))).rowCount).toBe(0);
+    expect(await failure(withActor(ids.ownerB, (client) => client.query("insert into research_notes(organization_id,title,body,created_by) values($1,'Cross tenant','Denied',$2)", [ids.orgA, ids.ownerB])))).toBe("42501");
+  });
+
+  it("applies restricted-matter isolation to filing bundles and contracts", async () => {
+    const pack = await withActor(ids.ownerA, (client) => client.query<{ id: string }>(
+      "insert into filing_rule_packs(organization_id,forum,name,version,source_reference,enabled,created_by) values($1,'Fixture Forum','Fixture Pack','1.0','Fixture source',true,$2) returning id", [ids.orgA, ids.ownerA],
+    ));
+    const bundle = await withActor(ids.ownerA, (client) => client.query<{ id: string }>(
+      "insert into filing_bundles(organization_id,matter_id,rule_pack_id,title,created_by) values($1,$2,$3,'Restricted fixture bundle',$4) returning id", [ids.orgA, ids.restrictedMatterA, pack.rows[0].id, ids.ownerA],
+    ));
+    await withActor(ids.ownerA, (client) => client.query("insert into filing_bundle_entries(organization_id,bundle_id,document_version_id,label,sort_order,document_sha256) values($1,$2,$3,'Fixture annexure',0,$4)", [ids.orgA, bundle.rows[0].id, ids.restrictedVersionA, "a".repeat(64)]));
+    const contract = await withActor(ids.ownerA, (client) => client.query<{ id: string }>(
+      "insert into contracts(organization_id,matter_id,title,counterparty,template_snapshot,created_by) values($1,$2,'Restricted fixture contract','Fixture counterparty','{}',$3) returning id", [ids.orgA, ids.restrictedMatterA, ids.ownerA],
+    ));
+    expect((await withActor(ids.partnerA, (client) => client.query("select id from filing_bundles where id=$1", [bundle.rows[0].id]))).rowCount).toBe(1);
+    expect((await withActor(ids.advocateA, (client) => client.query("select id from filing_bundles where id=$1", [bundle.rows[0].id]))).rowCount).toBe(0);
+    expect((await withActor(ids.advocateA, (client) => client.query("select id from contracts where id=$1", [contract.rows[0].id]))).rowCount).toBe(0);
+  });
+
+  it("keeps restricted finance records aggregate-only for the finance role", async () => {
+    const account = await withActor(ids.ownerA, (client) => client.query<{ id: string }>(
+      "insert into billing_accounts(organization_id,display_name,created_by) values($1,'Restricted finance account',$2) returning id", [ids.orgA, ids.ownerA],
+    ));
+    const charge = await withActor(ids.ownerA, (client) => client.query<{ id: string }>(
+      `insert into billing_charges(organization_id,matter_id,billing_account_id,charge_kind,description,occurred_on,quantity,unit_amount_paise,amount_paise,status,submitted_at,created_by)
+       values($1,$2,$3,'fixed_fee','Restricted finance fixture',current_date,1,250000,250000,'submitted',now(),$4) returning id`, [ids.orgA, ids.restrictedMatterA, account.rows[0].id, ids.ownerA],
+    ));
+    await withActor(ids.ownerA, (client) => client.query("update billing_charges set status='approved',approved_at=now(),approved_by=$2 where id=$1", [charge.rows[0].id, ids.ownerA]));
+    expect((await withActor(ids.financeA, (client) => client.query("select id from billing_charges"))).rowCount).toBe(0);
+    expect((await withActor(ids.financeA, (client) => client.query("select id from billing_accounts"))).rowCount).toBe(0);
+    const aggregate = await withActor(ids.financeA, (client) => client.query<{ approved_paise: string }>("select approved_paise from finance_aggregate_summary($1)", [ids.orgA]));
+    expect(Number(aggregate.rows[0].approved_paise)).toBeGreaterThanOrEqual(250000);
+    expect((await withActor(ids.financeA, (client) => client.query("update billing_charges set status='void' where id=$1", [charge.rows[0].id]))).rowCount).toBe(0);
+  });
+
   it("chains audit events from any member and detects tampering", async () => {
     await withActor(ids.paralegalA, async (client) => {
       await recordAudit(client, { organizationId: ids.orgA, actorId: ids.paralegalA, action: "test.one", resourceType: "matter", outcome: "success" });

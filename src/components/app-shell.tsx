@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  Bell, BookOpen, BriefcaseBusiness, CalendarDays, ChartNoAxesCombined, FileCheck2, Files, FolderLock, Gavel,
-  Landmark, Menu, PlusCircle, ReceiptIndianRupee, ShieldCheck, Users,
+  Bell, BookOpen, BriefcaseBusiness, CalendarDays, ChartNoAxesCombined, FileCheck2, Files, FolderLock, Gavel, LayoutDashboard,
+  Landmark, PlusCircle, ReceiptIndianRupee, ShieldCheck, Users,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,21 +15,21 @@ import { UserMenu } from "@/components/user-menu";
 type NavItem = { href: string; label: string; icon: ComponentType<{ size?: number }>; preview?: boolean };
 
 const core: NavItem[] = [
+  { href: "/command-centre", label: "Command Centre", icon: LayoutDashboard },
   { href: "/today", label: "Today & Cause List", icon: CalendarDays },
   { href: "/matters", label: "Matters 360", icon: BriefcaseBusiness },
   { href: "/vault", label: "Smart Vault & OCR", icon: FolderLock },
+  { href: "/research", label: "Precedent Research", icon: BookOpen },
+  { href: "/bns", label: "BNS / BNSS Matrix", icon: Landmark },
+  { href: "/filing", label: "E-Filing Suite", icon: FileCheck2 },
+  { href: "/contracts", label: "Contracts & CLM", icon: Files },
+  { href: "/clients", label: "Client Portal", icon: Users },
+  { href: "/billing", label: "Finance & Billing", icon: ReceiptIndianRupee },
+  { href: "/analytics", label: "Portfolio Analytics", icon: ChartNoAxesCombined },
   { href: "/admin", label: "Firm Admin & Privacy", icon: ShieldCheck },
 ];
 
-const previews: NavItem[] = [
-  { href: "/preview/research", label: "Precedent Research", icon: BookOpen, preview: true },
-  { href: "/preview/bns", label: "BNS / BNSS Matrix", icon: Landmark, preview: true },
-  { href: "/preview/filing", label: "E-Filing Suite", icon: FileCheck2, preview: true },
-  { href: "/preview/client", label: "Client Portal", icon: Users, preview: true },
-  { href: "/preview/billing", label: "Finance & Billing", icon: ReceiptIndianRupee, preview: true },
-  { href: "/preview/contracts", label: "Contracts & CLM", icon: Files, preview: true },
-  { href: "/preview/analytics", label: "Portfolio Analytics", icon: ChartNoAxesCombined, preview: true },
-];
+const previews: NavItem[] = [];
 
 function NavLink({ item }: { item: NavItem }) {
   const pathname = usePathname();
@@ -58,7 +58,7 @@ export function AppShell({ children, user, organization, memberships, demoMode }
     <div className="app-layout">
       <header className="topbar">
         <div className="brand">
-          <Image src="/favicon.png" alt="NyayaFlow" width={38} height={34} priority style={{ width: 38, height: "auto" }} />
+          <Image src="/favicon.png" alt="NyayaFlow" width={38} height={33} priority />
           <div><span className="brand-word">NyayaFlow</span></div>
           <div className="firm-label"><strong>{organization.name}</strong><span>{demoMode ? "Synthetic demo workspace" : "Firm workspace"}</span></div>
         </div>
@@ -74,8 +74,7 @@ export function AppShell({ children, user, organization, memberships, demoMode }
         <nav className="sidebar-nav" aria-label="Primary navigation">
           <div className="nav-label">Workspace</div>
           {core.map((item) => <NavLink key={item.href} item={item} />)}
-          <div className="nav-label">Roadmap previews</div>
-          {previews.map((item) => <NavLink key={item.href} item={item} />)}
+          {previews.length ? <><div className="nav-label">Roadmap previews</div>{previews.map((item) => <NavLink key={item.href} item={item} />)}</> : null}
         </nav>
         <div className="sidebar-foot">
           <div className="policy-state">Manual-source mode</div>
@@ -89,7 +88,9 @@ export function AppShell({ children, user, organization, memberships, demoMode }
           { href: "/matters", label: "Matters", icon: BriefcaseBusiness },
           { href: "/vault", label: "Vault", icon: FolderLock },
           { href: "/admin", label: "Admin", icon: ShieldCheck },
-          { href: "/preview/research", label: "Previews", icon: Menu },
+          { href: "/research", label: "Research", icon: BookOpen },
+          { href: "/billing", label: "Billing", icon: ReceiptIndianRupee },
+          { href: "/analytics", label: "Analytics", icon: ChartNoAxesCombined },
         ].map((item) => {
           const Icon = item.icon;
           const active = pathname === item.href || pathname.startsWith(`${item.href.replace(/\/research$/, "")}/`);

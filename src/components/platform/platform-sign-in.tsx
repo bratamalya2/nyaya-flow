@@ -5,11 +5,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormError } from "@/components/ui/modal";
 import { callApi, submitWith } from "@/lib/client-api";
-import { useHydrated } from "@/lib/use-hydrated";
 
 export function PlatformSignIn() {
   const router = useRouter();
-  const hydrated = useHydrated();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   async function submit(data: FormData) {
@@ -28,7 +26,7 @@ export function PlatformSignIn() {
       <div className="field"><label htmlFor="code">AUTHENTICATOR CODE</label><input autoComplete="one-time-code" id="code" inputMode="numeric" maxLength={6} name="code" pattern="[0-9]{6}" required /></div>
       <FormError message={error} />
       <p className="form-help"><ShieldCheck size={12} style={{ verticalAlign: "-2px" }} /> Platform access is logged. Sessions end after 30 minutes of inactivity.</p>
-      <button className="button primary" disabled={busy || !hydrated} type="submit">{busy ? "Verifying…" : "Sign in"}<ArrowRight size={15} /></button>
+      <button className="button primary" disabled={busy} type="submit">{busy ? "Verifying…" : "Sign in"}<ArrowRight size={15} /></button>
     </form>
   );
 }

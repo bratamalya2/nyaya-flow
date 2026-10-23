@@ -1,0 +1,11 @@
+import { createReadStream } from "node:fs";
+import { stat } from "node:fs/promises";
+import { Readable } from "node:stream";
+import { ApiError, publicRoute, assertUuid } from "@/lib/api";
+import { recordAudit } from "@/lib/audit";
+import { withPortalClient } from "@/lib/db";
+import { contentDisposition } from "@/lib/http";
+import { getPortalSession } from "@/lib/portal-auth";
+import { resolveStoragePath } from "@/lib/storage";
+export const runtime = "nodejs";
+export const GET = publicRoute<{ id: string }>(async (_request, { params }) => { const session = await getPortalSession(); if (!session) throw new ApiError(401, "Client portal sign-in required."); const id = assertUuid(params.id, "document"); const version = await withPortalClient(session.clientId, async (client) => { const row = await client.query<{ storage_path: string; mime_type: string; title: string }>(`select v.storage_path,v.mime_type,d.title from portal_document_shares s join document_versions v on v.id=s.document_version_id join documents d on d.id=v.document_id where s.document_version_id=$1 and s.client_id=$2 and s.revoked_at is null and v.status='ready'`, [id, session.clientId]); if (!row.rows[0]) throw new ApiError(404, "Document not found or access revoked."); await recordAudit(client, { organizationId: session.organizationId, actorId: session.userId, action: "portal.document.download", resourceType: "document_version", resourceId: id, outcome: "success" }); return row.rows[0]; }); const file = resolveStoragePath(version.storage_path); const info = await stat(file).catch(() => null); if (!info) throw new ApiError(404, "Stored file is unavailable."); return new Response(Readable.toWeb(createReadStream(file)) as ReadableStream, { headers: { "content-type": version.mime_type, "content-length": String(info.size), "content-disposition": contentDisposition(version.title), "cache-control": "private, no-store", "x-content-type-options": "nosniff" } }); });

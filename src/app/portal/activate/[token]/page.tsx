@@ -1,0 +1,4 @@
+import { LockKeyhole } from "lucide-react";
+import { PortalAuthForm } from "@/components/portal-auth-form";
+export const metadata = { title: "Activate Client Portal" };
+export default async function PortalActivate({ params }: { params: Promise<{ token: string }> }) { const { token } = await params; return <main className="auth-page" id="main"><section className="auth-brand"><p className="eyebrow" style={{ color: "#84d2e2" }}><LockKeyhole size={13} /> Secure client access</p><h1>Activate your private case portal.</h1><p>This one-time link was issued by your counsel. It is not sent by NyayaFlow email services.</p></section><section className="auth-panel"><div className="card auth-card"><p className="eyebrow">One-time activation</p><h2>Create a password</h2><p className="lede">Use at least 14 characters. Your access is reviewed by your counsel and expires after 90 days unless renewed.</p><PortalAuthForm token={token} /></div></section></main>; }

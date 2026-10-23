@@ -4,7 +4,6 @@ import { ArrowRight, LockKeyhole } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { callApi, submitWith } from "@/lib/client-api";
-import { useHydrated } from "@/lib/use-hydrated";
 
 type SignInResult = { authenticated?: boolean; mfaRequired?: boolean; challenge?: string; mfaSetupRequired?: boolean };
 
@@ -13,7 +12,6 @@ export function SignInForm({ demoMode }: { demoMode: boolean }) {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [challenge, setChallenge] = useState<string | null>(null);
-  const hydrated = useHydrated();
 
   async function submit(formData: FormData) {
     setError(null);
@@ -36,12 +34,12 @@ export function SignInForm({ demoMode }: { demoMode: boolean }) {
     router.refresh();
   }
 
-  // method="post" and the hydration gate keep credentials out of the URL if the page is not interactive yet.
+  // method="post" keeps credentials out of the URL if the page is submitted before React becomes interactive.
   return <form method="post" onSubmit={submitWith(submit)}>
     {!challenge ? <><div className="field"><label htmlFor="email">WORK EMAIL</label><input id="email" name="email" type="email" autoComplete="email" defaultValue={demoMode ? "advocate@demo.nyayaflow.test" : ""} required /></div>
     <div className="field"><label htmlFor="password">PASSWORD</label><input id="password" name="password" type="password" autoComplete="current-password" defaultValue={demoMode ? "demo-access-only" : ""} required /></div></> : <div className="field"><label htmlFor="code">AUTHENTICATOR CODE</label><input id="code" name="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" maxLength={6} required autoFocus /></div>}
     {error ? <p className="form-error" role="alert">{error}</p> : null}
     <p className="form-help"><LockKeyhole size={12} style={{ verticalAlign: "-2px" }} /> Staff MFA is required after password verification. Access also requires an active firm membership.</p>
-    <button className="button primary" disabled={loading || !hydrated} type="submit">{loading ? "Verifying…" : demoMode ? "Enter synthetic demo" : challenge ? "Verify code" : "Continue securely"}<ArrowRight size={15} /></button>
+    <button className="button primary" disabled={loading} type="submit">{loading ? "Verifying…" : demoMode ? "Enter synthetic demo" : challenge ? "Verify code" : "Continue securely"}<ArrowRight size={15} /></button>
   </form>;
 }

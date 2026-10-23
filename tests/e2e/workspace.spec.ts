@@ -20,7 +20,7 @@ test("mobile navigation reaches the vault", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Smart Vault & OCR" })).toBeVisible();
 });
 
-const PREVIEWS = ["/preview/research", "/preview/bns", "/preview/bns?code=crpc", "/preview/filing", "/preview/filing?view=indexer", "/preview/client", "/preview/billing", "/preview/contracts", "/preview/analytics"];
+const PREVIEWS = ["/preview/research", "/preview/research?view=citator", "/preview/research?view=review", "/preview/bns", "/preview/bns?code=crpc", "/preview/filing", "/preview/filing?view=indexer", "/preview/contracts"];
 const BANNED = [/\bLive\b/, /Supabase/, /Neo4j/, /100%/, /Tata/, /Shardul/, /Singhania/, /Bhajan Lal/, /Hexacom/, /Indus Towers/, /HDFC/, /State Bank/, /Zero[- ]Hallucination/i];
 
 for (const path of PREVIEWS) {
@@ -51,18 +51,27 @@ test("core pages render their MVP workflows", async ({ page }) => {
   await expect(page.getByText(/page 2/)).toBeVisible();
 });
 
-for (const path of ["/today", "/matters", "/matters/00000000-0000-4000-9000-000000000001", "/vault", "/admin", "/account"]) {
+for (const path of ["/today", "/matters", "/matters/00000000-0000-4000-9000-000000000001", "/vault", "/admin", "/account", "/clients", "/billing", "/analytics", "/research", "/bns", "/filing", "/contracts", "/portal/sign-in", "/sign-in"]) {
   test(`${path} fits the viewport without horizontal scrolling`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(path);
-    await expect(page.locator("main h1").first()).toBeVisible();
+    await expect(page.locator("h1").first()).toBeVisible();
     const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
     expect(scrollWidth).toBeLessThanOrEqual(page.viewportSize()!.width + 1);
   });
 }
 
-test("sign-in cannot submit credentials natively before hydration", async ({ request }) => {
-  // A native GET submit would put the email and password in the URL, server logs, and history.
+test("sign-in hydrates without a disabled-button deadlock", async ({ page, request }) => {
+  // A native POST fallback keeps credentials out of the URL without deadlocking selective hydration
+  // behind a server-rendered disabled button.
   const html = await (await request.get("/sign-in")).text();
   expect(html).toMatch(/<form[^>]*method="post"/);
-  expect(html).toMatch(/<button[^>]*disabled=""[^>]*type="submit"/);
+  expect(html).toMatch(/<button[^>]*type="submit"/);
+  expect(html).not.toMatch(/<button[^>]*disabled=""[^>]*type="submit"/);
+
+  await page.goto("/sign-in");
+  const submit = page.getByRole("button", { name: "Enter synthetic demo" });
+  await expect(submit).toBeEnabled();
+  await submit.click();
+  await expect(page).toHaveURL(/\/today$/);
 });

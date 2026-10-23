@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NyayaFlow — Product Overview</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    :root { --navy:#04142d; --ink:#132238; --muted:#61708a; --teal:#007b86; --aqua:#dff5f4; --gold:#e6a126; --paper:#f7f9fc; --line:#dce4ef; --white:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page { width:210mm; min-height:297mm; padding:15mm 16mm 14mm; position:relative; overflow:hidden; background:var(--white); page-break-after:always; }
+    .page:last-child { page-break-after:auto; }
+    .page::before { content:""; position:absolute; width:160mm; height:160mm; border:28mm solid rgba(0,123,134,.08); border-radius:50%; right:-91mm; bottom:-88mm; }
+    .cover { color:white; background:linear-gradient(138deg,#020b1d 0%,#061a38 54%,#074650 100%); }
+    .cover::before { border-color:rgba(84,213,211,.16); right:-76mm; bottom:-68mm; }
+    .cover::after { content:""; position:absolute; width:64mm; height:3px; left:16mm; top:113mm; background:linear-gradient(90deg,var(--gold),transparent); }
+    .topline { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding-bottom:12mm; border-bottom:1px solid rgba(255,255,255,.18); }
+    .brand { display:flex; align-items:center; gap:9px; font-family:Georgia, serif; font-weight:700; font-size:18px; letter-spacing:-.4px; }
+    .brand img { width:38px; height:auto; filter:brightness(0) invert(1); }
+    .eyebrow { margin:0; color:#74d4da; font-weight:800; text-transform:uppercase; letter-spacing:1.4px; font-size:8px; }
+    .cover-main { position:relative; z-index:1; padding-top:38mm; }
+    h1,h2,h3 { font-family:Georgia, "Times New Roman", serif; letter-spacing:-.55px; }
+    h1 { max-width:150mm; margin:9px 0 14px; font-size:43px; line-height:1.03; font-weight:700; }
+    .subtitle { max-width:137mm; margin:0; color:#d4e0ee; font-size:15px; line-height:1.55; }
+    .pill-row { display:flex; flex-wrap:wrap; gap:7px; margin-top:22mm; }
+    .pill { padding:7px 10px; border:1px solid rgba(255,255,255,.23); border-radius:999px; color:#e8f4f5; font-size:9px; font-weight:700; }
+    .cover-bottom { position:absolute; z-index:1; left:16mm; right:16mm; bottom:14mm; display:flex; justify-content:space-between; align-items:flex-end; color:#a8bdd0; font-size:9px; }
+    .cover-bottom strong { color:#fff; }
+    .section-title { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:7mm; border-bottom:1px solid var(--line); }
+    .section-title h2 { margin:5px 0 0; color:var(--navy); font-size:28px; line-height:1.08; }
+    .page-number { color:var(--muted); font-size:9px; font-weight:700; }
+    .intro { position:relative; z-index:1; max-width:150mm; margin:9mm 0 8mm; color:#40516b; font-size:11px; line-height:1.6; }
+    .intro strong { color:var(--teal); }
+    .capability-grid { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .capability { min-height:45mm; padding:12px; border:1px solid var(--line); border-radius:8px; background:linear-gradient(145deg,#fff,#f9fbfd); }
+    .capability .number { color:var(--teal); font-size:9px; font-weight:800; letter-spacing:.7px; }
+    .capability h3 { margin:6px 0 6px; color:var(--navy); font-size:16px; }
+    .capability p { margin:0; color:#53637a; font-size:9.5px; line-height:1.52; }
+    .flow { position:relative; z-index:1; margin-top:11px; padding:12px; border-radius:8px; background:var(--navy); color:white; }
+    .flow h3 { margin:0 0 9px; font-size:16px; }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+    .step { padding-right:7px; border-right:1px solid rgba(255,255,255,.18); }
+    .step:last-child { border:0; }
+    .step b { display:block; color:#75d8dd; font-size:8px; letter-spacing:.9px; }
+    .step span { display:block; margin-top:4px; color:#d4e0ee; font-size:8.5px; line-height:1.38; }
+    .landscape { position:relative; z-index:1; display:grid; grid-template-columns:1.13fr .87fr; gap:11px; margin-top:9mm; }
+    .panel { border:1px solid var(--line); border-radius:8px; padding:12px; background:#fff; }
+    .panel h3 { margin:0 0 8px; color:var(--navy); font-size:17px; }
+    .module { display:grid; grid-template-columns:8px 1fr; gap:8px; padding:7px 0; border-top:1px solid #edf1f6; }
+    .module:first-of-type { border-top:0; }
+    .dot { width:8px; height:8px; margin-top:4px; border-radius:50%; background:var(--teal); }
+    .dot.beta { background:var(--gold); }
+    .module strong { display:block; color:#22344d; font-size:10px; }
+    .module span { display:block; margin-top:2px; color:var(--muted); font-size:8.7px; line-height:1.38; }
+    .architecture { position:relative; z-index:1; margin-top:11px; padding:12px; border-radius:8px; background:var(--aqua); border:1px solid #bfe8e6; }
+    .architecture h3 { margin:0 0 9px; color:#073a44; font-size:16px; }
+    .stack { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; }
+    .stack div { min-height:30mm; padding:8px; border-radius:6px; background:rgba(255,255,255,.75); }
+    .stack b { display:block; color:#075b65; font-size:8px; letter-spacing:.7px; text-transform:uppercase; }
+    .stack span { display:block; margin-top:4px; color:#345a62; font-size:8.4px; line-height:1.38; }
+    .boundary { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:11px; }
+    .boundary .panel { padding:11px 12px; }
+    .boundary ul { margin:0; padding:0; list-style:none; }
+    .boundary li { margin:0 0 6px; padding-left:13px; position:relative; color:#53637a; font-size:9px; line-height:1.38; }
+    .boundary li::before { content:"•"; position:absolute; left:1px; color:var(--teal); font-weight:900; }
+    .boundary .not-enabled { background:#fffaf0; border-color:#f4d99d; }
+    .boundary .not-enabled li::before { color:#bd7c12; }
+    .footer { position:absolute; z-index:1; left:16mm; right:16mm; bottom:10mm; padding-top:5mm; border-top:1px solid var(--line); display:flex; justify-content:space-between; color:var(--muted); font-size:8px; }
+    .footer strong { color:var(--ink); }
+  </style>
+</head>
+<body>
+  <section class="page cover">
+    <div class="topline">
+      <div class="brand"><img src="public/favicon.png" alt="NyayaFlow" />NyayaFlow</div>
+      <p class="eyebrow">Product overview · September 2026</p>
+    </div>
+    <main class="cover-main">
+      <p class="eyebrow">Legal operations, under firm control</p>
+      <h1>A calmer operating system for litigation teams.</h1>
+      <p class="subtitle">NyayaFlow brings matters, hearings, secure documents, staff access, privacy workflows, and accountable internal operations into one responsive workspace for Indian law firms.</p>
+      <div class="pill-row"><span class="pill">Self-hosted PostgreSQL</span><span class="pill">Private document vault</span><span class="pill">English + Hindi OCR</span><span class="pill">Mandatory MFA</span><span class="pill">India-only deployment boundary</span></div>
+    </main>
+    <div class="cover-bottom"><span>Designed for small litigation firms</span><span><strong>NyayaFlow</strong> · Production MVP</span></div>
+  </section>
+
+  <section class="page">
+    <header class="section-title"><div><p class="eyebrow">The product</p><h2>One source of operational truth.</h2></div><span class="page-number">01 / 02</span></header>
+    <p class="intro">NyayaFlow is built around a simple principle: <strong>firm data, human review, and clear provenance come first.</strong> Court data is manual at launch; the platform labels source freshness honestly and preserves the context behind decisions.</p>
+    <div class="capability-grid">
+      <article class="capability"><span class="number">01 · DAILY OPERATIONS</span><h3>Matters & cause lists</h3><p>Manage parties, status history, hearings, tasks, notes, assignees, and matter-level access. Detect same-advocate overlaps and travel-buffer conflicts without auto-reassignment.</p></article>
+      <article class="capability"><span class="number">02 · THE SMART VAULT</span><h3>Documents that stay defensible</h3><p>Upload private PDF, JPEG, PNG, and TIFF files into quarantine. Immutable versions, malware scanning, English/Hindi OCR, page confidence, corrections, search, and fresh download authorization stay linked.</p></article>
+      <article class="capability"><span class="number">03 · CONTROL & ACCOUNTABILITY</span><h3>Access with a paper trail</h3><p>Argon2id credentials, mandatory TOTP MFA, roles, restricted-matter grants, sessions, consent, retention, legal holds, and hash-chained audit events work together at the data layer.</p></article>
+      <article class="capability"><span class="number">04 · INTERNAL WORKSPACES</span><h3>Prepare before you transact</h3><p>Filing, contracts, client collaboration, billing, and analytics support internal preparation, review, approval, and manual records—without pretending to be connected to external systems.</p></article>
+    </div>
+    <section class="flow"><h3>The document lifecycle</h3><div class="steps"><div class="step"><b>01 · AUTHORIZE</b><span>Matter-aware, single-use upload intent.</span></div><div class="step"><b>02 · QUARANTINE</b><span>Checksum validation and private storage.</span></div><div class="step"><b>03 · PROCESS</b><span>Malware scan, page limit, OCR, safe retries.</span></div><div class="step"><b>04 · RETRIEVE</b><span>RLS-scoped search and audited downloads.</span></div></div></section>
+    <footer class="footer"><span>NyayaFlow · confidential product overview</span><span>Manual source states: <strong>manual · unverified · verified · stale</strong></span></footer>
+  </section>
+
+  <section class="page">
+    <header class="section-title"><div><p class="eyebrow">Product landscape</p><h2>Progress with explicit boundaries.</h2></div><span class="page-number">02 / 02</span></header>
+    <div class="landscape">
+      <section class="panel"><h3>Core firm workspace</h3><div class="module"><i class="dot"></i><div><strong>Today, Matters & Vault</strong><span>Daily workboard, matter lifecycle, manual hearings and deadlines, immutable documents, OCR, and tenant-scoped search.</span></div></div><div class="module"><i class="dot"></i><div><strong>Firm administration</strong><span>Members, invitations, roles, grants, privacy requests, consent, retention rules, legal holds, and audit visibility.</span></div></div><div class="module"><i class="dot"></i><div><strong>Client portal</strong><span>Time-bound, matter-specific access to approved milestones and selected documents; evidence uploads enter the same protected Vault pipeline.</span></div></div><div class="module"><i class="dot"></i><div><strong>Finance & analytics</strong><span>Audited manual charges, approvals, advances, allocations, invoice drafts, reconciliation, and permission-safe operational reporting.</span></div></div></section>
+      <section class="panel"><h3>Controlled beta workspaces</h3><div class="module"><i class="dot beta"></i><div><strong>Precedent research</strong><span>Rights-gated authority records, citator evidence, and an accessible citation graph. PostgreSQL remains canonical; local Neo4j is optional.</span></div></div><div class="module"><i class="dot beta"></i><div><strong>BNS / BNSS / BSA matrix</strong><span>Source-recorded provision comparisons and human review worksheets—not automated legal determinations.</span></div></div><div class="module"><i class="dot beta"></i><div><strong>E-filing suite</strong><span>Hash-pinned bundle preparation, rule-pack checks, approvals, and local export manifests.</span></div></div><div class="module"><i class="dot beta"></i><div><strong>Contracts & CLM</strong><span>Template snapshots, clause review, approvals, and manual execution tracking using Vault versions.</span></div></div></section>
+    </div>
+    <section class="architecture"><h3>India-resident, self-operated architecture</h3><div class="stack"><div><b>Web</b><span>Next.js application behind Nginx and TLS.</span></div><div><b>Canonical data</b><span>Self-hosted PostgreSQL with row-level security.</span></div><div><b>Private files</b><span>Non-public filesystem storage, served after fresh authorization.</span></div><div><b>Worker</b><span>systemd process for ClamAV, OCR, durable jobs, and audit verification.</span></div></div></section>
+    <div class="boundary">
+      <section class="panel"><h3>Designed-in safeguards</h3><ul><li>Every tenant-owned record carries an organization boundary.</li><li>Restricted matters need explicit access; revocation affects the next request.</li><li>Audit records are hash-chained and described as tamper-evident.</li><li>Backups are encrypted and restore drills are part of pilot readiness.</li></ul></section>
+      <section class="panel not-enabled"><h3>Intentionally not enabled</h3><ul><li>No live court connector, scraping, or fabricated court status.</li><li>No court submission, eSign/DSC, e-stamp, payment gateway, or GST filing.</li><li>No client email delivery until an approved India-hosted provider exists.</li><li>No privileged matter or Vault content is sent to OpenAI workflows.</li></ul></section>
+    </div>
+    <footer class="footer"><span><strong>Before pilot:</strong> reviewed retention, source-rights, accounting, privacy, and restore-drill evidence.</span><span>nyayaflow · self-hosted MVP</span></footer>
+  </section>
+</body>
+</html>

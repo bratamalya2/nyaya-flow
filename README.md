@@ -8,7 +8,7 @@ NyayaFlow is a self-hosted litigation operations MVP for small Indian law firms.
 - DPDP privacy workflows;
 - tamper-evident audit events.
 
-The Stitch HTML and screens in `stitch_indian_legaltech_platform/` are visual references. The Research, BNS, E-Filing, Client Portal, Billing, Contracts, and Analytics screens are static, clearly labelled synthetic previews: fictional data, disabled controls, no external actions.
+The Stitch HTML and screens in `stitch_indian_legaltech_platform/` are visual references. E-Filing, Client Portal, Billing, Contracts, and Analytics remain static, clearly labelled synthetic previews: fictional data, disabled controls, no external actions. Research and the BNS/BNSS/BSA transition matrix are opt-in beta foundations; each remains disabled until a rights-cleared corpus is loaded.
 
 ## Runtime architecture
 
@@ -17,9 +17,10 @@ The Stitch HTML and screens in `stitch_indian_legaltech_platform/` are visual re
 - **Documents:** private bytes under `DOCUMENT_STORAGE_ROOT`, outside the web root, served only after a per-request database authorization check.
 - **Worker:** a separate systemd worker runs ClamAV, Poppler, and Tesseract `eng+hin` jobs from the PostgreSQL job queue, and verifies each organization's audit chain daily.
 - **Authentication:** local Argon2id passwords, mandatory TOTP MFA with replay protection, opaque sessions (12 h absolute, 60 min idle), sign-in throttling, and invitation links. The operator provisions each firm and its first owner.
+- **Research Beta:** PostgreSQL holds the canonical, rights-gated authority corpus and tenant-scoped notes/query history. An optional local Neo4j service is a rebuildable projection of approved authority metadata and citation evidence only; it never receives firm matters, documents, notes, or query text.
 - **AI:** an optional OpenAI adapter, off by default, that blocks `internal` and `privileged` data before any request. MVP OCR never calls OpenAI.
 
-No Supabase, hosted authentication, hosted object storage, Docker, live court connector, or Neo4j service is used. `Architecture (2).md` describes the design in detail.
+No Supabase, hosted authentication, hosted object storage, Docker, or live court connector is used. Neo4j is optional for Research Beta and runs locally when configured. `Architecture (2).md` describes the design in detail.
 
 ## Local setup
 
@@ -66,6 +67,23 @@ Requirements:
    ```
 
 The owner enrols TOTP MFA at first sign-in and can then invite members from **Firm Admin**. Each invitation is a one-time link, and invitees also enrol MFA before they see firm data.
+
+### Research Beta (self-hosted Neo4j)
+
+Do not load judgments, statutes, headnotes, or editorial material unless you have documented rights or a lawful publication basis and can preserve attribution, version, and provenance. The app refuses to enable a non-fixture source without a recorded verification timestamp.
+
+1. Install a supported Neo4j Community or Enterprise distribution directly on the VPS (no Docker), bind Bolt to loopback or a private network only, and create a least-privilege `nyayaflow_graph` database user. Keep its password only in `/etc/nyayaflow/nyayaflow.env`.
+2. Set `RESEARCH_ENABLED=true`, `NEO4J_URI`, `NEO4J_USERNAME`, `NEO4J_PASSWORD`, and optionally `NEO4J_DATABASE`. Run `npm run research:graph:setup` once to create the graph constraints.
+3. In development only, set `RESEARCH_FIXTURES_ENABLED=true` and run `npm run research:fixtures`. It loads three explicitly fictional records for workflow testing. The command refuses production execution.
+4. Start the normal worker. It consumes `research_graph_jobs` and projects only enabled authority records and their reviewed citation evidence. PostgreSQL search and citator fallback continue to work if Neo4j is unavailable.
+
+If an older graph projection fails after a worker or schema repair, inspect it first, then use `npm run research:graph:requeue -- --fixtures` only for the fictional development corpus. The command never changes queued or live leased jobs.
+
+Before a pilot, build a reviewed ingestion job that writes a source rights record, source edition, content checksum, publication provenance, and per-edge review state. Do not present unverified sources, fixture data, empty citator output, or automated summaries as legal conclusions.
+
+### BNS / BNSS / BSA transition matrix
+
+The transition workspace uses the same source-rights boundary as Research. Set `BNS_TRANSITION_ENABLED=true` only after reviewed provision text and mapping evidence have been loaded. In development only, set `BNS_FIXTURES_ENABLED=true` and run `npm run transitions:fixtures` for three fictional mappings. The fixture command refuses production execution. The applicability worksheet is a review prompt, not an automated determination; the local draft checker does not upload or rewrite a draft.
 
 ### Platform superadmin: creating operators
 

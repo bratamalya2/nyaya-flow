@@ -40,3 +40,18 @@ export async function withActor<T>(userId: string, operation: (client: PoolClien
     client.release();
   }
 }
+
+/** Executes as a client portal identity. This never sets app.user_id, so staff RLS cannot apply. */
+export async function withPortalClient<T>(clientId: string, operation: (client: PoolClient) => Promise<T>) {
+  const client = await dbPool().connect();
+  try {
+    await client.query("begin");
+    await client.query("select set_config('app.portal_client_id', $1, true)", [clientId]);
+    const result = await operation(client);
+    await client.query("commit");
+    return result;
+  } catch (error) {
+    await client.query("rollback");
+    throw error;
+  } finally { client.release(); }
+}

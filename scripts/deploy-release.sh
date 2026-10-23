@@ -30,7 +30,7 @@ cp -a .next/static/. "${release_dir}/.next/static/"
 cp -a public/. "${release_dir}/public/"
 cp -a db/migrations "${release_dir}/db/"
 install -m 0640 .worker-build/worker.cjs "${release_dir}/worker/worker.cjs"
-install -m 0640 .worker-build/scripts/migrate.cjs .worker-build/scripts/provision-operator.cjs "${release_dir}/scripts/"
+install -m 0640 .worker-build/scripts/migrate.cjs .worker-build/scripts/provision-operator.cjs .worker-build/scripts/research-graph-setup.cjs .worker-build/scripts/seed-research-fixtures.cjs .worker-build/scripts/requeue-research-graph.cjs .worker-build/scripts/seed-transition-fixtures.cjs .worker-build/scripts/seed-filing-contract-fixtures.cjs "${release_dir}/scripts/"
 install -m 0750 scripts/backup.sh scripts/restore-drill.sh "${release_dir}/scripts/"
 chown -R nyayaflow:nyayaflow "${release_dir}"
 
